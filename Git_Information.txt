@@ -132,11 +132,12 @@
 
       $ git checkout -b @branch                 - Makes A New Branch With Current Directory & Gets Automatically Switched Into It.
       $ git checkout @branch                    - Swiches The Directory Into An Existing Branch.
-      $ git merge @branch                       - Merges The Changes Desired Branch In The Master (Main) Branch.
       $ git branch                              - Shows All Branches And Highlights The Current Branch With Green Color.
       $ git branch -v                           - Shows All Branches And Their Last Commit Hash And Massage.
       $ git branch -d @branch                   - Deletes The Desired Branch. (Shows Error If The Branch Is Not Merged) 
       $ git branch -D @branch                   - Deletes The Desired Branch Directly. 
+      $ git merge @branch                       - Merges The Changes Desired Branch In The Master (Main) Branch.
+      $ git merge --no-commit --no-ff @branch   - Gives A Chance To Merge Changes Mannually.
 
    Remote Push Commands :
 
