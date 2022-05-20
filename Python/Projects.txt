@@ -2,4 +2,7 @@ Currently Pending Projects...
 
     1) Class Polinomials
         Path: Python\Advanced Python Programming\Static Programming In Python\Object Oriented Programming - OOPs\Polinomials.py
-     
+
+Upcoming Projects...
+    
+    1) None
