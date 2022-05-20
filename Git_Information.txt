@@ -126,16 +126,18 @@
       $ git checkout -- @file                   - Restores The Data In A File By Maching It With The Last Commit. (Only When The File Is Not In The Staging Area)
       $ git checkout -- .                       - Restores The Data In All The Files By Maching It With The Last Commit. (Only When The File Is Not In The Staging Area)
       $ git checkout -f                         - Restores The Data In All The Files By Maching It With The Last Commit.
+      $ git reset --hard @hash                  - Resores The Current Branch To The Desierd Commit By Accessing To The Hash Value.
    
    Branching Commands :
 
       $ git checkout -b @branch                 - Makes A New Branch With Current Directory & Gets Automatically Switched Into It.
       $ git checkout @branch                    - Swiches The Directory Into An Existing Branch.
-      $ git merge @branch                       - Merges The Changes Desired Branch In The Master (Main) Branch.
       $ git branch                              - Shows All Branches And Highlights The Current Branch With Green Color.
       $ git branch -v                           - Shows All Branches And Their Last Commit Hash And Massage.
       $ git branch -d @branch                   - Deletes The Desired Branch. (Shows Error If The Branch Is Not Merged) 
       $ git branch -D @branch                   - Deletes The Desired Branch Directly. 
+      $ git merge @branch                       - Merges The Changes Desired Branch In The Master (Main) Branch.
+      $ git merge --no-commit --no-ff @branch   - Gives A Chance To Merge Changes Mannually.
 
    Remote Push Commands :
 
