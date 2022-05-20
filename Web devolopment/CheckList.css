@@ -1,0 +1,78 @@
+/* i am so bored */
+body, th, td{
+   text-align: center;
+   font-size: 95%;
+   background-color: rgb(52, 25, 73) ;
+   
+}
+*{
+    color: rgb(0, 255, 0);
+    font-family:Haettenschweiler, 'Arial Narrow Bold', sans-serif Haettenschweiler, sans-serif;
+}
+table{
+    margin-left: auto;
+    margin-right: auto;
+    background-color: rgb(0, 255, 0);
+    border-spacing: 2px;
+    
+}
+table, th, td{
+    border: 0.2em solid rgb(255, 0, 255);
+}
+th, td{
+    padding: 6px;
+}
+td{
+    font-style: italic;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.marathi{
+    background-color: violet;
+    color: red;
+}
+.hindi{
+    background-color: rgb(230, 255, 0);
+    color: rgb(1835, 0, 255);
+}
+.english{
+    background-color: blue;
+    color: yellow;
+}
+.sanskrit{
+    background-color: indigo;
+    color: pink;
+}
+.m1{
+    background-color: rgb(255, 135, 0);
+    color: rgb(0,0,225);
+}
+.m2{
+    background-color: rgb(225,0, 0);
+    color: rgb(0, 255, 0)
+}
+.sci1{
+    background-color: pink;
+    color: purple;
+}
+.sci2{
+    background-color: yellow;
+    color: violet;
+}
+.history{
+    background-color: rgb(255, 0, 234);
+    color: indigo;
+}
+.ps{
+    background-color: brown;
+    color: grey;
+}
+.geography{
+    background-color: pink;
+    color: brown;
+}
+.test{
+    background-color: rgb(65, 240, 250);
+    color: rgb(255, 0, 200);
+}
+
+    

@@ -1,0 +1,192 @@
+!!! *** Git Files Status LifeStyle *** !!!
+
+   +------------------------------------------------------------------------------------+
+   | +-----------+          +-------------+          +-----------+          +---------+ |
+   | | Untracked |          | Unmodified^ |          | Modified^ |          | Staged^ | |
+   | +-----+-----+          +------+------+          +-----+-----+          +----+----+ |
+   |       |                       |                       |                     |      |
+   |       |---------------------|\|                       |                     |      |
+   |       |     Add The File      X                       |                     |      |
+   |       |---------------------|/|                       |                     |      |
+   |       |                       |                       |                     |      |
+   |       |                       |---------------------|\|                     |      |
+   |       |                       |     Edit The File     X                     |      |
+   |       |                       |---------------------|/|                     |      |
+   |       |                       |                       |                     |      |
+   |       |/|---------------------|                       |-------------------|\|      |
+   |       X    Remove The File    |                       |    Stage The File   X      |
+   |       |\|---------------------|                       |-------------------|/|      |
+   |       |                       |                       |                     |      |
+   |       |                       |/|-------------------------------------------|      |
+   |       |                       |               Commit The File               |      |
+   |       |                       |\|-------------------------------------------|      |
+   |       |                       |                       |                     |      |
+   +-------+-----------------------+-----------------------+---------------------+------+
+
+
+!!! *** Git Architecture *** !!!
+
+   +----------------------------------------------------------------------+---------------------------+
+   |                           LOCAL                                      |           REMOTE          |
+   +----------------------------------------------------------------------+---------------------------+
+   | +-----------+          +---------+          +------------------+     |     +-------------------+ |
+   | |  Working  |          | Staging |          |  Git Directory   |     |     | GitHub Directory  | |
+   | | Directory |          |  Area   |          | Local Repository |     |     | Remote Repository | |
+   | +-----+-----+          +----+----+          +--------+---------+     |     +---------+---------+ |
+   |       |                     |                        |               |               |           |
+   |       |-------------------|\|                        |               |               |           |
+   |       |  Stage The Files    X                        |               |               |           |
+   |       |-------------------|/|                        |               |               |           |
+   |       |                     |                        |               |               |           |
+   |       |/|--------------------------------------------|               |               |           |
+   |       X            Checkout The Files                |               |               |           |
+   |       |\|--------------------------------------------|               |               |           |
+   |       |                     |                        |               |               |           |
+   |       |                     |                        |/|-----------------------------|           |
+   |       |                     |                        X         Pull The Files        |           |
+   |       |                     |                        |\|-----------------------------|           |
+   |       |                     |                        |               |               |           |
+   |       |                     |----------------------|\|               |               |           |
+   |       |                     |   Commit The Files     X               |               |           |
+   |       |                     |----------------------|/|               |               |           |
+   |       |                     |                        |               |               |           |
+   |       |                     |                        |-----------------------------|\|           |
+   |       |                     |                        |         Push The Files        X           |
+   |       |                     |                        |-----------------------------|/|           |
+   |       |                     |                        |               |               |           |
+   |       |/|--------------------------------------------|               |               |           |
+   |       X              Merge The Files                 |               |               |           |
+   |       |\|--------------------------------------------|               |               |           |
+   |       |                     |                        |               |               |           |
+   +-------+---------------------+------------------------+---------------+---------------+-----------+
+
+
+!!! *** Git Personal Global ShortCut Commands ***!!!
+
+   +--------------------------------+---------------------------------+
+   |          GIT COMMANDS          |          SHORTCUT KEYS          |
+   +--------------------------------+---------------------------------+
+   |                                |                                 |
+   | $ git status                   | $ git s                         |
+   | $ git config --global -l       | $ git info                      |
+   | $ git checkout                 | $ git switch                    |
+   |                                |                                 |
+   +--------------------------------+---------------------------------+
+   | TIP: To Add New ShortCut Keys Without Command Open .gitconfig    |
+   |      In VS Code From Local Path : C:\Users\manoj                 |
+   +--------------------------------+---------------------------------+
+
+
+!!! *** Git Bash Commands ***!!!
+
+   Initializing / Logging Commands:
+
+      $ git init                                - Initialize New Local Git Repository.
+      $ git clone @remoteURL @newname           - Initialize a Copy of Desired Remote Repository With Using URL. (Renamed As newname if given)
+      $ git config --global user.name "@name"   - Stores Name of The User Which Can Be Given as @name.
+      $ git config --global user.email @email   - Stores Email id of The User Which Can Be Given as @email.
+
+   Common Commands:
+
+      $ git status                              - Shows The Status of Working Tree. [local]
+      $ git diff                                - Compares Working Directory with Stagging Area. 
+      $ git diff --staged                       - Compares Stagging Area With Last Commit.
+      $ git rm @file                            - Remove/Delete An Desired File. (Also Get Staged)
+      $ git mv @file @newname                   - Renames The File With Giving It New Name. (Also Get Staged)
+      $ git rm --cached @file                   - Untrakes The Desired Tracking File. (Also Delete it From Stagging Area)
+
+   Log Commands:
+
+      $ git log                                 - Shows All Commit Massages and Thier Author's Name & Email With Date And Time Respectively.
+      $ git log -@n                             - Shows Last n commit Massages.
+      $ git log -p                              - Shows All Commit Massages and Thier Author's Name, Email, Date, Time With The Changes Made In The Repository.
+      $ git log --stat                          - Shows Summarized Commit Massages With Respective Information About Author, Insertions & Deletions.
+      $ git log --since@n.@block                - Shows The Commit Log For Commits of Last n blocks.(minutes, hours, days, weeks, etc.)
+      $ git log --pretty@format_Place_Holders   - Shows The Formated Log of Commits With Reference To Format Place Holders. [ For More Information, Please Visit: https://git-scm.com/docs/pretty-formats At Git's Documentation ]
+
+   Staging Commands:
+
+      $ git add @file                           - Adds The File to Stagging Area. 
+      $ git add --a / $ git add .               - Adds All File to Stagging Area. 
+
+   Unstaging Commands :
+
+      $ git restore --staged @file              - Removes The File From Staging Area And Add To Modified Files.
+      $ git restore --staged .                  - Removes All The Files From Staging Area And Add Them To Modified Files.
+
+   Commiting Commands:
+
+      $ git commit @file                        - Commits The Staged Files. (Opens Editor To Get Commit Massage)
+      $ git commit -m "@massage"                - Commits The Staged Files. (Accept The Commit Massage Passed Through)
+      $ git commit -a                           - Commits All The Files. (Staged and Unstaged)
+      $ git commit --amend                      - Merge The Changes Into Last Commit - If Staged. (Also We Can Change Commit Massage)
+
+   Restoring Commands :
+
+      $ git checkout -- @file                   - Restores The Data In A File By Maching It With The Last Commit. (Only When The File Is Not In The Staging Area)
+      $ git checkout -- .                       - Restores The Data In All The Files By Maching It With The Last Commit. (Only When The File Is Not In The Staging Area)
+      $ git checkout -f                         - Restores The Data In All The Files By Maching It With The Last Commit.
+   
+   Branching Commands :
+
+      $ git checkout -b @branch                 - Makes A New Branch With Current Directory & Gets Automatically Switched Into It.
+      $ git checkout @branch                    - Swiches The Directory Into An Existing Branch.
+      $ git merge @branch                       - Merges The Changes Desired Branch In The Master (Main) Branch.
+      $ git branch                              - Shows All Branches And Highlights The Current Branch With Green Color.
+      $ git branch -v                           - Shows All Branches And Their Last Commit Hash And Massage.
+      $ git branch -d @branch                   - Deletes The Desired Branch. (Shows Error If The Branch Is Not Merged) 
+      $ git branch -D @branch                   - Deletes The Desired Branch Directly. 
+
+   Remote Push Commands :
+
+      $ git push -u @remote @branch             - Pushes The Branch Into Remote.
+      $ git push -d @remote @branch             - Deletes The Branch In The Remote.  
+
+   Shortcut Building Commands :
+
+      $ git config --global alias.@key @command - Adds A Shortcut Key To Access an Command.
+
+   Linux Commands:
+
+      $ ls                                      - Shows All Files In List Format. 
+      $ pwd                                     - Shows The Path of Present Working Directory.
+      $ cd                                      - Changes The Path Of Working Directory.
+      $ touch @file                             - Creates New File At Current Directory.
+      $ rm -rf .git                             - Removes/Deletes The .git Folder. (Disband The Git Local Repository)
+
+
+!!! *** Git Help OutPut *** !!!
+
+   These are common Git commands used in various situations:
+
+      start a working area (see also: git help tutorial)
+         clone     Clone a repository into a new directory
+         init      Create an empty Git repository or reinitialize an existing one
+
+      work on the current change (see also: git help everyday)
+         add       Add file contents to the index
+         mv        Move or rename a file, a directory, or a symlink
+         restore   Restore working tree files
+         rm        Remove files from the working tree and from the index
+
+      examine the history and state (see also: git help revisions)
+         bisect    Use binary search to find the commit that introduced a bug
+         diff      Show changes between commits, commit and working tree, etc
+         grep      Print lines matching a pattern
+         log       Show commit logs
+         show      Show various types of objects
+         status    Show the working tree status
+
+      grow, mark and tweak your common history
+         branch    List, create, or delete branches
+         commit    Record changes to the repository
+         merge     Join two or more development histories together
+         rebase    Reapply commits on top of another base tip
+         reset     Reset current HEAD to the specified state
+         switch    Switch branches
+         tag       Create, list, delete or verify a tag object signed with GPG
+
+      collaborate (see also: git help workflows)
+         fetch     Download objects and refs from another repository
+         pull      Fetch from and integrate with another repository or a local branch
+         push      Update remote refs along with associated objects

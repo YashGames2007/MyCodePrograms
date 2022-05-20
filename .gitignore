@@ -1,0 +1,10 @@
+# Ignoring Some Auto-Generated Executable Files...
+C/*.exe
+C/**/*.exe
+C++/*.exe
+C++/**/*.exe
+C#/*.exe
+C#/**/*.exe
+
+# Ignoring Some Less Important Folders...
+Python/Prime Numbers EXE/

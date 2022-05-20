@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>navigation menu</title>
+    <style>
+        body{
+            background-color: rgb(110, 81, 81);
+        }
+        .sample{
+            background-color: rgb(6, 255, 6);
+            color: black;
+            font-size: 120%;
+            border-radius: 10px;
+        }
+        .sample li{
+            float: left;
+            list-style: none;
+            margin: 14px 15px;
+        }
+        .sample li a{
+            padding: 3px 3px;
+            text-decoration: none;
+        }
+        .sample li a:hover{
+            background-color: blue;
+            padding: 3px 5px;
+            border-radius: 10px;
+            color: white;
+        }
+        .sample ul{
+            overflow: auto;
+        }
+        .sample input{
+            border: 2px solid black;
+            border-radius: 50px;
+            padding: 3px 10px;
+            margin: 1% 5px;
+            width: 180px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="sample">
+            <ul>
+                <li><a href="#">Hall</a></li>
+                <li><a href="#">Kitchen</a></li>
+                <li><a href="#">Bed Room</a></li>
+                <li><a href="#">Store Room</a></li>
+                <div class="sb">
+                    <input type="text" name="search" id="search" placeholder="search in this beutiful website">
+                </div>
+            </ul>
+        </nav>
+    </header>
+</body>
+</html>
