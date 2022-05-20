@@ -126,6 +126,7 @@
       $ git checkout -- @file                   - Restores The Data In A File By Maching It With The Last Commit. (Only When The File Is Not In The Staging Area)
       $ git checkout -- .                       - Restores The Data In All The Files By Maching It With The Last Commit. (Only When The File Is Not In The Staging Area)
       $ git checkout -f                         - Restores The Data In All The Files By Maching It With The Last Commit.
+      $ git reset --hard @hash                  - Resores The Current Branch To The Desierd Commit By Accessing To The Hash Value.
    
    Branching Commands :
 
