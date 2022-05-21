@@ -68,8 +68,12 @@
    +--------------------------------+---------------------------------+
    |                                |                                 |
    | $ git status                   | $ git s                         |
-   | $ git config --global -l       | $ git info                      |
+   | $ git add                      | $ git a                         |
+   | $ git commit                   | $ git c                         |
+   | $ git log                      | $ git l                         |
+   | $ git log @My_style            | $ git ls                        |
    | $ git checkout                 | $ git switch                    |
+   | $ git config --global -l       | $ git info                      |
    |                                |                                 |
    +--------------------------------+---------------------------------+
    | TIP: To Add New ShortCut Keys Without Command Open .gitconfig    |
