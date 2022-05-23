@@ -18,17 +18,17 @@ int main()
     }
     printf("}.");
 
-    for (int i = 0; i < size; i++)
+
+    for (int i, k = 0; i <= size - 1; i++)
     {
-        for (int j = i + 1; j < size; j++)
+        temp = arr[i];
+        k = i - 1;
+        while (k >= 0 && arr[k] > temp)
         {
-            if (arr[j] < arr[i])
-            {
-                temp = arr[i];
-                arr[i] = arr[j];
-                arr[j] = temp;
-            }
+            arr[k + 1] = arr[k];
+            k --;
         }
+        arr[k + 1] = temp;
     }
     printf("\nSorted Array: {%d", arr[0]);
     for (int i = 1; i < size; i++)
@@ -36,5 +36,6 @@ int main()
         printf(", %d", arr[i]);
     }
     printf("}.");    
+    
     return 0;
 }
