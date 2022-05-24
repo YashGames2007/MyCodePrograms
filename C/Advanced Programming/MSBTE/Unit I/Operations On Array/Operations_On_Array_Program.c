@@ -1,4 +1,4 @@
-#include <stdio.h>
+#include<stdio.h>
 void main()
 {
     int n=0,a[n],loc,i;
