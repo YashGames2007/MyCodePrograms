@@ -68,8 +68,12 @@
    +--------------------------------+---------------------------------+
    |                                |                                 |
    | $ git status                   | $ git s                         |
-   | $ git config --global -l       | $ git info                      |
+   | $ git add                      | $ git a                         |
+   | $ git commit                   | $ git c                         |
+   | $ git log                      | $ git l                         |
+   | $ git log @My_style            | $ git ls                        |
    | $ git checkout                 | $ git switch                    |
+   | $ git config --global -l       | $ git info                      |
    |                                |                                 |
    +--------------------------------+---------------------------------+
    | TIP: To Add New ShortCut Keys Without Command Open .gitconfig    |
@@ -143,6 +147,7 @@
 
       $ git push -u @remote @branch             - Pushes The Branch Into Remote.
       $ git push -d @remote @branch             - Deletes The Branch In The Remote.  
+      $ git push @remote --all                  - Pushes All The Branches To Remote.
 
    Shortcut Building Commands :
 

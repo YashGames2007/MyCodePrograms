@@ -1,0 +1,14 @@
+Quick Sort:
+
+    Algorithm:
+
+        1)  Choose 0th Index Value As Pivot
+        2)  Take Two Variables L & R
+                L -> Left Points To The Low Index
+                R -> Right Points To The High
+        3)  Check Value Of L >= Pivot If Not Move To Right Side (Check Largest Than Pivot)
+        4)  Check Value Of R <= Pivot If Not Move To Left Side (Check Smallest Than Pivot)
+        5)  If Both Step 3 And 4 Are True Then Swap Left And Right
+        6)  If R Cross The I, Then Swap Pivot And R Value I.E. The Fix Position Of Pivot
+        7)  Partition The Array In Sub-Arrays Excluding Pivot And Call Step 1 To Step 7 Respectively.
+        8)  Combine The Whole List I.E. Our Sorted List
