@@ -1,3 +1,9 @@
 # Ignoring Some Auto-Generated Executable Files...
 C/*.exe
 C/**/*.exe
+
+# Ignoring Some Accedentaly Added Directories...
+Python/
+C++/
+C#/
+Web Development/
