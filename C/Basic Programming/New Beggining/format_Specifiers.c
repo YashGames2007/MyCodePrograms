@@ -55,6 +55,6 @@ int main()
     // i++;
     // printf("\n%d X %d = %d", num, i, num*i);
     // i++;
-    
+    printf("\n%a");
     return 0;
 }
