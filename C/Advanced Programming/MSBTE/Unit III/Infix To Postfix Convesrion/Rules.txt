@@ -1,0 +1,39 @@
+Infix To Postfix Conversion:
+
+    Terminology:
+
+        (*) Operators ||--*-->>     +, -, *, /, $, Etc.
+        (*) Operands  ||--*-->>     X, Y, 5, 9, 67, Etc.
+
+        (*) Infix Expression    ||--*->>    A + B
+        (*) Postfix Expression  ||--*-->>    A B +
+
+    Rules:
+
+        |==1=>  Operand Will Directly Go To Postfix.
+        |==2=>  Operator Will First Go To Stack And Then To Postfix.  
+        |==3=>  Operators Will Go To Postfix According To Priority Rules.
+    
+    Priority Rules:
+
+        |==1=>  If Operator With Higher Priority Than The Current Operator Is Already 
+                Present In Stack, Then Push The Higher Priority Operator Into Postfix
+                And Operator With Low Priority To Stack.
+        
+        |==2=>  If Operator With Lower Priority Than The Current Operator Is Already 
+                Present In Stack, Then Both The Operators Will Remain In Stack.
+        
+        |==3=>  If Operator Present On Stack And Current Operator Has Equal Priority
+                Then Push The Operator Present On Stack To Postfix And Keep The Current
+                Operator On Stack. 
+
+    Priority Table
+
+    +----------+-----------+
+    | Priority | Operators | 
+    +----------+-----------+
+    |     1    |    ( )    |
+    |     2    |   ? ^ $   |
+    |     3    |    / *    |
+    |     4    |    + -    |
+    +----------+-----------+
