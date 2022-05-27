@@ -16,16 +16,23 @@ Infix To Postfix Conversion:
     
     Priority Rules:
 
-        |==1=>  If Operator With Higher Priority Than The Current Operator Is Already 
+        |==1=>  If Operator That Has Higher Priority Than The Current Operator Is Already 
                 Present In Stack, Then Push The Higher Priority Operator Into Postfix
                 And Operator With Low Priority To Stack.
         
-        |==2=>  If Operator With Lower Priority Than The Current Operator Is Already 
+        |==2=>  If Operator That Has Lower Priority Than The Current Operator Is Already 
                 Present In Stack, Then Both The Operators Will Remain In Stack.
         
         |==3=>  If Operator Present On Stack And Current Operator Has Equal Priority
                 Then Push The Operator Present On Stack To Postfix And Keep The Current
                 Operator On Stack. 
+
+        |==4=>  If Current Becomes Empty I.E. Expression Ends Then Push The Remaining 
+                Operators Directly Into Postfix.  
+        
+        |==5=>  If Two or More operators are present on the stack then push them to
+                postfix such that the last added operator on stack will go first into
+                postfix.
 
     Priority Table
 
