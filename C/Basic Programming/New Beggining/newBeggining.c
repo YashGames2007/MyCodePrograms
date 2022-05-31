@@ -4,16 +4,20 @@ struct arr
 {
     int head;
     int *base;
-    
 };
 
+int foo()
+{
+    int a;
+    return a;
+}
 
 int main()
 {
     // char f[] = "yashgames2007";
-    char arr[10];
-    gets(arr);
-    puts(arr);
+    // char arr[10];
+    // gets(arr);
+    // puts(arr);
     // printf("\n%s", f);
     // int a; scanf("%d", &a);
     // int i = a < 5 ?3 :4;
@@ -37,6 +41,6 @@ int main()
     // }
 
     // printf("'%c'}.", arr[9]);
-    
+
     return 0;
 }
