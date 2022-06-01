@@ -2,28 +2,29 @@
 #include <stdlib.h>
 #include <string.h>
 
+typedef unsigned long long int ulli;
+
 typedef struct Travel_Agency_Driver
 {
-    char name[20];
-    char driving_License_Number[20];
-    char route_Name[50];
-    unsigned long travel_Distance;
+    char *name;
+    char *driving_License_Number;
+    char *route_Name;
+    ulli *travel_Distance;
 } driver;
 
-driver get_Details();
+void *get_Details(driver *new_Driver);
 void present_Details(driver *new_Driver);
-void clear(void);
 
 int main()
 {
-    int total;
+    int total = 3;
     char condition, not = 1;
 
-    printf("\nEnter The Number of Drivers Working At Travel Agency: ");
-    scanf("%d", &total);
+    // printf("\nEnter The Number of Drivers Working At Travel Agency: ");
+    // scanf("%d", &total);
 
     const int total_Drivers = total;
-    driver drivers[total_Drivers];
+    driver *drivers = (driver *)malloc(total_Drivers * sizeof(driver));
 
     printf("\n\n*** Travel Agency Drivers Information Submission ***\n");
     printf("\nRules:");
@@ -40,26 +41,27 @@ int main()
         {
         case 0:
             printf("\nEnter The Details of 1st Driver: \n");
-            drivers[i] = get_Details();
+            get_Details(&drivers[i]);
             break;
         case 1:
             printf("\nEnter The Details of 2nd Driver: \n");
-            drivers[i] = get_Details();
+            get_Details(&drivers[i]);
             break;
         case 2:
             printf("\nEnter The Details of 3rd Driver: \n");
-            drivers[i] = get_Details();
+            get_Details(&drivers[i]);
             break;
         default:
             printf("\nEnter The Details of %dth Driver: \n", (i + 1));
-            drivers[i] = get_Details();
+            get_Details(&drivers[i]);
             break;
         }
         present_Details(&drivers[i]);
         while (not )
         {
             printf("\nShould We Proceed Further (y/n): ");
-            scanf("%s", &condition);
+            condition = 'Y';
+            // scanf("%s", &condition);
             if (condition == 'Y' || condition == 'y')
             {
                 not = 0;
@@ -88,48 +90,66 @@ int main()
         present_Details(&drivers[i]);
     }
     printf("\n\n");
+
+    for (int i = 0; i < total_Drivers; i++)
+    {
+        free(drivers[i].name);
+        free(drivers[i].driving_License_Number);
+        free(drivers[i].route_Name);
+        free(drivers[i].travel_Distance);
+    }
+    free(drivers);
     return 0;
 }
-driver get_Details()
+void *get_Details(driver *new_Driver)
 {
-    driver new_Driver;
-    char name[20];
-    char dl_No[20];
-    char route[50];
+    char *name  = (char *)malloc(100 * sizeof(char));
+    char *dl_No = (char *)malloc(100 * sizeof(char));
+    char *route = (char *)malloc(1000 * sizeof(char));
+    ulli *travel_Dist = (ulli *)malloc(sizeof(ulli));
 
-    printf("\n\n(Maximum No. of Characters Should be Entered: 20)");
+    printf("\n\n(Maximum No. of Characters Should be Entered: 100)");
     printf("\nEnter Your Name: ");
-    clear();
-    gets(name);
+    // getchar();
+    // gets(name);
+    strcpy(name, "name");
 
-    printf("\n\n(Maximum No. of Characters Should be Entered: 20)");
+    printf("\n\n(Maximum No. of Characters Should be Entered: 100)");
     printf("\nEnter Your Driving License Number [DL No.]: ");
-    gets(dl_No);
+    // gets(dl_No);
+    strcpy(dl_No, "dl_No");
 
-    printf("\n\n(Maximum No. of Characters Should be Entered: 50)");
+    printf("\n\n(Maximum No. of Characters Should be Entered: 1000)");
     printf("\nEnter Your Travelling Route Name: ");
-    gets(route);
+    // gets(route);
+    strcpy(route, "route");
 
     printf("\n\n(Value Should be in KiloMeters. [kms])");
     printf("\nEnter Traveled Distance: ");
-    scanf("%d", &new_Driver.travel_Distance);
+    // scanf("%llu", travel_Dist);
+    *travel_Dist = 500;
 
-    strcpy(new_Driver.name, name);
-    strcpy(new_Driver.driving_License_Number, dl_No);
-    strcpy(new_Driver.route_Name, route);
+    new_Driver -> name                   = (char *)malloc((strlen(name) + 1)  * sizeof(char));
+    new_Driver -> driving_License_Number = (char *)malloc((strlen(dl_No) + 1) * sizeof(char));
+    new_Driver -> route_Name             = (char *)malloc((strlen(route) + 1) * sizeof(char));
+    new_Driver -> travel_Distance        = (ulli *)malloc(sizeof(ulli));
 
-    return new_Driver;
+
+    strcpy(new_Driver -> name, name);
+    strcpy(new_Driver -> driving_License_Number, dl_No);
+    strcpy(new_Driver -> route_Name, route);
+    *new_Driver -> travel_Distance = *travel_Dist;
+
+    free(name);
+    free(dl_No);
+    free(route);
+    free(travel_Dist);
 }
 void present_Details(driver *new_Driver)
 {
-    printf("\nDriver's Name              : %s    ", new_Driver -> name);
-    printf("\nDriver's DL No.            : %s    ", new_Driver -> driving_License_Number);
-    printf("\nDriver's Route             : %s    ", new_Driver -> route_Name);
-    printf("\nDriver's Traveled Distance : %d Kms", new_Driver -> travel_Distance);
+    printf("\nDriver's Name              : %s      ", new_Driver -> name);
+    printf("\nDriver's DL No.            : %s      ", new_Driver -> driving_License_Number);
+    printf("\nDriver's Route             : %s      ", new_Driver -> route_Name);
+    printf("\nDriver's Traveled Distance : %llu Kms", *new_Driver -> travel_Distance);
     printf("\n");
-}
-void clear(void)
-{
-    while (getchar() != '\n')
-        ;
 }
