@@ -6,7 +6,7 @@ Infix To Postfix Conversion:
         (*) Operands  ||--*-->>     X, Y, 5, 9, 67, Etc.
 
         (*) Infix Expression    ||--*->>    A + B
-        (*) Postfix Expression  ||--*-->>    A B +
+        (*) Postfix Expression  ||--*->>    A B +
 
     Rules:
 
