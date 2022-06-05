@@ -1,8 +1,13 @@
-Currently Pending Projects...
+##Currently_Pending_Projects...
 
-    1) Search Algorithms
-        Path: C\Advanced Programming\MSBTE\Unit II\Search Algorithms
+    1)  |=< Python Style Array Printer >=>>
+        Path = "E:\Programming files\Code\C\Basic Programming\array_Printer_by_python_style.c"
 
-Upcoming Projects...
-    
-    1) None
+    2)  |==< Pop Pop >=>>
+        Path = "E:\Programming files\Code\C\Basic Programming\Pop_Pop.c"
+
+## Upcoming_Projects...
+   
+    1)  |==< MSBTE Unit IV -V >=>>
+        OutComes = `Learn All About Data Structures & Algorithms With C.`
+        Path = "E:\Programming files\Code\C\Advanced Programming\MSBTE"

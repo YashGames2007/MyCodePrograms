@@ -1,0 +1,52 @@
+Infix To Postfix Conversion:
+
+    Terminology:
+
+        (*) Operators ||--*-->>     +, -, *, /, $, Etc.
+        (*) Operands  ||--*-->>     X, Y, 5, 9, 67, Etc.
+
+        (*) Infix Expression    ||--*->>    A + B
+        (*) Postfix Expression  ||--*->>    A B +
+
+    Rules:
+
+        |==1=>  Operand Will Directly Go To Postfix.
+
+        |==2=>  Operator Will First Go To Stack And Then To Postfix.  
+        
+        |==3=>  Operators Will Go To Postfix According To Priority Rules.
+    
+    Priority Rules:
+
+        |=<1>=>  If Operator That Has Higher Priority Than The Current Operator Is Already Present In Stack, Then Push The Higher Priority Operator Into Postfix And Operator With Low Priority To Stack.
+        
+        |=<2>=>  If Operator That Has Lower Priority Than The Current Operator Is Already Present In Stack, Then Both The Operators Will Remain In Stack.
+        
+        |=<3>=>  If Operator Present On Stack And Current Operator Has Equal Priority Then Push The Operator Present On Stack To Postfix And Keep The Current Operator On Stack. 
+
+        |=<4>=>  If Current Becomes Empty I.E. Expression Ends Then Push The Remaining Operators Directly Into Postfix.  
+        
+        |=<5>=>  If Two Or More Operators Are Present On The Stack Then Push Them To Postfix Such That The Last Added Operator On Stack Will Go First Into Postfix.
+
+        |=<6>=>  If Two Or More Operators Are Present On The Stack Then Compare The Current Operator With Most Recently Operator On Stack.
+    
+    Bracket Rules:
+
+        ||==<<1>>==>>  If Current Operator Is An Open Bracket Then It Will Be Directly Pushed In Stack.
+
+        ||==<<2>>==>>  If Open Bracket Is Already Present In Stack Then Place The Current Operator Inside The Bracket.
+
+        ||==<<3>>==>>  If Current Operator Is Close Bracket Then Push The Operators Inside The Brackets To Postfix Without Brackets And Leave The Stack Empty.
+
+        
+
+    Priority Table
+
+    +----------+-----------+
+    | Priority | Operators | 
+    +----------+-----------+
+    |     1    |    ( )    |
+    |     2    |   ? ^ $   |
+    |     3    |    / *    |
+    |     4    |    + -    |
+    +----------+-----------+

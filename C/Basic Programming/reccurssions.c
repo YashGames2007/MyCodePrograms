@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 int factorial(int n);
-int fib(int n);
+int fib_Recursive(int n);
 int doubler(int n);
 
 int main()
@@ -13,7 +13,7 @@ int main()
     fact = factorial(number);
     printf("\nThe factorial of %d is %d", number, fact);
 
-    fb = fib(number);
+    fb = fib_Recursive(number);
     printf("\nThe %d th fib number is %d", number, fb);
 
     db = doubler(number);
@@ -44,7 +44,7 @@ int factorial(int n)
     }
 }
 
-int fib(int n)
+int fib_Recursive(int n)
 {
     if (n == 1 || n == 2)
     {
@@ -52,7 +52,7 @@ int fib(int n)
     }
     else
     {
-        return (fib(n - 1) + fib(n - 2));
+        return (fib_Recursive(n - 1) + fib_Recursive(n - 2));
     }
 }
 int doubler(int n)
