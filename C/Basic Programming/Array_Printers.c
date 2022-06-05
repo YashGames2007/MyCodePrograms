@@ -3,23 +3,27 @@
 void array_Printer(int *array, int *dimension_array, int dimension);
 void function(int *dimension_array, int dimension, int value, int *value_array);
 
-int main()
+int main2()
 {
-  int dimension = 10;
-  int arr[] = {2, 2, 2, 2, 2, 2, 2, 2, 2, 2};
-  int array[2][2][2][2][2][2][2][2][2][2];
-  int *ptr = &array[0][0][0][0][0][0][0][0][0][0];
-  for (int i = 0; i < 1024; i++)
-  {
-    *ptr = i + 1;
-    ptr++;
-  }
+    printf("\nAt Array Printers: %s", __FUNCTION__);
+    int dimension = 10;
+    int arr[] = {2, 2, 2, 2, 2, 2, 2, 2, 2, 2};
+    int array[2][2][2][2][2][2][2][2][2][2];
+    int *ptr = &array[0][0][0][0][0][0][0][0][0][0];
+    for (int i = 0; i < 1024; i++)
+    {
+      *ptr = i + 1;
+      ptr++;
+    }
 
-  array_Printer(&array[0][0][0][0][0][0][0][0][0][0], &arr[0], dimension);
+    // array_Printer(&array[0][0][0][0][0][0][0][0][0][0], &arr[0], dimension);
+    printf("\nHello From Array Printers!");
+  
   return 0;
 }
 void array_Printer(int *array, int *dimension_array, int dimension)
 {
+  printf("\n");
   int total = 1;
   int value_array[dimension];
   for (int a = 0; a < dimension; a++)
