@@ -8,8 +8,8 @@
 #define __Sort_Type_Descending__ 2
 
 // Defining Some Error Massages
-#define __D_I_A_S__ERROR_01__ "\nDynamic Integer Array:-| ERROR |-<%s> Operation Can't Be Performed, Because Array is Deleted!!!", __FUNCTION__
-#define __D_I_A_S__ERROR_02__ "\nDynamic Integer Array:-| ERROR |-<%s> Operation Can't Be Performed, Because Array Index Out of Range!!!", __FUNCTION__
+#define __D_I_A_S__ERROR_01__ "\nDynamic Integer Array:-| ERROR 01 |-<%s> Operation Can't Be Performed, Because Array is Deleted!!!", __FUNCTION__
+#define __D_I_A_S__ERROR_02__ "\nDynamic Integer Array:-| ERROR 02 |-<%s> Operation Can't Be Performed, Because Array Index Out of Range!!!", __FUNCTION__
 
 /*
 ---
