@@ -10,7 +10,6 @@ typedef struct Singly_Integer_Linked_List_Node
     struct Singly_Integer_Linked_List_Node *__Next_Node__;
 } int_S_L_L_Node;
 
-
 /*
 ---
 ---
@@ -169,8 +168,10 @@ void _D_S_I_L_L_S_Remove__(int_S_L_List *list, int element)
 
         if (list->__Head_Node__->__Node_Data__ == element)
         {
+            int_S_L_L_Node *temp_Node = list->__Head_Node__;
             list->__Head_Node__ = list->__Head_Node__->__Next_Node__;
             list->__Size__--;
+            free(temp_Node);
         }
         else
         {
