@@ -16,7 +16,7 @@ int main()
     a.repr(&a);
     a.append(&a, 50000);
     a.repr(&a);
-    a.insert(&a, 1, 20000);
+    a.insert(&a, 1, -20000);
     a.repr(&a);
     a.remove(&a, 1);
     a.repr(&a);

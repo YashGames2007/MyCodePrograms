@@ -246,6 +246,12 @@ void __D_I_S_C_L_L_S_Represent__(struct Dynamic_Integer_Singly_Circular_Linked_L
             temp = (int)current_Node->__Node_Data__;
             current_Node = current_Node->__Next_Node__;
             count = 0;
+
+            if (temp != abs(temp))
+            {
+                count = 1;
+            }
+
             while (temp != 0)
             {
                 temp /= 10;
