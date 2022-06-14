@@ -94,13 +94,13 @@ typedef struct Dynamic_Singly_Integer_Linked_List_Structure
 
 } int_S_L_List;
 
-void __D_S_I_L_L_S_Insert__(int_S_L_List *list, int index, int element)
+void __D_S_I_L_L_S_Insert__(int_S_L_List *Linked_List, int index, int element)
 {
-    if (list->__Size__ == -1)
+    if (Linked_List->__Size__ == -1)
     {
         printf(__D_S_I_L_L_S__ERROR_01__);
     }
-    else if (list->__Size__ <= index)
+    else if (Linked_List->__Size__ <= index)
     {
         printf(__D_S_I_L_L_S__ERROR_02__);
     }
@@ -108,7 +108,7 @@ void __D_S_I_L_L_S_Insert__(int_S_L_List *list, int index, int element)
     {
         int_S_L_L_Node *new_Node = (int_S_L_L_Node *)malloc(sizeof(int_S_L_L_Node));
 
-        int_S_L_L_Node *current_Node = list->__Head_Node__;
+        int_S_L_L_Node *current_Node = Linked_List->__Head_Node__;
 
         for (int i = 0; i < index - 1; i++)
         {
@@ -117,65 +117,64 @@ void __D_S_I_L_L_S_Insert__(int_S_L_List *list, int index, int element)
         new_Node->__Node_Data__ = element;
         new_Node->__Next_Node__ = current_Node->__Next_Node__;
         current_Node->__Next_Node__ = new_Node;
-        list->__Size__++;
+        Linked_List->__Size__++;
     }
 }
 
-void __D_S_I_L_L_S_Append__(int_S_L_List *list, int element)
+void __D_S_I_L_L_S_Append__(int_S_L_List *Linked_List, int element)
 {
-    if (list->__Size__ == -1)
+    if (Linked_List->__Size__ == -1)
     {
         printf(__D_S_I_L_L_S__ERROR_01__);
     }
     else
     {
-        if (list->__Size__ == 0)
+        if (Linked_List->__Size__ == 0)
         {
-            list->__Head_Node__ = (int_S_L_L_Node *)malloc(sizeof(int_S_L_L_Node));
-            list->__Head_Node__->__Node_Data__ = element;
-            list->__Head_Node__->__Next_Node__ = NULL;
+            Linked_List->__Head_Node__ = (int_S_L_L_Node *)malloc(sizeof(int_S_L_L_Node));
+            Linked_List->__Head_Node__->__Node_Data__ = element;
+            Linked_List->__Head_Node__->__Next_Node__ = NULL;
         }
-        else if (list->__Size__ == 1)
+        else if (Linked_List->__Size__ == 1)
         {
-            list->__Foot_Node__ = (int_S_L_L_Node *)malloc(sizeof(int_S_L_L_Node));
-            list->__Foot_Node__->__Node_Data__ = element;
-            list->__Foot_Node__->__Next_Node__ = NULL; 
-            list->__Head_Node__->__Next_Node__ = list->__Foot_Node__;
+            Linked_List->__Foot_Node__ = (int_S_L_L_Node *)malloc(sizeof(int_S_L_L_Node));
+            Linked_List->__Foot_Node__->__Node_Data__ = element;
+            Linked_List->__Foot_Node__->__Next_Node__ = NULL; 
+            Linked_List->__Head_Node__->__Next_Node__ = Linked_List->__Foot_Node__;
         }
         else
         {
             int_S_L_L_Node *new_Node = (int_S_L_L_Node *)malloc(sizeof(int_S_L_L_Node));
 
-            int temp_Data = list->__Foot_Node__->__Node_Data__;
-            list->__Foot_Node__->__Next_Node__ = new_Node;
-            list->__Foot_Node__->__Next_Node__->__Node_Data__ = element;
-            list->__Foot_Node__->__Next_Node__->__Next_Node__ = NULL;
-            list->__Foot_Node__ = list->__Foot_Node__->__Next_Node__;
+            Linked_List->__Foot_Node__->__Next_Node__ = new_Node;
+            Linked_List->__Foot_Node__->__Next_Node__->__Node_Data__ = element;
+            Linked_List->__Foot_Node__->__Next_Node__->__Next_Node__ = NULL;
+            Linked_List->__Foot_Node__ = Linked_List->__Foot_Node__->__Next_Node__;
         }
-        list->__Size__++;
+        Linked_List->__Size__++;
     }
 }
 
-void _D_S_I_L_L_S_Remove__(int_S_L_List *list, int element)
+void _D_S_I_L_L_S_Remove__(int_S_L_List *Linked_List, int element)
 {
-    if (list->__Size__ == -1)
+    if (Linked_List->__Size__ == -1)
     {
         printf(__D_S_I_L_L_S__ERROR_01__);
     }
     else
     {
-        int_S_L_L_Node *current_Node = list->__Head_Node__;
+        int_S_L_L_Node *current_Node = Linked_List->__Head_Node__;
 
-        if (list->__Head_Node__->__Node_Data__ == element)
+        if (Linked_List->__Head_Node__->__Node_Data__ == element)
         {
-            int_S_L_L_Node *temp_Node = list->__Head_Node__;
-            list->__Head_Node__ = list->__Head_Node__->__Next_Node__;
-            list->__Size__--;
+            int_S_L_L_Node *temp_Node = Linked_List->__Head_Node__;
+            Linked_List->__Head_Node__ = Linked_List->__Head_Node__->__Next_Node__;
+            Linked_List->__Size__--;
             free(temp_Node);
         }
         else
         {
-            for (int i = 0; i < list->__Size__ - 1; i++)
+            for (int i = 0; i < Linked_List->__Size__ - 1; i++)
             {
                 if (current_Node->__Next_Node__->__Node_Data__ == element)
                 {
@@ -194,43 +193,43 @@ void _D_S_I_L_L_S_Remove__(int_S_L_List *list, int element)
                 int_S_L_L_Node *node = current_Node->__Next_Node__;
                 current_Node->__Next_Node__ = current_Node->__Next_Node__->__Next_Node__;
                 free(node);
-                list->__Size__--;
+                Linked_List->__Size__--;
             }
         }
     }
 }
 
-void _D_S_I_L_L_S_Delete__(int_S_L_List *list)
+void _D_S_I_L_L_S_Delete__(int_S_L_List *Linked_List)
 {
-    if (list->__Size__ == -1)
+    if (Linked_List->__Size__ == -1)
     {
         printf(__D_S_I_L_L_S__ERROR_01__);
     }
     else
     {
-        int_S_L_L_Node *current_Node = list->__Head_Node__;
+        int_S_L_L_Node *current_Node = Linked_List->__Head_Node__;
         int_S_L_L_Node *temp;
 
-        while (list->__Head_Node__->__Next_Node__ != NULL)
+        while (Linked_List->__Head_Node__->__Next_Node__ != NULL)
         {
-            temp = list->__Head_Node__->__Next_Node__;
-            list->__Head_Node__->__Next_Node__ = list->__Head_Node__->__Next_Node__->__Next_Node__;
+            temp = Linked_List->__Head_Node__->__Next_Node__;
+            Linked_List->__Head_Node__->__Next_Node__ = Linked_List->__Head_Node__->__Next_Node__->__Next_Node__;
             free(temp);
         }
-        free(list->__Head_Node__);
-        list->__Size__ = -1;
+        free(Linked_List->__Head_Node__);
+        Linked_List->__Size__ = -1;
     }
 }
 
-void __D_S_I_L_L_S_Represent__(int_S_L_List *list)
+void __D_S_I_L_L_S_Represent__(int_S_L_List *Linked_List)
 {
-    if (list->__Size__ == -1)
+    if (Linked_List->__Size__ == -1)
     {
         printf(__D_S_I_L_L_S__ERROR_01__);
     }
     else
     {
-        if (list->__Head_Node__ == NULL)
+        if (Linked_List->__Head_Node__ == NULL)
         {
             printf("\n| >");
         }
@@ -238,9 +237,9 @@ void __D_S_I_L_L_S_Represent__(int_S_L_List *list)
         {
             printf("\n| ");
 
-            int_S_L_L_Node *current_Node = list->__Head_Node__;
+            int_S_L_L_Node *current_Node = Linked_List->__Head_Node__;
 
-            for (int i = 0; i < list->__Size__ - 1; i++)
+            for (int i = 0; i < Linked_List->__Size__ - 1; i++)
             {
                 printf("%d >-| ", current_Node->__Node_Data__);
                 current_Node = current_Node->__Next_Node__;
@@ -265,3 +264,4 @@ void __D_S_I_L_L_S_Initialize__(int_S_L_List *new_List)
 }
 
 #define init __D_S_I_L_L_S_Initialize__
+#define size __Size__
