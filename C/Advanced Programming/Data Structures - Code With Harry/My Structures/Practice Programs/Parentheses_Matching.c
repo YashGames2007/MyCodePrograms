@@ -4,7 +4,7 @@
 
 int isBalanced(char *exp);
 
-int main()
+int main2()
 {
     char *expression = "{[{[})]}]}";
     printf("Balance Rate: %d", isBalanced(expression));

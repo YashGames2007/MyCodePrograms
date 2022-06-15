@@ -161,7 +161,6 @@ int __D_I_S_S_Search__(struct Dynamic_Integer_Stack_Structure *stack, int elemen
 
 int __D_I_S_S_Pop__(struct Dynamic_Integer_Stack_Structure *stack)
 {
-
     if (stack->__Size__ == -1)
     {
         printf(__D_I_S_S__ERROR_01__);
@@ -169,9 +168,11 @@ int __D_I_S_S_Pop__(struct Dynamic_Integer_Stack_Structure *stack)
     else
     {
         int_D_S_S_Node *temp_Node = stack->__Top_Node__;
+        int temp_Data = temp_Node->__Node_Data__;
         stack->__Top_Node__ = stack->__Top_Node__->__Previous_Node__;
         free(temp_Node);
         stack->__Size__--;
+        return temp_Data;
     }
 }
 
@@ -474,9 +475,11 @@ char __D_C_S_S_Pop__(struct Dynamic_Character_Stack_Structure *stack)
     else
     {
         char_D_S_S_Node *temp_Node = stack->__Top_Node__;
+        char temp_Data = temp_Node->__Node_Data__;
         stack->__Top_Node__ = stack->__Top_Node__->__Previous_Node__;
         free(temp_Node);
         stack->__Size__--;
+        return temp_Data;
     }
 }
 
