@@ -1,0 +1,5 @@
+#define Float_Array "E:/Programming files/Code/C/Custom Includable Header Files/Dynamic Array Implementation/Float_Array_Structure.c"
+#define Double_Array "E:/Programming files/Code/C/Custom Includable Header Files/Dynamic Array Implementation/Double_Array_Structure.c"
+#define String_Array "E:/Programming files/Code/C/Custom Includable Header Files/Dynamic Array Implementation/String_Array_Structure.c"
+#define Integer_Array "E:/Programming files/Code/C/Custom Includable Header Files/Dynamic Array Implementation/Integer_Array_Structure.c"
+#define Character_Array "E:/Programming files/Code/C/Custom Includable Header Files/Dynamic Array Implementation/Character_Array_Structure.c"
