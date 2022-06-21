@@ -1,4 +1,4 @@
-#include "E:\Programming files\Code\C\Custom Includable Header Files\Dynamic Array Implementation\Array_Structures.c"
+#include "E:\Programming files\Code\C\Custom Includable Header Files\Dynamic Array Implementation\Array_Structure.c"
 
 #include Float_Array
 #include Double_Array
