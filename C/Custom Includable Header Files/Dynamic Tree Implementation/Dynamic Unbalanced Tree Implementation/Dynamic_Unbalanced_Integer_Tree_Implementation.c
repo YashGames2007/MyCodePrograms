@@ -96,7 +96,6 @@ int __Traverse_Search_Node__(D_U_I_T_S_Node *root_Node, int element, int *path, 
     {
         if (__Traverse_Search_Node__(root_Node->__Child_Nodes__[i], element, path, (current_Index + 1), size) == 1)
         {
-            printf("\nIn: %d", current_Index);
             path[current_Index] = i;
             *size += 1;
             return 1;
@@ -184,8 +183,6 @@ typedef struct Dynamic_Unbalanced_Integer_Tree_Structure
     void (*repr)(struct Dynamic_Unbalanced_Integer_Tree_Structure *structure);
     /*### Deletes The Whole Unbalanced Integer Tree. */
     void (*delete)(struct Dynamic_Unbalanced_Integer_Tree_Structure *structure);
-    /*### Removes The Element At Given Index and Returns The Element. */
-    int (*pop)(struct Dynamic_Unbalanced_Integer_Tree_Structure *structure, int index);
     /*### Returns The Index of First Occurrence of The Element In The Unbalanced Integer Tree, Returns -1 If The Element is Not Present In The List. */
     int (*search)(struct Dynamic_Unbalanced_Integer_Tree_Structure *structure, int element, int *path);
     /*### Removes The First Occurrence Of The Specified Element in The Unbalanced Integer Tree. */
@@ -278,10 +275,6 @@ void __D_U_I_T_S_Add__(struct Dynamic_Unbalanced_Integer_Tree_Structure *integer
             {
                 current_Node->__Child_Nodes__ = (D_U_I_T_S_Node **)malloc(sizeof(D_U_I_T_S_Node *));
                 current_Node->__Child_Nodes__[0] = new_Node;
-                if (integer_Tree->__Height__ < 2)
-                {
-                    integer_Tree->__Height__ = 2;
-                }
                 current_Node->__Node_Degree__++;
             }
             else
@@ -327,12 +320,7 @@ int __D_U_I_T_S_Search__(struct Dynamic_Unbalanced_Integer_Tree_Structure *integ
     }
     int size = 0;
     __Traverse_Search_Node__(integer_Tree->__Root_Node__, element, path, 0, &size);
-    printf("\nSize: %d", *(&(size)));
     return size;
-}
-
-int __D_U_I_T_S_Pop__(struct Dynamic_Unbalanced_Integer_Tree_Structure *integer_Tree, int index)
-{
 }
 
 void __D_U_I_T_S_Represent__(struct Dynamic_Unbalanced_Integer_Tree_Structure *integer_Tree)
@@ -367,7 +355,6 @@ void __D_U_I_T_S_Initialize__(integer_Tree *new_integer_Tree, int element)
     new_integer_Tree->__Root_Node__ = __Create_Node__(NULL, 0, element);
 
     // Functions Declaration...
-    (new_integer_Tree->pop) = __D_U_I_T_S_Pop__;
     (new_integer_Tree->repr) = __D_U_I_T_S_Represent__;
     (new_integer_Tree->delete) = __D_U_I_T_S_Delete__;
     (new_integer_Tree->search) = __D_U_I_T_S_Search__;
