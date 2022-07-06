@@ -1,16 +1,10 @@
 #include <stdio.h>
-#include "E:\Programming files\Code\C\Custom Includable Header Files\Dynamic Tree Implementation\Dynamic Binary Search Tree Implementation\Dynamic_Integer_Binary_Search_Tree_Structure_Implementation.c"
-#include <stdlib.h>
- 
-
+#include "E:\Programming files\Code\C\Custom Includable Header Files\Dynamic Tree Implementation\Dynamic AVL Adelson-Velskii and Landis Tree Implementation\Dynamic_AVL_Adelson-Velskii_and_Landis_Tree_Structure_Implementation.c"
 
 int main()
 {
-    int_B_S_Tree a;
-    int_B_S_Tree_init(&a, 25);
-    int index[5];
-    index[0] = 0;
-
+    int_AVL_Tree a;
+    int_AVL_Tree_init(&a, 25);
     a.add(&a, 20);
     a.add(&a, 36);
     a.add(&a, 10);
@@ -21,7 +15,10 @@ int main()
 
 
     a.add(&a, 5);
+    a.repr(&a);
     a.add(&a, 12);
+    printf("\nOK");
+    a.repr(&a);
 
     a.add(&a, 21);
     a.add(&a, 23);
@@ -33,22 +30,19 @@ int main()
 
     a.add(&a, 38);
     a.add(&a, 48);
-    // a.add(&a, index, 1, 12);
-    // a.add(&a, index, 1, 30);
-    // a.add(&a, index, 1, 40);
-    // index[0] = 0;
-    // index[1] = 1;
-    // a.add(&a, index, 2, 100);
     printf("\nDone");
 
     
     
     a.repr(&a);
-    a.remove(&a, 23);
+    printf("\nOk");
     a.repr(&a);
     printf("\nGot");
-    int path[a.height];
-    int size  = a.search(&a, 23, path);
+    int si = a.height;
+    int path[si + 1];
+    int size = 2;
+    printf("\nHeight: %d", a.height);
+    size  = a.search(&a, 23, path);
     
     printf("\n{%d", path[0]);
     for (int i = 1; i < size; i++)
@@ -56,9 +50,13 @@ int main()
         printf(", %d", path[i]);
     }
     printf("}.\n");
+    printf("\nRepr:");
+    a.repr(&a);
 
     a.delete(&a);
+    printf("\nRepr:");
     a.repr(&a);
     printf("\nDone");
+    
     return 0;
 }
