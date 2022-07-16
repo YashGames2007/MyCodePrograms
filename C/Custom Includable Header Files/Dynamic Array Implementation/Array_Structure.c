@@ -3,3 +3,4 @@
 #define String_Array "E:/Programming files/Code/C/Custom Includable Header Files/Dynamic Array Implementation/String_Array_Structure.c"
 #define Integer_Array "E:/Programming files/Code/C/Custom Includable Header Files/Dynamic Array Implementation/Integer_Array_Structure.c"
 #define Character_Array "E:/Programming files/Code/C/Custom Includable Header Files/Dynamic Array Implementation/Character_Array_Structure.c"
+#define Pointer_Array "E:/Programming files/Code/C/Custom Includable Header Files/Dynamic Array Implementation/Pointer_Array_Structure.c"

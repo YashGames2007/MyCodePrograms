@@ -107,17 +107,21 @@ int __D_I_Q_S_deQueue__(struct Dynamic_Integer_Queue_Structure *int_Queue)
     if (int_Queue->__Size__ == -1)
     {
         printf(__D_I_Q_S__ERROR_01__);
+        return -1;
     }
     else if (int_Queue->__Size__ == 0)
     {
         printf(__D_I_Q_S__ERROR_02__);
+        return -1;
     }
     else if (int_Queue->__Size__ == 1)
     {
         int_Queue_Node *temp_Node = int_Queue->__Front_End_Node__;
         int_Queue->__Front_End_Node__ = NULL;
+        int temp = temp_Node->__Node_Data__;
         free(temp_Node);
         int_Queue->__Size__--;
+        return temp;
     }
     else
     {
@@ -126,9 +130,10 @@ int __D_I_Q_S_deQueue__(struct Dynamic_Integer_Queue_Structure *int_Queue)
 
         new_Front_End_Node->__Next_Node__ = NULL;
         int_Queue->__Front_End_Node__ = new_Front_End_Node;
-
+        int temp = node->__Node_Data__;
         free(node);
         int_Queue->__Size__--;
+        return temp;
     }
 }
 
