@@ -1,0 +1,5 @@
+#define Float_Queue "E:/Programming files/Code/C/Custom Includable Header Files/Dynamic Queue Implementation/Float_Queue_Structure.c"
+#define Double_Queue "E:/Programming files/Code/C/Custom Includable Header Files/Dynamic Queue Implementation/Double_Queue_Structure.c"
+#define String_Queue "E:/Programming files/Code/C/Custom Includable Header Files/Dynamic Queue Implementation/String_Queue_Structure.c"
+#define Integer_Queue "E:/Programming files/Code/C/Custom Includable Header Files/Dynamic Queue Implementation/Integer_Queue_Structure.c"
+#define Character_Queue "E:/Programming files/Code/C/Custom Includable Header Files/Dynamic Queue Implementation/Character_Queue_Structure.c"
