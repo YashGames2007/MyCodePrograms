@@ -122,12 +122,12 @@ typedef struct Dynamic_Integer_Directed_Graph_Structure
 
 } int_D_Graph;
 
-int_D_I_D_G_S_Node *__D_I_D_G_S_Get_Connection__(struct Dynamic_Integer_Directed_Graph_Structure *int_Direct_Graph, unsigned int _ID_1, int index)
+int_D_I_D_G_S_Node *__D_I_D_G_S_Get_Connection__(struct Dynamic_Integer_Directed_Graph_Structure *int_Directed_Graph, unsigned int _ID_1, int index)
 {
-    int dex = int_Direct_Graph->__Included_Identities__.search(&(int_Direct_Graph->__Included_Identities__), _ID_1);
+    int dex = int_Directed_Graph->__Included_Identities__.search(&(int_Directed_Graph->__Included_Identities__), _ID_1);
     if (dex != -1)
     {
-        int_D_I_D_G_S_Node *node_1 = int_Direct_Graph->__Included_Nodes__.get(&(int_Direct_Graph->__Included_Nodes__), dex);
+        int_D_I_D_G_S_Node *node_1 = int_Directed_Graph->__Included_Nodes__.get(&(int_Directed_Graph->__Included_Nodes__), dex);
         if (node_1->__Connected_Node_Count__ <= index)
         {
             printf(__D_I_D_G_S__ERROR_02__);
@@ -137,32 +137,32 @@ int_D_I_D_G_S_Node *__D_I_D_G_S_Get_Connection__(struct Dynamic_Integer_Directed
     }
 }
 
-int_D_I_D_G_S_Node *__D_I_D_G_S_Get__(struct Dynamic_Integer_Directed_Graph_Structure *int_Direct_Graph, unsigned int _ID)
+int_D_I_D_G_S_Node *__D_I_D_G_S_Get__(struct Dynamic_Integer_Directed_Graph_Structure *int_Directed_Graph, unsigned int _ID)
 {
-    int index = int_Direct_Graph->__Included_Identities__.search(&(int_Direct_Graph->__Included_Identities__), _ID);
+    int index = int_Directed_Graph->__Included_Identities__.search(&(int_Directed_Graph->__Included_Identities__), _ID);
     if (index != -1)
     {
-        return int_Direct_Graph->__Included_Nodes__.__Base_Address__[index];
+        return int_Directed_Graph->__Included_Nodes__.__Base_Address__[index];
     }
     return NULL;
 }
 
-void __D_I_D_G_S_Join_Connection__(struct Dynamic_Integer_Directed_Graph_Structure *int_Direct_Graph, unsigned int _ID_1, unsigned int _ID_2)
+void __D_I_D_G_S_Join_Connection__(struct Dynamic_Integer_Directed_Graph_Structure *int_Directed_Graph, unsigned int _ID_1, unsigned int _ID_2)
 {
-    if (int_Direct_Graph->__Included_Identities__.search(&(int_Direct_Graph->__Included_Identities__), _ID_1) != -1 && int_Direct_Graph->__Included_Identities__.search(&(int_Direct_Graph->__Included_Identities__), _ID_2) != -1)
+    if (int_Directed_Graph->__Included_Identities__.search(&(int_Directed_Graph->__Included_Identities__), _ID_1) != -1 && int_Directed_Graph->__Included_Identities__.search(&(int_Directed_Graph->__Included_Identities__), _ID_2) != -1)
     {
         int_D_I_D_G_S_Node *node_1, *node_2;
-        for (int i = 0; i < int_Direct_Graph->__Size__; i++)
+        for (int i = 0; i < int_Directed_Graph->__Size__; i++)
         {
-            node_1 = (int_D_I_D_G_S_Node *)int_Direct_Graph->__Included_Nodes__.get(&(int_Direct_Graph->__Included_Nodes__), i);
+            node_1 = (int_D_I_D_G_S_Node *)int_Directed_Graph->__Included_Nodes__.get(&(int_Directed_Graph->__Included_Nodes__), i);
             if (node_1->__Node_ID__ == _ID_1)
             {
                 break;
             }
         }
-        for (int i = 0; i < int_Direct_Graph->__Size__; i++)
+        for (int i = 0; i < int_Directed_Graph->__Size__; i++)
         {
-            node_2 = (int_D_I_D_G_S_Node *)int_Direct_Graph->__Included_Nodes__.get(&(int_Direct_Graph->__Included_Nodes__), i);
+            node_2 = (int_D_I_D_G_S_Node *)int_Directed_Graph->__Included_Nodes__.get(&(int_Directed_Graph->__Included_Nodes__), i);
             if (node_2->__Node_ID__ == _ID_2)
             {
                 break;
@@ -178,34 +178,34 @@ void __D_I_D_G_S_Join_Connection__(struct Dynamic_Integer_Directed_Graph_Structu
     }
 }
 
-void __D_I_D_G_S_Remove__(struct Dynamic_Integer_Directed_Graph_Structure *int_Direct_Graph, unsigned int _ID)
+void __D_I_D_G_S_Remove__(struct Dynamic_Integer_Directed_Graph_Structure *int_Directed_Graph, unsigned int _ID)
 {
 }
 
-void __D_I_D_G_S_Create_New_Node__(struct Dynamic_Integer_Directed_Graph_Structure *int_Direct_Graph, unsigned int _ID, int element)
+void __D_I_D_G_S_Create_New_Node__(struct Dynamic_Integer_Directed_Graph_Structure *int_Directed_Graph, unsigned int _ID, int element)
 {
-    if (int_Direct_Graph->__Included_Identities__.search(&(int_Direct_Graph->__Included_Identities__), _ID) == -1)
+    if (int_Directed_Graph->__Included_Identities__.search(&(int_Directed_Graph->__Included_Identities__), _ID) == -1)
     {
         int_D_I_D_G_S_Node *new_Node = (int_D_I_D_G_S_Node *)malloc(sizeof(int_D_I_D_G_S_Node));
         new_Node->__Connected_Node_Count__ = 0;
         ptr_Array_init(&(new_Node->__Connected_Nodes__));
         new_Node->__Node_ID__ = _ID;
         new_Node->__Node_Data__ = element;
-        int_Direct_Graph->__Included_Nodes__.append(&(int_Direct_Graph->__Included_Nodes__), new_Node);
-        int_Direct_Graph->__Size__++;
-        int_Direct_Graph->__Included_Identities__.append(&(int_Direct_Graph->__Included_Identities__), _ID);
+        int_Directed_Graph->__Included_Nodes__.append(&(int_Directed_Graph->__Included_Nodes__), new_Node);
+        int_Directed_Graph->__Size__++;
+        int_Directed_Graph->__Included_Identities__.append(&(int_Directed_Graph->__Included_Identities__), _ID);
     }
 }
 
-unsigned int __D_I_D_G_S_Search__(struct Dynamic_Integer_Directed_Graph_Structure *int_Direct_Graph, int element)
+unsigned int __D_I_D_G_S_Search__(struct Dynamic_Integer_Directed_Graph_Structure *int_Directed_Graph, int element)
 {
 }
 
-int __D_I_D_G_S_Pop__(struct Dynamic_Integer_Directed_Graph_Structure *int_Direct_Graph, int index)
+int __D_I_D_G_S_Pop__(struct Dynamic_Integer_Directed_Graph_Structure *int_Directed_Graph, int index)
 {
 }
 
-int *__D_I_D_G_S_Depth_First_Search_Traversal__(struct Dynamic_Integer_Directed_Graph_Structure *int_Direct_Graph, int *_size)
+int *__D_I_D_G_S_Depth_First_Search_Traversal__(struct Dynamic_Integer_Directed_Graph_Structure *int_Directed_Graph, int *_size)
 {
     int_Array visited_Node_IDs;
     int_Array_init(&visited_Node_IDs);
@@ -213,19 +213,19 @@ int *__D_I_D_G_S_Depth_First_Search_Traversal__(struct Dynamic_Integer_Directed_
     int_Stack_init(&exploration_Stack);
 
     int_D_I_D_G_S_Node *temp_Node;
-    int_D_I_D_G_S_Node *current_Node = int_Direct_Graph->__Base_Node__;
+    int_D_I_D_G_S_Node *current_Node = int_Directed_Graph->__Base_Node__;
     exploration_Stack.push(&exploration_Stack, current_Node->__Node_ID__);
 
     int _ID;
     while (exploration_Stack.__Size__ != 0)
     {
         _ID = exploration_Stack.pop(&exploration_Stack);
-        current_Node = int_Direct_Graph->get(int_Direct_Graph, _ID);
+        current_Node = int_Directed_Graph->get(int_Directed_Graph, _ID);
         visited_Node_IDs.append(&visited_Node_IDs, current_Node->__Node_ID__);
 
         for (int i = 0; i < current_Node->__Connected_Node_Count__; i++)
         {
-            temp_Node = int_Direct_Graph->get_Connection(int_Direct_Graph, current_Node->__Node_ID__, i);
+            temp_Node = int_Directed_Graph->get_Connection(int_Directed_Graph, current_Node->__Node_ID__, i);
 
             if (visited_Node_IDs.search(&visited_Node_IDs, temp_Node->__Node_ID__) == -1)
             {
@@ -238,9 +238,9 @@ int *__D_I_D_G_S_Depth_First_Search_Traversal__(struct Dynamic_Integer_Directed_
     return visited_Node_IDs.__Base_Address__;
 }
 
-int *__D_I_D_G_S_Breadth_First_Search_Traversal__(struct Dynamic_Integer_Directed_Graph_Structure *int_Direct_Graph, int *_size)
+int *__D_I_D_G_S_Breadth_First_Search_Traversal__(struct Dynamic_Integer_Directed_Graph_Structure *int_Directed_Graph, int *_size)
 {
-    int_D_I_D_G_S_Node *current_Node = int_Direct_Graph->__Base_Node__;
+    int_D_I_D_G_S_Node *current_Node = int_Directed_Graph->__Base_Node__;
     int_D_I_D_G_S_Node *temp_Node = current_Node;
 
     int_Queue exploration_Queue;
@@ -255,11 +255,11 @@ int *__D_I_D_G_S_Breadth_First_Search_Traversal__(struct Dynamic_Integer_Directe
     while (exploration_Queue.__Size__ != 0)
     {
         _ID = exploration_Queue.deQueue(&exploration_Queue);
-        current_Node = int_Direct_Graph->get(int_Direct_Graph, _ID);
+        current_Node = int_Directed_Graph->get(int_Directed_Graph, _ID);
 
         for (int i = 0; i < current_Node->__Connected_Node_Count__; i++)
         {
-            temp_Node = int_Direct_Graph->get_Connection(int_Direct_Graph, current_Node->__Node_ID__, i);
+            temp_Node = int_Directed_Graph->get_Connection(int_Directed_Graph, current_Node->__Node_ID__, i);
 
             if (visited_Node_IDs.search(&visited_Node_IDs, temp_Node->__Node_ID__) == -1)
             {
@@ -272,39 +272,39 @@ int *__D_I_D_G_S_Breadth_First_Search_Traversal__(struct Dynamic_Integer_Directe
     return visited_Node_IDs.__Base_Address__;
 }
 
-void __D_I_D_G_S_Represent__(struct Dynamic_Integer_Directed_Graph_Structure *int_Direct_Graph)
+void __D_I_D_G_S_Represent__(struct Dynamic_Integer_Directed_Graph_Structure *int_Directed_Graph)
 {
 }
 
-void __D_I_D_G_S_Delete__(struct Dynamic_Integer_Directed_Graph_Structure *int_Direct_Graph)
+void __D_I_D_G_S_Delete__(struct Dynamic_Integer_Directed_Graph_Structure *int_Directed_Graph)
 {
 }
 
-void __D_I_D_G_S_Initialize__(int_D_Graph *new_int_Direct_Graph, int node_Data)
+void __D_I_D_G_S_Initialize__(int_D_Graph *new_int_Directed_Graph, int node_Data)
 {
-    new_int_Direct_Graph->__Size__ = 1;
-    new_int_Direct_Graph->__Base_Node__ = (int_D_I_D_G_S_Node *)malloc(sizeof(int_D_I_D_G_S_Node));
-    new_int_Direct_Graph->__Base_Node__->__Connected_Node_Count__ = 0;
-    ptr_Array_init(&(new_int_Direct_Graph->__Base_Node__->__Connected_Nodes__));
-    new_int_Direct_Graph->__Base_Node__->__Node_ID__ = 0;
-    new_int_Direct_Graph->__Base_Node__->__Node_Data__ = node_Data;
+    new_int_Directed_Graph->__Size__ = 1;
+    new_int_Directed_Graph->__Base_Node__ = (int_D_I_D_G_S_Node *)malloc(sizeof(int_D_I_D_G_S_Node));
+    new_int_Directed_Graph->__Base_Node__->__Connected_Node_Count__ = 0;
+    ptr_Array_init(&(new_int_Directed_Graph->__Base_Node__->__Connected_Nodes__));
+    new_int_Directed_Graph->__Base_Node__->__Node_ID__ = 0;
+    new_int_Directed_Graph->__Base_Node__->__Node_Data__ = node_Data;
 
-    ptr_Array_init(&(new_int_Direct_Graph->__Included_Nodes__));
-    int_Array_init(&(new_int_Direct_Graph->__Included_Identities__));
-    new_int_Direct_Graph->__Included_Identities__.append(&(new_int_Direct_Graph->__Included_Identities__), 0);
-    new_int_Direct_Graph->__Included_Nodes__.append(&(new_int_Direct_Graph->__Included_Nodes__), new_int_Direct_Graph->__Base_Node__);
+    ptr_Array_init(&(new_int_Directed_Graph->__Included_Nodes__));
+    int_Array_init(&(new_int_Directed_Graph->__Included_Identities__));
+    new_int_Directed_Graph->__Included_Identities__.append(&(new_int_Directed_Graph->__Included_Identities__), 0);
+    new_int_Directed_Graph->__Included_Nodes__.append(&(new_int_Directed_Graph->__Included_Nodes__), new_int_Directed_Graph->__Base_Node__);
     // Functions Declaration...
-    (new_int_Direct_Graph->pop) = __D_I_D_G_S_Pop__;
-    (new_int_Direct_Graph->get) = __D_I_D_G_S_Get__;
-    (new_int_Direct_Graph->delete) = __D_I_D_G_S_Delete__;
-    (new_int_Direct_Graph->remove) = __D_I_D_G_S_Remove__;
-    (new_int_Direct_Graph->search) = __D_I_D_G_S_Search__;
-    (new_int_Direct_Graph->repr) = __D_I_D_G_S_Represent__;
-    (new_int_Direct_Graph->get_Connection) = __D_I_D_G_S_Get_Connection__;
-    (new_int_Direct_Graph->create_New_Node) = __D_I_D_G_S_Create_New_Node__;
-    (new_int_Direct_Graph->join_Connection) = __D_I_D_G_S_Join_Connection__;
-    (new_int_Direct_Graph->traverse_BFS) = __D_I_D_G_S_Breadth_First_Search_Traversal__;
-    (new_int_Direct_Graph->traverse_DFS) = __D_I_D_G_S_Depth_First_Search_Traversal__;
+    (new_int_Directed_Graph->pop) = __D_I_D_G_S_Pop__;
+    (new_int_Directed_Graph->get) = __D_I_D_G_S_Get__;
+    (new_int_Directed_Graph->delete) = __D_I_D_G_S_Delete__;
+    (new_int_Directed_Graph->remove) = __D_I_D_G_S_Remove__;
+    (new_int_Directed_Graph->search) = __D_I_D_G_S_Search__;
+    (new_int_Directed_Graph->repr) = __D_I_D_G_S_Represent__;
+    (new_int_Directed_Graph->get_Connection) = __D_I_D_G_S_Get_Connection__;
+    (new_int_Directed_Graph->create_New_Node) = __D_I_D_G_S_Create_New_Node__;
+    (new_int_Directed_Graph->join_Connection) = __D_I_D_G_S_Join_Connection__;
+    (new_int_Directed_Graph->traverse_BFS) = __D_I_D_G_S_Breadth_First_Search_Traversal__;
+    (new_int_Directed_Graph->traverse_DFS) = __D_I_D_G_S_Depth_First_Search_Traversal__;
 }
 
 #define int_D_Graph_init __D_I_D_G_S_Initialize__
