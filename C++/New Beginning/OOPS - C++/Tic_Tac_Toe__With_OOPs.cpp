@@ -58,6 +58,13 @@ private:
     token_Options turn;          // Ongoing Token Option for Player Turn.
     player_Type player_Types[2]; // Type of Players.
 
+    void get_Tokens(char &, char &);
+    int get_Options(void);
+    int check_Adjacency(int, int, int, char, char);
+    void play_Randomly(void);
+    int play_Defensively(void);
+    int play_Aggressively(void);
+
 protected:
     int check_Game_Status(void);
     void display_Table(void);
@@ -112,12 +119,21 @@ Tic_Tac_Toe_Game_Control_Panel::Tic_Tac_Toe_Game_Control_Panel(int total_Rounds 
 
 //* Computer AI Programming...
 
-/* Function Documentation:
+void Tic_Tac_Toe_Game_Control_Panel::get_Tokens(char &bot_Token, char &opponent_Token)
+{
+    if (turn == X)
+    {
+        opponent_Token = 'O';
+        bot_Token = 'X';
+    }
+    else
+    {
+        bot_Token = 'O';
+        opponent_Token = 'X';
+    }
+}
 
-@   Easy AI Computer Bot For Tic Tac Toe Game.
-@   This Ai Will  Place His Move Randomly, Choosing From Empty Boxes.
-*/
-void Tic_Tac_Toe_Game_Control_Panel::computer_Easy(void)
+int Tic_Tac_Toe_Game_Control_Panel::get_Options(void)
 {
     int count = 0;
 
@@ -128,6 +144,27 @@ void Tic_Tac_Toe_Game_Control_Panel::computer_Easy(void)
             count++;
         }
     }
+    return count;
+}
+
+int Tic_Tac_Toe_Game_Control_Panel::check_Adjacency(int _1, int _2, int _3, char is_Check, char is_Not_Check)
+{
+    char token, temp;
+    get_Tokens(token, temp);
+    if (game_Board[_1] == is_Check && game_Board[_2] == is_Check)
+    {
+        if (game_Board[_3] != is_Not_Check)
+        {
+            game_Board[_3] = token;
+            return 1;
+        }
+    }
+    return 0;
+}
+
+void Tic_Tac_Toe_Game_Control_Panel::play_Randomly(void)
+{
+    int count = get_Options();
 
     int empty_Boxes[count];
     int index = 0;
@@ -143,16 +180,160 @@ void Tic_Tac_Toe_Game_Control_Panel::computer_Easy(void)
 
     srand(time(0));
     int bot_Turn = (rand() % count);
-    char token;
-    if (turn == X)
-    {
-        token = 'X';
-    }
-    else
-    {
-        token = 'O';
-    }
+    char token, opponent;
+    get_Tokens(token, opponent);
     game_Board[empty_Boxes[bot_Turn]] = token;
+}
+
+int Tic_Tac_Toe_Game_Control_Panel::play_Defensively(void)
+{
+    int _1, _2, _3, temp; // Calculations Purpose Variables...
+    char opp_Token, my_Token;
+    get_Tokens(my_Token, opp_Token);
+
+    /* Opponent Token Checks For Every Column */
+    for (int i = 0; i < 3; i++)
+    {
+        for (int j = 0; j < 9; j += 3)
+        {
+            _1 = (i + (j + 0)) % 9;
+            _2 = (i + (j + 3)) % 9;
+            _3 = (i + (j + 6)) % 9;
+
+            temp = check_Adjacency(_1, _2, _3, opp_Token, my_Token);
+            if (temp == 1)
+            {
+                return 1;
+            }
+        }
+    }
+
+    /* Opponent Token Checks For Every Row */
+    for (int i = 0; i < 3; i++)
+    {
+        for (int j = 0; j < 3; j++)
+        {
+            _1 = ((3 * i) + ((j + 0) % 3));
+            _2 = ((3 * i) + ((j + 1) % 3));
+            _3 = ((3 * i) + ((j + 2) % 3));
+
+            temp = check_Adjacency(_1, _2, _3, opp_Token, my_Token);
+            if (temp == 1)
+            {
+                return 1;
+            }
+        }
+    }
+
+    /* Opponent Token Checks For Diagonal 1 */
+    for (int i = 0; i < 9; i += 4)
+    {
+        _1 = (i + 0) % 12;
+        _2 = (i + 4) % 12;
+        _3 = (i + 8) % 12;
+
+        temp = check_Adjacency(_1, _2, _3, opp_Token, my_Token);
+        if (temp == 1)
+        {
+            return 1;
+        }
+    }
+
+    /* Opponent Token Checks For Diagonal 2 */
+    for (int i = 0; i < 5; i += 2)
+    {
+        _1 = ((i + 0) % 6) + 2;
+        _2 = ((i + 2) % 6) + 2;
+        _3 = ((i + 4) % 6) + 2;
+
+        temp = check_Adjacency(_1, _2, _3, opp_Token, my_Token);
+        if (temp == 1)
+        {
+            return 1;
+        }
+    }
+    return 0;
+}
+
+int Tic_Tac_Toe_Game_Control_Panel::play_Aggressively(void)
+{
+    int _1, _2, _3; // Calculations Purpose Variables...
+    int played;
+    char opp_Token, my_Token;
+    get_Tokens(my_Token, opp_Token);
+
+    /* Winning Condition Checks For Every Column */
+    for (int i = 0; i < 3; i++)
+    {
+        for (int j = 0; j < 9; j += 3)
+        {
+            _1 = (i + (j + 0)) % 9;
+            _2 = (i + (j + 3)) % 9;
+            _3 = (i + (j + 6)) % 9;
+
+            played = check_Adjacency(_1, _2, _3, my_Token, opp_Token);
+            if (played)
+            {
+                return 1;
+            }
+        }
+    }
+
+    /* Opponent Token Checks For Every Row */
+    for (int i = 0; i < 3; i++)
+    {
+        for (int j = 0; j < 3; j++)
+        {
+            _1 = ((3 * i) + ((j + 0) % 3));
+            _2 = ((3 * i) + ((j + 1) % 3));
+            _3 = ((3 * i) + ((j + 2) % 3));
+
+            played = check_Adjacency(_1, _2, _3, my_Token, opp_Token);
+            if (played)
+            {
+                return 1;
+            }
+        }
+    }
+
+    /* Opponent Token Checks For Diagonal 1 */
+    for (int i = 0; i < 9; i += 4)
+    {
+        _1 = (i + 0) % 12;
+        _2 = (i + 4) % 12;
+        _3 = (i + 8) % 12;
+
+        played = check_Adjacency(_1, _2, _3, my_Token, opp_Token);
+        if (played)
+        {
+            return 1;
+        }
+    }
+
+    /* Opponent Token Checks For Diagonal 2 */
+    for (int i = 0; i < 5; i += 2)
+    {
+        _1 = ((i + 0) % 6) + 2;
+        _2 = ((i + 2) % 6) + 2;
+        _3 = ((i + 4) % 6) + 2;
+
+        played = check_Adjacency(_1, _2, _3, my_Token, opp_Token);
+        if (played)
+        {
+            return 1;
+        }
+    }
+    return 0;
+}
+
+/* Function Documentation:
+
+@   Easy AI Computer Bot For Tic Tac Toe Game.
+@   This Ai Will  Place His Move Randomly, Choosing From Empty Boxes.
+*/
+void Tic_Tac_Toe_Game_Control_Panel::computer_Easy(void)
+{
+    play_Randomly();
 }
 
 /* Function Documentation:
@@ -162,6 +343,24 @@ void Tic_Tac_Toe_Game_Control_Panel::computer_Easy(void)
 */
 void Tic_Tac_Toe_Game_Control_Panel::computer_Medium(void)
 {
+    int _1, _2, _3; // Indices of The Three Boxes To Be checked.
+    int played;
+
+    int count = get_Options();
+
+    if (count <= 5)
+    {
+        play_Randomly();
+    }
+    else
+    {
+        played = play_Defensively();
+
+        if (!played)
+        {
+            play_Randomly();
+        }
+    }
 }
 
 /* Function Documentation:
@@ -170,6 +369,19 @@ void Tic_Tac_Toe_Game_Control_Panel::computer_Medium(void)
 */
 void Tic_Tac_Toe_Game_Control_Panel::computer_Hard(void)
 {
+    int played;
+
+    played = play_Aggressively();
+
+    if (!played)
+    {
+        played = play_Defensively();
+
+        if (!played)
+        {
+            play_Randomly();
+        }
+    }
 }
 
 /* Function Documentation:
@@ -270,7 +482,6 @@ int Tic_Tac_Toe_Game_Control_Panel::check_Game_Status(void)
             win = 2;
         }
     }
-    cout << "WIN: " << win << endl;
     return win;
 }
 
@@ -525,7 +736,7 @@ void Tic_Tac_Toe_Game_Control_Panel::play(void)
 /* Main Method Of The File. */
 int main()
 {
-    TTT_Game a(3, comp_Easy, comp_Easy);
+    TTT_Game a(3, comp_Easy, comp_Hard);
     a.play();
     return 0;
 }
