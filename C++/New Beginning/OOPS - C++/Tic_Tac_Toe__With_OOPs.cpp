@@ -1,19 +1,30 @@
 /* ::: File Documentation ::: */ /*
 @   This is The Basic Game of Tic Tac Toe, Implemented in C++.
 @       ⁎ This Code is Written in The Object Oriented Programming Style Implementation. [OOPs]
+@       ⁎ This Game Includes AI Computer Players With Different Levels of Difficulty.
+%               ⁎ AI Computer [Easy]
+%               ⁎ AI Computer [Medium]
+%               ⁎ AI Computer [Hard]
+%               ⁎ AI Computer [Impossible]
+@       ⁎ This Game Can Be Played by 3 Different Types.
+%               ⁎ Player        v/s    Player
+%               ⁎ Player        v/s    AI Computer
+%               ⁎ AI Computer   v/s    AI Computer
+@
+#   |-*>>---   A Game By YashGames2007
 */
 
-/* Pre Initialization Segment */
+//* Pre Initialization Segment 
 #include <iostream>
-#include <random>
+#include <cstdlib>
 #include <time.h>
 using namespace std;
 
-/* Class Declarations... */
+//* Class Declarations... 
 class Tic_Tac_Toe_Game_Control_Setup;
 typedef class Tic_Tac_Toe_Game_Control_Panel TTT_Game;
 
-/* Player Types Declarations... */
+//* Player Types Declarations...
 enum player_Type // Type of The Player
 {
     human,
@@ -61,9 +72,13 @@ private:
     void get_Tokens(char &, char &);
     int get_Options(void);
     int check_Adjacency(int, int, int, char, char);
+    void play_Smartly(void);
     void play_Randomly(void);
     int play_Defensively(void);
     int play_Aggressively(void);
+
+    int convert_In(int);
+    int convert_Out(int);
 
 protected:
     int check_Game_Status(void);
@@ -101,24 +116,104 @@ Tic_Tac_Toe_Game_Control_Panel::Tic_Tac_Toe_Game_Control_Panel(int total_Rounds 
     this->player_Types[1] = player2_Type;
 
     reset_Game_Board();
-
-    // // Trial Checks
-    // {
-    //     game_Board[1] = 'O';
-    //     game_Board[4] = 'O';
-    //     game_Board[7] = 'O';
-    // }
-
-    // this->display_Table();
-    // this->check_Game_Status();
-    // cout << "Check: " << endl
-    //      << "P1 Points: " << player1_Points << endl
-    //      << "P2 Points: " << player2_Points << endl
-    //      << endl;
+    srand(time(0));
 };
 
-//* Computer AI Programming...
+//* AI Computer Helper Functions...
 
+/* Function Documentation:
+
+@   Function That Converts Simple Index To Magic Index.
+*/
+int Tic_Tac_Toe_Game_Control_Panel::convert_In(int out)
+{
+    int in;
+    // Convert Simple Index To Magic Index...
+    switch (out)
+    {
+    case 0:
+        in = 2;
+        break;
+    case 1:
+        in = 7;
+        break;
+    case 2:
+        in = 6;
+        break;
+    case 3:
+        in = 9;
+        break;
+    case 4:
+        in = 5;
+        break;
+    case 5:
+        in = 1;
+        break;
+    case 6:
+        in = 4;
+        break;
+    case 7:
+        in = 3;
+        break;
+    case 8:
+        in = 8;
+        break;
+    default:
+        in = -1;
+        break;
+    }
+    return in;
+}
+
+/* Function Documentation:
+
+@   Function That Converts Magic Index To Simple Index.
+*/
+int Tic_Tac_Toe_Game_Control_Panel::convert_Out(int in)
+{
+    int out;
+    // Converts Magic Index To Simple Index...
+    switch (in)
+    {
+    case 1:
+        out = 5;
+        break;
+    case 2:
+        out = 0;
+        break;
+    case 3:
+        out = 7;
+        break;
+    case 4:
+        out = 6;
+        break;
+    case 5:
+        out = 4;
+        break;
+    case 6:
+        out = 2;
+        break;
+    case 7:
+        out = 1;
+        break;
+    case 8:
+        out = 8;
+        break;
+    case 9:
+        out = 3;
+        break;
+    default:
+        out = -1;
+        break;
+    }
+
+    return out;
+}
+
+/* Function Documentation:
+
+@   Function That Gives The Opponent and AI Token for The Current Turn.
+*/
 void Tic_Tac_Toe_Game_Control_Panel::get_Tokens(char &bot_Token, char &opponent_Token)
 {
     if (turn == X)
@@ -133,6 +228,10 @@ void Tic_Tac_Toe_Game_Control_Panel::get_Tokens(char &bot_Token, char &opponent_
     }
 }
 
+/* Function Documentation:
+
+@   Function That Returns The Number of Options Available for The Current Turn.
+*/
 int Tic_Tac_Toe_Game_Control_Panel::get_Options(void)
 {
     int count = 0;
@@ -147,6 +246,10 @@ int Tic_Tac_Toe_Game_Control_Panel::get_Options(void)
     return count;
 }
 
+/* Function Documentation:
+
+@   Function That Checks The Opponent and AI Token For The Given Boxes.
+*/
 int Tic_Tac_Toe_Game_Control_Panel::check_Adjacency(int _1, int _2, int _3, char is_Check, char is_Not_Check)
 {
     char token, temp;
@@ -162,6 +265,10 @@ int Tic_Tac_Toe_Game_Control_Panel::check_Adjacency(int _1, int _2, int _3, char
     return 0;
 }
 
+/* Function Documentation:
+
+@   Function That Places The AI Token Randomly.
+*/
 void Tic_Tac_Toe_Game_Control_Panel::play_Randomly(void)
 {
     int count = get_Options();
@@ -178,13 +285,16 @@ void Tic_Tac_Toe_Game_Control_Panel::play_Randomly(void)
         }
     }
 
-    srand(time(0));
     int bot_Turn = (rand() % count);
     char token, opponent;
     get_Tokens(token, opponent);
     game_Board[empty_Boxes[bot_Turn]] = token;
 }
 
+/* Function Documentation:
+
+@   Function That Places The AI Token To Block The Opponent Winnings.
+*/
 int Tic_Tac_Toe_Game_Control_Panel::play_Defensively(void)
 {
     int _1, _2, _3, temp; // Calculations Purpose Variables...
@@ -255,6 +365,10 @@ int Tic_Tac_Toe_Game_Control_Panel::play_Defensively(void)
     return 0;
 }
 
+/* Function Documentation:
+
+@   Function That Places The AI Token To Win The Game.
+*/
 int Tic_Tac_Toe_Game_Control_Panel::play_Aggressively(void)
 {
     int _1, _2, _3; // Calculations Purpose Variables...
@@ -328,6 +442,222 @@ int Tic_Tac_Toe_Game_Control_Panel::play_Aggressively(void)
 
 /* Function Documentation:
 
+@   Function That Places The AI Token Smartly as Per The Board.
+*/
+void Tic_Tac_Toe_Game_Control_Panel::play_Smartly(void)
+{
+    int options;
+    char bot, opponent;
+    int choice;
+
+    options = get_Options();
+    get_Tokens(bot, opponent);
+
+    if (options == 9)
+    {
+        choice = (rand() % 4) + 1;
+        game_Board[convert_Out(choice * 2)] = bot;
+        return;
+    }
+    else if (options == 8)
+    {
+        if (game_Board[convert_Out(5)] != opponent)
+        {
+            game_Board[convert_Out(5)] = bot;
+        }
+        else
+        {
+            choice = (rand() % 4) + 1;
+            game_Board[convert_Out(choice * 2)] = bot;
+        }
+        return;
+    }
+    else
+    {
+        if ((game_Board[convert_Out(5)] != bot) && (game_Board[convert_Out(5)] != opponent))
+        {
+            game_Board[convert_Out(5)] = bot;
+        }
+        else
+        {
+            char _1, _2, _3, _4;
+
+            // Taking Every Edge...
+            _1 = game_Board[convert_Out(1)];
+            _2 = game_Board[convert_Out(3)];
+            _3 = game_Board[convert_Out(7)];
+            _4 = game_Board[convert_Out(9)];
+
+            // Checking if Every Edge is Empty.
+            if (_1 == '6' && _2 == '8' && _3 == '2' && _4 == '4')
+            {
+                choice = (rand() % 4) + 1;
+
+                switch (choice)
+                {
+                case 1:
+                    choice = 9;
+                    break;
+                case 2:
+                    choice = 1;
+                    break;
+                case 3:
+                    choice = 7;
+                    break;
+                case 4:
+                    choice = 3;
+                    break;
+                default:
+                    break;
+                }
+
+                game_Board[convert_Out(choice)] = bot;
+                return;
+            }
+            else
+            {
+                if (game_Board[convert_Out(2)] == opponent || game_Board[convert_Out(2)] == bot)
+                {
+                    choice = (rand() % 2) + 1;
+
+                    if (choice = 1)
+                    {
+                        if (game_Board[convert_Out(7)] != bot && game_Board[convert_Out(7)] != opponent)
+                        {
+                            game_Board[convert_Out(7)] = bot;
+                            return;
+                        }
+                    }
+                    else
+                    {
+                        if (game_Board[convert_Out(9)] != bot && game_Board[convert_Out(9)] != opponent)
+                        {
+                            game_Board[convert_Out(9)] = bot;
+                            return;
+                        }
+                    }
+                }
+                else if (game_Board[convert_Out(4)] == opponent || game_Board[convert_Out(4)] == bot)
+                {
+                    choice = (rand() % 2) + 1;
+
+                    if (choice = 1)
+                    {
+                        if (game_Board[convert_Out(3)] != bot && game_Board[convert_Out(3)] != opponent)
+                        {
+                            game_Board[convert_Out(3)] = bot;
+                            return;
+                        }
+                    }
+                    else
+                    {
+                        if (game_Board[convert_Out(9)] != bot && game_Board[convert_Out(9)] != opponent)
+                        {
+                            game_Board[convert_Out(9)] = bot;
+                            return;
+                        }
+                    }
+                }
+                else if (game_Board[convert_Out(6)] == opponent || game_Board[convert_Out(6)] == bot)
+                {
+                    choice = (rand() % 2) + 1;
+
+                    if (choice = 1)
+                    {
+                        if (game_Board[convert_Out(7)] != bot && game_Board[convert_Out(7)] != opponent)
+                        {
+                            game_Board[convert_Out(7)] = bot;
+                            return;
+                        }
+                    }
+                    else
+                    {
+                        if (game_Board[convert_Out(1)] != bot && game_Board[convert_Out(1)] != opponent)
+                        {
+                            game_Board[convert_Out(1)] = bot;
+                            return;
+                        }
+                    }
+                }
+                else
+                {
+                    choice = (rand() % 2) + 1;
+
+                    if (choice = 1)
+                    {
+                        if (game_Board[convert_Out(1)] != bot && game_Board[convert_Out(1)] != opponent)
+                        {
+                            game_Board[convert_Out(1)] = bot;
+                            return;
+                        }
+                    }
+                    else
+                    {
+                        if (game_Board[convert_Out(3)] != bot && game_Board[convert_Out(3)] != opponent)
+                        {
+                            game_Board[convert_Out(3)] = bot;
+                            return;
+                        }
+                    }
+                }
+            }
+            
+            // Taking Every Corner...
+            _1 = game_Board[convert_Out(2)];
+            _2 = game_Board[convert_Out(4)];
+            _3 = game_Board[convert_Out(6)];
+            _4 = game_Board[convert_Out(8)];
+
+            // Checking if Every Corner is Empty.
+            if (_1 == '1' && _2 == '7' && _3 == '3' && _4 == '9')
+            {
+                choice = (rand() % 4) + 1;
+                game_Board[convert_Out(choice * 2)] = bot;
+                return;
+            }
+            else
+            {
+                for (int i = 1; i <= 4; i++)
+                {
+                    if (game_Board[convert_Out(i * 2)] == opponent)
+                    {
+                        if (i == 2 || i == 3)
+                        {
+                            if (game_Board[convert_Out(2)] != bot && game_Board[convert_Out(2)] != opponent)
+                            {
+                                game_Board[convert_Out(2)] = bot;
+                                return;
+                            }
+                            else if (game_Board[convert_Out(8)] != bot && game_Board[convert_Out(8)] != opponent)
+                            {
+                                game_Board[convert_Out(8)] = bot;
+                                return;
+                            }
+                        }
+                        else
+                        {
+                            if (game_Board[convert_Out(4)] != bot && game_Board[convert_Out(4)] != opponent)
+                            {
+                                game_Board[convert_Out(4)] = bot;
+                                return;
+                            }
+                            else if (game_Board[convert_Out(6)] != bot && game_Board[convert_Out(6)] != opponent)
+                            {
+                                game_Board[convert_Out(6)] = bot;
+                                return;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+//* Computer AI Programs...
+
+/* Function Documentation:
+
 @   Easy AI Computer Bot For Tic Tac Toe Game.
 @   This Ai Will  Place His Move Randomly, Choosing From Empty Boxes.
 */
@@ -390,6 +720,18 @@ void Tic_Tac_Toe_Game_Control_Panel::computer_Hard(void)
 */
 void Tic_Tac_Toe_Game_Control_Panel::computer_Impossible(void)
 {
+    int played;
+    played = play_Aggressively();
+
+    if (!played)
+    {
+        played = play_Defensively();
+
+        if (!played)
+        {
+            play_Smartly();
+        }
+    }
 }
 
 //* Class Methods --- Tic Tac Toe Game Control Panel:
@@ -733,25 +1075,11 @@ void Tic_Tac_Toe_Game_Control_Panel::play(void)
     }
 }
 
-/* Main Method Of The File. */
+//* Main Method Of The File...
 int main()
 {
-    TTT_Game a(3, comp_Easy, comp_Hard);
+    TTT_Game a(3, human, comp_Impossible);
     a.play();
+
     return 0;
 }
-/*
-
-        0 | 1 | 2
-       ===|===|===
-        3 | 4 | 5
-       ===|===|===
-        6 | 7 | 8
-
-        0 | 1 | 2
-       ---|---|---
-        3 | 4 | 5
-       ---|---|---
-        6 | 7 | 8
-
-*/
