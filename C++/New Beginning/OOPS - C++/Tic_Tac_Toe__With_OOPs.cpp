@@ -14,13 +14,13 @@
 #   |-*>>---   A Game By YashGames2007
 */
 
-//* Pre Initialization Segment 
+//* Pre Initialization Segment
 #include <iostream>
 #include <cstdlib>
 #include <time.h>
 using namespace std;
 
-//* Class Declarations... 
+//* Class Declarations...
 class Tic_Tac_Toe_Game_Control_Setup;
 typedef class Tic_Tac_Toe_Game_Control_Panel TTT_Game;
 
@@ -518,90 +518,58 @@ void Tic_Tac_Toe_Game_Control_Panel::play_Smartly(void)
             {
                 if (game_Board[convert_Out(2)] == opponent || game_Board[convert_Out(2)] == bot)
                 {
-                    choice = (rand() % 2) + 1;
-
-                    if (choice = 1)
+                    if (game_Board[convert_Out(7)] != bot && game_Board[convert_Out(7)] != opponent)
                     {
-                        if (game_Board[convert_Out(7)] != bot && game_Board[convert_Out(7)] != opponent)
-                        {
-                            game_Board[convert_Out(7)] = bot;
-                            return;
-                        }
+                        game_Board[convert_Out(7)] = bot;
+                        return;
                     }
-                    else
+                    else if (game_Board[convert_Out(9)] != bot && game_Board[convert_Out(9)] != opponent)
                     {
-                        if (game_Board[convert_Out(9)] != bot && game_Board[convert_Out(9)] != opponent)
-                        {
-                            game_Board[convert_Out(9)] = bot;
-                            return;
-                        }
+                        game_Board[convert_Out(9)] = bot;
+                        return;
                     }
                 }
                 else if (game_Board[convert_Out(4)] == opponent || game_Board[convert_Out(4)] == bot)
                 {
-                    choice = (rand() % 2) + 1;
-
-                    if (choice = 1)
+                    if (game_Board[convert_Out(9)] != bot && game_Board[convert_Out(9)] != opponent)
                     {
-                        if (game_Board[convert_Out(3)] != bot && game_Board[convert_Out(3)] != opponent)
-                        {
-                            game_Board[convert_Out(3)] = bot;
-                            return;
-                        }
+                        game_Board[convert_Out(9)] = bot;
+                        return;
                     }
-                    else
+                    else if (game_Board[convert_Out(3)] != bot && game_Board[convert_Out(3)] != opponent)
                     {
-                        if (game_Board[convert_Out(9)] != bot && game_Board[convert_Out(9)] != opponent)
-                        {
-                            game_Board[convert_Out(9)] = bot;
-                            return;
-                        }
+                        game_Board[convert_Out(3)] = bot;
+                        return;
                     }
                 }
-                else if (game_Board[convert_Out(6)] == opponent || game_Board[convert_Out(6)] == bot)
+                else if (game_Board[convert_Out(8)] == opponent || game_Board[convert_Out(8)] == bot)
                 {
-                    choice = (rand() % 2) + 1;
-
-                    if (choice = 1)
+                    if (game_Board[convert_Out(3)] != bot && game_Board[convert_Out(3)] != opponent)
                     {
-                        if (game_Board[convert_Out(7)] != bot && game_Board[convert_Out(7)] != opponent)
-                        {
-                            game_Board[convert_Out(7)] = bot;
-                            return;
-                        }
+                        game_Board[convert_Out(3)] = bot;
+                        return;
                     }
-                    else
+                    else if (game_Board[convert_Out(1)] != bot && game_Board[convert_Out(1)] != opponent)
                     {
-                        if (game_Board[convert_Out(1)] != bot && game_Board[convert_Out(1)] != opponent)
-                        {
-                            game_Board[convert_Out(1)] = bot;
-                            return;
-                        }
+                        game_Board[convert_Out(1)] = bot;
+                        return;
                     }
                 }
                 else
                 {
-                    choice = (rand() % 2) + 1;
-
-                    if (choice = 1)
+                    if (game_Board[convert_Out(1)] != bot && game_Board[convert_Out(1)] != opponent)
                     {
-                        if (game_Board[convert_Out(1)] != bot && game_Board[convert_Out(1)] != opponent)
-                        {
-                            game_Board[convert_Out(1)] = bot;
-                            return;
-                        }
+                        game_Board[convert_Out(1)] = bot;
+                        return;
                     }
-                    else
+                    else if (game_Board[convert_Out(7)] != bot && game_Board[convert_Out(7)] != opponent)
                     {
-                        if (game_Board[convert_Out(3)] != bot && game_Board[convert_Out(3)] != opponent)
-                        {
-                            game_Board[convert_Out(3)] = bot;
-                            return;
-                        }
+                        game_Board[convert_Out(7)] = bot;
+                        return;
                     }
                 }
             }
-            
+
             // Taking Every Corner...
             _1 = game_Board[convert_Out(2)];
             _2 = game_Board[convert_Out(4)];
@@ -617,37 +585,62 @@ void Tic_Tac_Toe_Game_Control_Panel::play_Smartly(void)
             }
             else
             {
-                for (int i = 1; i <= 4; i++)
+                char player = opponent;
+                for (int j = 0; j <= 1; j++)
                 {
-                    if (game_Board[convert_Out(i * 2)] == opponent)
+                    for (int i = 1; i <= 4; i++)
                     {
-                        if (i == 2 || i == 3)
+                        if (game_Board[convert_Out(i * 2)] == player)
                         {
-                            if (game_Board[convert_Out(2)] != bot && game_Board[convert_Out(2)] != opponent)
+                            if (i == 2 || i == 3)
                             {
-                                game_Board[convert_Out(2)] = bot;
-                                return;
+                                if (game_Board[convert_Out(2)] != bot && game_Board[convert_Out(2)] != opponent)
+                                {
+                                    game_Board[convert_Out(2)] = bot;
+                                    return;
+                                }
+                                else if (game_Board[convert_Out(8)] != bot && game_Board[convert_Out(8)] != opponent)
+                                {
+                                    game_Board[convert_Out(8)] = bot;
+                                    return;
+                                }
                             }
-                            else if (game_Board[convert_Out(8)] != bot && game_Board[convert_Out(8)] != opponent)
+                            else
                             {
-                                game_Board[convert_Out(8)] = bot;
-                                return;
-                            }
-                        }
-                        else
-                        {
-                            if (game_Board[convert_Out(4)] != bot && game_Board[convert_Out(4)] != opponent)
-                            {
-                                game_Board[convert_Out(4)] = bot;
-                                return;
-                            }
-                            else if (game_Board[convert_Out(6)] != bot && game_Board[convert_Out(6)] != opponent)
-                            {
-                                game_Board[convert_Out(6)] = bot;
-                                return;
+                                if (game_Board[convert_Out(4)] != bot && game_Board[convert_Out(4)] != opponent)
+                                {
+                                    game_Board[convert_Out(4)] = bot;
+                                    return;
+                                }
+                                else if (game_Board[convert_Out(6)] != bot && game_Board[convert_Out(6)] != opponent)
+                                {
+                                    game_Board[convert_Out(6)] = bot;
+                                    return;
+                                }
                             }
                         }
                     }
+                    player = bot;
+                }
+            }
+
+            // Final Edge Check...
+            {
+                if (game_Board[convert_Out(1)] != bot && game_Board[convert_Out(1)] != opponent)
+                {
+                    game_Board[convert_Out(1)] = bot;
+                }
+                else if (game_Board[convert_Out(3)] != bot && game_Board[convert_Out(3)] != opponent)
+                {
+                    game_Board[convert_Out(3)] = bot;
+                }
+                else if (game_Board[convert_Out(7)] != bot && game_Board[convert_Out(7)] != opponent)
+                {
+                    game_Board[convert_Out(7)] = bot;
+                }
+                else if (game_Board[convert_Out(9)] != bot && game_Board[convert_Out(9)] != opponent)
+                {
+                    game_Board[convert_Out(9)] = bot;
                 }
             }
         }
@@ -1078,8 +1071,20 @@ void Tic_Tac_Toe_Game_Control_Panel::play(void)
 //* Main Method Of The File...
 int main()
 {
-    TTT_Game a(3, human, comp_Impossible);
+    TTT_Game a(3, comp_Impossible, comp_Impossible);
     a.play();
 
     return 0;
 }
+
+//* =>> Game Tip...
+/*
+$   Magic Convertor Imaginary Tic Tac Toe Board.
+
+>            2 | 7 | 6
+>           ---|---|---
+>            9 | 5 | 1
+>           ---|---|---
+>            4 | 3 | 8
+
+*/
