@@ -1,8 +1,5 @@
-# Ignoring Some Auto-Generated Executable Files...
-C++/*.exe
-C++/**/*.exe
-
 # Ignoring Accedently Added Other Language Files...
+C++/
 C/
 Python/
 Web development/
