@@ -303,7 +303,7 @@ void __D_E_U_I_T_S_Initialize__(struct Dynamic_Edged_Unbalanced_Integer_Tree_Str
 #define int_E_U_Tree_init __D_E_U_I_T_S_Initialize__
 #define height __Height__
 
-int main()
+int main2()
 {
     int_E_U_Tree a;
     int_E_U_Tree_init(&a, 5);
