@@ -10,3 +10,4 @@ C#/
 
 # Ignoring Some Files...
 Colorized_Comments.txt
+*.log
