@@ -11,3 +11,4 @@ Python/Prime Numbers EXE/
 
 # Ignoring Some Files...
 Colorized_Comments.txt
+*.log
