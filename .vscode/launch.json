@@ -6,6 +6,13 @@
 	"configurations": [
 		{
 			"type": "java",
+			"name": "Launch FirstProgram",
+			"request": "launch",
+			"mainClass": "FirstProgram",
+			"projectName": "Code_767bf26"
+		},
+		{
+			"type": "java",
 			"name": "Launch App",
 			"request": "launch",
 			"mainClass": "App",
@@ -17,6 +24,6 @@
 			"request": "launch",
 			"mainClass": "Java.Main",
 			"projectName": "Code_767bf26"
-		},
+		}
 	]
 }
