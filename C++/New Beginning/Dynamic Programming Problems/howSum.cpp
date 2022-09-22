@@ -2,6 +2,8 @@
 #include <map>
 using namespace std;
 
+int temp = 0;
+
 void print(int array[], int size)
 {
     if (array == NULL || size == 0)
@@ -19,20 +21,14 @@ void print(int array[], int size)
     }
 }
 
-//* Classic Recursive howSum Sequence Implementation.
-int *howSum_Classic(int, const int[], int &, bool);
+//* Classic Recursive howSum Implementation.
+int *howSum_Classic(int, const int[], int, int &, int &);
 
-//* Dynamic Recursive howSum Sequence Implementation.
-int *howSum_Dynamic(int, const int[], int &, bool);
+//* Dynamic Recursive howSum Implementation.
+int *howSum_Dynamic(int, const int[], int, int &, int &, bool);
 
-int *howSum_Classic(int targetSum, const int numbers[], int &size, bool is_First_Call = true)
+int *howSum_Classic(int targetSum, const int numbers[], int size, int &return_Size, int &index = temp)
 {
-    static int index = 0;
-    if (is_First_Call)
-    {
-        index = 0;
-    }
-
     if (targetSum < 0)
     {
         return NULL;
@@ -40,80 +36,70 @@ int *howSum_Classic(int targetSum, const int numbers[], int &size, bool is_First
     else if (targetSum == 0)
     {
         int *combination = new int[size];
+        index = 0;
         return combination;
     }
     else
     {
         for (int i = 0; i < size; i++)
         {
-            int *combination = howSum_Dynamic(targetSum - numbers[i], numbers, size, false);
+            int *combination = howSum_Classic(targetSum - numbers[i], numbers, size, return_Size, index);
             if (combination != NULL)
             {
                 combination[index] = numbers[i];
                 index++;
-                if (is_First_Call)
-                {
-                    size = index;
-                }
+                return_Size = index;
                 return combination;
             }
         }
-        if (is_First_Call)
-        {
-            size = 0;
-        }
+        return_Size = 0;
         return NULL;
     }
 }
 
-int *howSum_Dynamic(int targetSum, const int numbers[], int &size, bool is_First_Call = true)
+int *howSum_Dynamic(int targetSum, const int numbers[], int size, int &return_Size, int &index = temp, bool is_First_Call = true)
 {
-    static int index = 0;
-    static map<int, int*> memo = {};
+    static map<int, pair<int, int *>> memo = {};
 
+    if (is_First_Call)
+    {
+        memo.clear();
+    }
     auto result = memo.find(targetSum);
     if (result != memo.end())
     {
-        return result->second;
+        return_Size = result->second.first;
+        return result->second.second;
     }
-    
-    if (is_First_Call)
-    {
-        index = 0;
-    }
-
     if (targetSum < 0)
     {
-        return NULL;
+        return ((int *)NULL);
     }
     else if (targetSum == 0)
     {
-        int *combination = new int[size];
+        int *combination = new int[1];
+        index = 0;
+        return_Size = 0;
         return combination;
     }
     else
     {
         for (int i = 0; i < size; i++)
         {
-            int *combination = howSum_Dynamic(targetSum - numbers[i], numbers, size, false);
-            if (combination != NULL)
+            int *combination = howSum_Dynamic(targetSum - numbers[i], numbers, size, return_Size, index, false);
+            if (combination != (int *)NULL)
             {
                 combination[index] = numbers[i];
                 index++;
-                // if (is_First_Call)
-                // {
-                    size = index;
-                // }
-                memo[targetSum] = combination;
+                return_Size = index;
+                memo[targetSum] = make_pair(return_Size, combination);
+                combination = (int *)realloc(combination, return_Size);
                 return combination;
             }
         }
-        if (is_First_Call)
-        {
-            size = 0;
-        }
-        memo[targetSum] = NULL;
-        return NULL;
+        memo[targetSum] = make_pair(0, (int *)NULL);
+        return_Size = 0;
+        return ((int *)NULL);
     }
 }
 
@@ -130,24 +116,19 @@ int main()
     int size;
     int *arr;
 
-    size = 2;
-    arr = howSum_Dynamic(7, arr1, size);
+    arr = howSum_Dynamic(7, arr1, 2, size);
     print(arr, size);
     cout << "" << endl;
-    size = 4;
-    arr = howSum_Dynamic(7, arr2, size);
+    arr = howSum_Dynamic(7, arr2, 4, size);
     print(arr, size);
     cout << "" << endl;
-    size = 2;
-    arr = howSum_Dynamic(7, arr3, size);
+    arr = howSum_Dynamic(7, arr3, 2, size);
     print(arr, size);
     cout << "" << endl;
-    size = 3;
-    arr = howSum_Dynamic(8, arr4, size);
+    arr = howSum_Dynamic(8, arr4, 3, size);
     print(arr, size);
     cout << "" << endl;
-    size = 2;
-    arr = howSum_Dynamic(300, arr5, size);
+    arr = howSum_Dynamic(300, arr5, 2, size);
     print(arr, size);
     cout << "" << endl;
     return 0;
