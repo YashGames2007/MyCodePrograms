@@ -22,9 +22,19 @@ void print(int array[], int size)
 }
 
 //* Classic Recursive howSum Implementation.
+/*
+    m = TargetSum, n = Numbers.length
+    Time  Complexity: O(n^m)
+    Space Complexity: O(m)
+*/
 int *howSum_Classic(int, const int[], int, int &, int &);
 
 //* Dynamic Recursive howSum Implementation.
+/*
+    m = TargetSum, n = Numbers.length
+    Time  Complexity: O(n * m)
+    Space Complexity: O(m)
+*/
 int *howSum_Dynamic(int, const int[], int, int &, int &, bool);
 
 int *howSum_Classic(int targetSum, const int numbers[], int size, int &return_Size, int &index = temp)
