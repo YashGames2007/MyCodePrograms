@@ -50,7 +50,7 @@ int countConstruct_Classic(string target, const string word_Bank[], int size)
 
 //* Dynamic Recursive countConstruct Implementation.
 /*
-    m = TargetSum, n = Numbers.length
+    m = Target, n = word_Bank.size
     Time  Complexity: O(n * m^2)
     Space Complexity: O(m^2)
 */

@@ -48,7 +48,7 @@ bool is_Prefix(string _main, string _subStr)
 
 //* Classic Recursive allConstruct Implementation.
 /*
-    m = TargetSum, n = Numbers.length
+    m = Target, n = word_Bank.size
     Time  Complexity: O(n^m * m)
     Space Complexity: O(m * n)
 */
