@@ -6,6 +6,26 @@
 	"configurations": [
 		{
 			"type": "java",
+			"name": "Launch Tic_Tac_Toe",
+			"request": "launch",
+			"mainClass": "Basic_Code.Mini_Projects.Games.Tic_Tac_Toe",
+			"projectName": "Code_767bf26"
+		},
+		{
+			"type": "java",
+			"name": "Launch arrays",
+			"request": "launch",
+			"mainClass": "Basic_Code.Source.arrays"
+		},
+		{
+			"type": "java",
+			"name": "Launch FirstProgram",
+			"request": "launch",
+			"mainClass": "src.Basic_Code.Source.FirstProgram",
+			"projectName": "Code_767bf26"
+		},
+		{
+			"type": "java",
 			"name": "Launch FirstProgram",
 			"request": "launch",
 			"mainClass": "FirstProgram",
