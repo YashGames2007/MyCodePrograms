@@ -6,6 +6,20 @@
 	"configurations": [
 		{
 			"type": "java",
+			"name": "Launch Custom_Exceptions",
+			"request": "launch",
+			"mainClass": "Basic_Code.Source.Custom_Exceptions",
+			"projectName": "Code_767bf26"
+		},
+		{
+			"type": "java",
+			"name": "Launch Exception_Handling",
+			"request": "launch",
+			"mainClass": "Basic_Code.Source.Exception_Handling",
+			"projectName": "Code_767bf26"
+		},
+		{
+			"type": "java",
 			"name": "Launch Shapes",
 			"request": "launch",
 			"mainClass": "Basic_Code.Source.Shapes",
