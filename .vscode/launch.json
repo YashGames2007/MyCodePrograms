@@ -6,6 +6,27 @@
 	"configurations": [
 		{
 			"type": "java",
+			"name": "Launch Students_Data_Entry",
+			"request": "launch",
+			"mainClass": "Basic_Code.Source.Students_Data_Entry",
+			"projectName": "Code_767bf26"
+		},
+		{
+			"type": "java",
+			"name": "Launch Date_and_Time",
+			"request": "launch",
+			"mainClass": "Basic_Code.Source.Date_and_Time",
+			"projectName": "Code_767bf26"
+		},
+		{
+			"type": "java",
+			"name": "Launch Collections",
+			"request": "launch",
+			"mainClass": "Basic_Code.Source.Collections",
+			"projectName": "Code_767bf26"
+		},
+		{
+			"type": "java",
 			"name": "Launch Custom_Exceptions",
 			"request": "launch",
 			"mainClass": "Basic_Code.Source.Custom_Exceptions",
