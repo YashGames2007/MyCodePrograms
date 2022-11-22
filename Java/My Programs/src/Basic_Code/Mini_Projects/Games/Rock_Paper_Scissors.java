@@ -1,3 +1,5 @@
+package Basic_Code.Mini_Projects.Games;
+
 import java.util.Random;
 import java.util.Scanner;
 

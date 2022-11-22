@@ -1,3 +1,5 @@
+package Basic_Code.Source;
+
 import java.util.Scanner;
 
 public class arrays {
