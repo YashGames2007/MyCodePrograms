@@ -1,3 +1,5 @@
+package Basic_Code.Mini_Projects.Games;
+
 import java.util.Scanner;
 
 public class Tic_Tac_Toe {

@@ -6,6 +6,173 @@
 	"configurations": [
 		{
 			"type": "java",
+			"name": "Launch Students_Data_Entry",
+			"request": "launch",
+			"mainClass": "Basic_Code.Source.Students_Data_Entry",
+			"projectName": "Code_767bf26"
+		},
+		{
+			"type": "java",
+			"name": "Launch Date_and_Time",
+			"request": "launch",
+			"mainClass": "Basic_Code.Source.Date_and_Time",
+			"projectName": "Code_767bf26"
+		},
+		{
+			"type": "java",
+			"name": "Launch Collections",
+			"request": "launch",
+			"mainClass": "Basic_Code.Source.Collections",
+			"projectName": "Code_767bf26"
+		},
+		{
+			"type": "java",
+			"name": "Launch Custom_Exceptions",
+			"request": "launch",
+			"mainClass": "Basic_Code.Source.Custom_Exceptions",
+			"projectName": "Code_767bf26"
+		},
+		{
+			"type": "java",
+			"name": "Launch Exception_Handling",
+			"request": "launch",
+			"mainClass": "Basic_Code.Source.Exception_Handling",
+			"projectName": "Code_767bf26"
+		},
+		{
+			"type": "java",
+			"name": "Launch Shapes",
+			"request": "launch",
+			"mainClass": "Basic_Code.Source.Shapes",
+			"projectName": "Code_767bf26"
+		},
+		{
+			"type": "java",
+			"name": "Launch ThreadExperiment",
+			"request": "launch",
+			"mainClass": "Basic_Code.Source.ThreadExperiment",
+			"projectName": "Code_767bf26"
+		},
+		{
+			"type": "java",
+			"name": "Launch MultiThreading",
+			"request": "launch",
+			"mainClass": "Basic_Code.Source.MultiThreading",
+			"projectName": "Code_767bf26"
+		},
+		{
+			"type": "java",
+			"name": "Launch Square",
+			"request": "launch",
+			"mainClass": "Basic_Code.Mini_Projects.Shapes._2D.Square",
+			"projectName": "Code_767bf26"
+		},
+		{
+			"type": "java",
+			"name": "Launch Circle",
+			"request": "launch",
+			"mainClass": "Basic_Code.Mini_Projects.Shapes._2D.Circle",
+			"projectName": "Code_767bf26"
+		},
+		{
+			"type": "java",
+			"name": "Launch Cuboid",
+			"request": "launch",
+			"mainClass": "Basic_Code.Mini_Projects.Shapes._3D.Cuboid",
+			"projectName": "Code_767bf26"
+		},
+		{
+			"type": "java",
+			"name": "Launch Triangle",
+			"request": "launch",
+			"mainClass": "Basic_Code.Mini_Projects.Shapes._2D.Triangle",
+			"projectName": "Code_767bf26"
+		},
+		{
+			"type": "java",
+			"name": "Launch Pyramid",
+			"request": "launch",
+			"mainClass": "Basic_Code.Mini_Projects.Shapes._3D.Pyramid",
+			"projectName": "Code_767bf26"
+		},
+		{
+			"type": "java",
+			"name": "Launch Cylinder",
+			"request": "launch",
+			"mainClass": "Basic_Code.Mini_Projects.Shapes._3D.Cylinder",
+			"projectName": "Code_767bf26"
+		},
+		{
+			"type": "java",
+			"name": "Launch Cone",
+			"request": "launch",
+			"mainClass": "Basic_Code.Mini_Projects.Shapes._3D.Cone",
+			"projectName": "Code_767bf26"
+		},
+		{
+			"type": "java",
+			"name": "Launch Sphere",
+			"request": "launch",
+			"mainClass": "Basic_Code.Mini_Projects.Shapes._3D.Sphere",
+			"projectName": "Code_767bf26"
+		},
+		{
+			"type": "java",
+			"name": "Launch Rectangle",
+			"request": "launch",
+			"mainClass": "Basic_Code.Mini_Projects.Shapes._2D.Rectangle",
+			"projectName": "Code_767bf26"
+		},
+		{
+			"type": "java",
+			"name": "Launch Guess_The_Number",
+			"request": "launch",
+			"mainClass": "Basic_Code.Mini_Projects.Games.Guess_The_Number",
+			"projectName": "Code_767bf26"
+		},
+		{
+			"type": "java",
+			"name": "Launch Square",
+			"request": "launch",
+			"mainClass": "Basic_Code.Source.Square",
+			"projectName": "Code_767bf26"
+		},
+		{
+			"type": "java",
+			"name": "Launch Square",
+			"request": "launch",
+			"mainClass": "Basic_Code.Mini_Projects.Shape.Square",
+			"projectName": "Code_767bf26"
+		},
+		{
+			"type": "java",
+			"name": "Launch Shapes",
+			"request": "launch",
+			"mainClass": "Shapes",
+			"projectName": "Code_767bf26"
+		},
+		{
+			"type": "java",
+			"name": "Launch Tic_Tac_Toe",
+			"request": "launch",
+			"mainClass": "Basic_Code.Mini_Projects.Games.Tic_Tac_Toe",
+			"projectName": "Code_767bf26"
+		},
+		{
+			"type": "java",
+			"name": "Launch arrays",
+			"request": "launch",
+			"mainClass": "Basic_Code.Source.arrays"
+		},
+		{
+			"type": "java",
+			"name": "Launch FirstProgram",
+			"request": "launch",
+			"mainClass": "src.Basic_Code.Source.FirstProgram",
+			"projectName": "Code_767bf26"
+		},
+		{
+			"type": "java",
 			"name": "Launch FirstProgram",
 			"request": "launch",
 			"mainClass": "FirstProgram",

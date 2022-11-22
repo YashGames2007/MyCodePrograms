@@ -1,3 +1,5 @@
+package Basic_Code.Source;
+
 import java.util.Scanner;
 public class Star_Patterns {
     static Scanner input = new Scanner(System.in);
