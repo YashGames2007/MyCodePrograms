@@ -6,6 +6,27 @@
 	"configurations": [
 		{
 			"type": "java",
+			"name": "Launch Generics",
+			"request": "launch",
+			"mainClass": "Basic_Code.Source.Generics",
+			"projectName": "Code_767bf26"
+		},
+		{
+			"type": "java",
+			"name": "Launch Lambda",
+			"request": "launch",
+			"mainClass": "Basic_Code.Source.Lambda",
+			"projectName": "Code_767bf26"
+		},
+		{
+			"type": "java",
+			"name": "Launch Library",
+			"request": "launch",
+			"mainClass": "Basic_Code.Mini_Projects.Libraries.Library",
+			"projectName": "Code_767bf26"
+		},
+		{
+			"type": "java",
 			"name": "Launch Students_Data_Entry",
 			"request": "launch",
 			"mainClass": "Basic_Code.Source.Students_Data_Entry",
