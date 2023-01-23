@@ -1,217 +1,26 @@
 {
-	// Use IntelliSense to learn about possible attributes.
-	// Hover to view descriptions of existing attributes.
-	// For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
-	"version": "0.2.0",
-	"configurations": [
-		{
-			"type": "java",
-			"name": "Launch Generics",
-			"request": "launch",
-			"mainClass": "Basic_Code.Source.Generics",
-			"projectName": "Code_767bf26"
-		},
-		{
-			"type": "java",
-			"name": "Launch Lambda",
-			"request": "launch",
-			"mainClass": "Basic_Code.Source.Lambda",
-			"projectName": "Code_767bf26"
-		},
-		{
-			"type": "java",
-			"name": "Launch Library",
-			"request": "launch",
-			"mainClass": "Basic_Code.Mini_Projects.Libraries.Library",
-			"projectName": "Code_767bf26"
-		},
-		{
-			"type": "java",
-			"name": "Launch Students_Data_Entry",
-			"request": "launch",
-			"mainClass": "Basic_Code.Source.Students_Data_Entry",
-			"projectName": "Code_767bf26"
-		},
-		{
-			"type": "java",
-			"name": "Launch Date_and_Time",
-			"request": "launch",
-			"mainClass": "Basic_Code.Source.Date_and_Time",
-			"projectName": "Code_767bf26"
-		},
-		{
-			"type": "java",
-			"name": "Launch Collections",
-			"request": "launch",
-			"mainClass": "Basic_Code.Source.Collections",
-			"projectName": "Code_767bf26"
-		},
-		{
-			"type": "java",
-			"name": "Launch Custom_Exceptions",
-			"request": "launch",
-			"mainClass": "Basic_Code.Source.Custom_Exceptions",
-			"projectName": "Code_767bf26"
-		},
-		{
-			"type": "java",
-			"name": "Launch Exception_Handling",
-			"request": "launch",
-			"mainClass": "Basic_Code.Source.Exception_Handling",
-			"projectName": "Code_767bf26"
-		},
-		{
-			"type": "java",
-			"name": "Launch Shapes",
-			"request": "launch",
-			"mainClass": "Basic_Code.Source.Shapes",
-			"projectName": "Code_767bf26"
-		},
-		{
-			"type": "java",
-			"name": "Launch ThreadExperiment",
-			"request": "launch",
-			"mainClass": "Basic_Code.Source.ThreadExperiment",
-			"projectName": "Code_767bf26"
-		},
-		{
-			"type": "java",
-			"name": "Launch MultiThreading",
-			"request": "launch",
-			"mainClass": "Basic_Code.Source.MultiThreading",
-			"projectName": "Code_767bf26"
-		},
-		{
-			"type": "java",
-			"name": "Launch Square",
-			"request": "launch",
-			"mainClass": "Basic_Code.Mini_Projects.Shapes._2D.Square",
-			"projectName": "Code_767bf26"
-		},
-		{
-			"type": "java",
-			"name": "Launch Circle",
-			"request": "launch",
-			"mainClass": "Basic_Code.Mini_Projects.Shapes._2D.Circle",
-			"projectName": "Code_767bf26"
-		},
-		{
-			"type": "java",
-			"name": "Launch Cuboid",
-			"request": "launch",
-			"mainClass": "Basic_Code.Mini_Projects.Shapes._3D.Cuboid",
-			"projectName": "Code_767bf26"
-		},
-		{
-			"type": "java",
-			"name": "Launch Triangle",
-			"request": "launch",
-			"mainClass": "Basic_Code.Mini_Projects.Shapes._2D.Triangle",
-			"projectName": "Code_767bf26"
-		},
-		{
-			"type": "java",
-			"name": "Launch Pyramid",
-			"request": "launch",
-			"mainClass": "Basic_Code.Mini_Projects.Shapes._3D.Pyramid",
-			"projectName": "Code_767bf26"
-		},
-		{
-			"type": "java",
-			"name": "Launch Cylinder",
-			"request": "launch",
-			"mainClass": "Basic_Code.Mini_Projects.Shapes._3D.Cylinder",
-			"projectName": "Code_767bf26"
-		},
-		{
-			"type": "java",
-			"name": "Launch Cone",
-			"request": "launch",
-			"mainClass": "Basic_Code.Mini_Projects.Shapes._3D.Cone",
-			"projectName": "Code_767bf26"
-		},
-		{
-			"type": "java",
-			"name": "Launch Sphere",
-			"request": "launch",
-			"mainClass": "Basic_Code.Mini_Projects.Shapes._3D.Sphere",
-			"projectName": "Code_767bf26"
-		},
-		{
-			"type": "java",
-			"name": "Launch Rectangle",
-			"request": "launch",
-			"mainClass": "Basic_Code.Mini_Projects.Shapes._2D.Rectangle",
-			"projectName": "Code_767bf26"
-		},
-		{
-			"type": "java",
-			"name": "Launch Guess_The_Number",
-			"request": "launch",
-			"mainClass": "Basic_Code.Mini_Projects.Games.Guess_The_Number",
-			"projectName": "Code_767bf26"
-		},
-		{
-			"type": "java",
-			"name": "Launch Square",
-			"request": "launch",
-			"mainClass": "Basic_Code.Source.Square",
-			"projectName": "Code_767bf26"
-		},
-		{
-			"type": "java",
-			"name": "Launch Square",
-			"request": "launch",
-			"mainClass": "Basic_Code.Mini_Projects.Shape.Square",
-			"projectName": "Code_767bf26"
-		},
-		{
-			"type": "java",
-			"name": "Launch Shapes",
-			"request": "launch",
-			"mainClass": "Shapes",
-			"projectName": "Code_767bf26"
-		},
-		{
-			"type": "java",
-			"name": "Launch Tic_Tac_Toe",
-			"request": "launch",
-			"mainClass": "Basic_Code.Mini_Projects.Games.Tic_Tac_Toe",
-			"projectName": "Code_767bf26"
-		},
-		{
-			"type": "java",
-			"name": "Launch arrays",
-			"request": "launch",
-			"mainClass": "Basic_Code.Source.arrays"
-		},
-		{
-			"type": "java",
-			"name": "Launch FirstProgram",
-			"request": "launch",
-			"mainClass": "src.Basic_Code.Source.FirstProgram",
-			"projectName": "Code_767bf26"
-		},
-		{
-			"type": "java",
-			"name": "Launch FirstProgram",
-			"request": "launch",
-			"mainClass": "FirstProgram",
-			"projectName": "Code_767bf26"
-		},
-		{
-			"type": "java",
-			"name": "Launch App",
-			"request": "launch",
-			"mainClass": "App",
-			"projectName": "Code_767bf26"
-		},
-		{
-			"type": "java",
-			"name": "Launch Main",
-			"request": "launch",
-			"mainClass": "Java.Main",
-			"projectName": "Code_767bf26"
-		}
-	]
+    "version": "0.2.0",
+    "configurations": [
+        {
+            // Use IntelliSense to find out which attributes exist for C# debugging
+            // Use hover for the description of the existing attributes
+            // For further information visit https://github.com/OmniSharp/omnisharp-vscode/blob/master/debugger-launchjson.md
+            "name": ".NET Core Launch (console)",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build",
+            // If you have changed target frameworks, make sure to update the program path.
+            "program": "${workspaceFolder}/CSharp/bin/Debug/net7.0/CSharp.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/CSharp",
+            // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
+            "console": "internalConsole",
+            "stopAtEntry": false
+        },
+        {
+            "name": ".NET Core Attach",
+            "type": "coreclr",
+            "request": "attach"
+        }
+    ]
 }
