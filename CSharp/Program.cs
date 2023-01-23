@@ -12,8 +12,8 @@ namespace CSharp
         // Main Method
         static void Main(string[] args)
         {
-            Program newGeek = new Program();
-            newGeek.Main();
+            MarkSheet Runner = new MarkSheet();
+            Runner.Main();
         }
     }
 }
