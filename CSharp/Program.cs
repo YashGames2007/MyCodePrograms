@@ -12,7 +12,7 @@ namespace CSharp
         // Main Method
         static void Main(string[] args)
         {
-            MarkSheet Runner = new MarkSheet();
+            Strings Runner = new Strings();
             Runner.Main();
         }
     }
