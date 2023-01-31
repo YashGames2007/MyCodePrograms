@@ -12,7 +12,7 @@ namespace CSharp
         // Main Method
         static void Main(string[] args)
         {
-            Object_Orientation Runner = new Object_Orientation();
+            TTT Runner = new TTT();
             Runner.Main();
         }
     }
