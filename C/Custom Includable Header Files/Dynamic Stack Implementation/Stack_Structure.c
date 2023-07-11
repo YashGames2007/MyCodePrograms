@@ -1,5 +1,0 @@
-#define Float_Stack "E:/Programming files/Code/C/Custom Includable Header Files/Dynamic Stack Implementation/Float_Stack_Structure.c"
-#define Double_Stack "E:/Programming files/Code/C/Custom Includable Header Files/Dynamic Stack Implementation/Double_Stack_Structure.c"
-#define String_Stack "E:/Programming files/Code/C/Custom Includable Header Files/Dynamic Stack Implementation/String_Stack_Structure.c"
-#define Integer_Stack "E:/Programming files/Code/C/Custom Includable Header Files/Dynamic Stack Implementation/Integer_Stack_Structure.c"
-#define Character_Stack "E:/Programming files/Code/C/Custom Includable Header Files/Dynamic Stack Implementation/Character_Stack_Structure.c"

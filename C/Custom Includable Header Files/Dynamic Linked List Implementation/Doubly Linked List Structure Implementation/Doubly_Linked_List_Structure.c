@@ -1,5 +1,0 @@
-#define Float_Doubly_Linked_List "E:/Programming files/Code/C/Custom Includable Header Files/Dynamic Linked List Implementation/Doubly Linked List Structure Implementation/Float_Doubly_Linked_List_Structure.c"
-#define Double_Doubly_Linked_List "E:/Programming files/Code/C/Custom Includable Header Files/Dynamic Linked List Implementation/Doubly Linked List Structure Implementation/Double_Doubly_Linked_List_Structure.c"
-#define String_Doubly_Linked_List "E:/Programming files/Code/C/Custom Includable Header Files/Dynamic Linked List Implementation/Doubly Linked List Structure Implementation/String_Doubly_Linked_List_Structure.c"
-#define Integer_Doubly_Linked_List "E:/Programming files/Code/C/Custom Includable Header Files/Dynamic Linked List Implementation/Doubly Linked List Structure Implementation/Integer_Doubly_Linked_List_Structure.c"
-#define Character_Doubly_Linked_List "E:/Programming files/Code/C/Custom Includable Header Files/Dynamic Linked List Implementation/Doubly Linked List Structure Implementation/Character_Doubly_Linked_List_Structure.c"

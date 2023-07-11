@@ -1,7 +1,0 @@
-#include "E:\Programming files\Code\C\Custom Includable Header Files\Dynamic Linked List Implementation\Circular Linked List Structure Implementation\Doubly Circular Linked List Structure Implementation\Doubly_Circular_Linked_List_Structure.c"
-
-#include Float_Doubly_Circular_Linked_List
-#include Double_Doubly_Circular_Linked_List
-#include String_Doubly_Circular_Linked_List
-#include Integer_Doubly_Circular_Linked_List
-#include Character_Doubly_Circular_Linked_List
