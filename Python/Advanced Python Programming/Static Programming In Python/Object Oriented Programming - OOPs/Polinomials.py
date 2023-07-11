@@ -2,37 +2,37 @@ class New_Type(type):
     def __repr__(self) -> str:
         return self.__name__
 
-class Polinomials(metaclass = New_Type):
+class Polynomials(metaclass = New_Type):
     # Defining Errors...
-    exponentialConstant = "Invalid Polinomial! : Adding Exponent To Constant Is Not A Valid Polinomial Syntax!!!"
+    exponentialConstant = "Invalid Polynomial! : Adding Exponent To Constant Is Not A Valid Polynomial Syntax!!!"
     
     # Defining Some Dunder/Magic/Special Methods(Functions)...
-    def __init__(self, polinomial : str = "x + y + 1") -> None:
-        self.polinomial = polinomial
-        self.variables, self.constants, self.exponents, self.monomials = Polinomials.compile_Polinomial(polinomial)
+    def __init__(self, polynomial : str = "x + y + 1") -> None:
+        self.polynomial = polynomial
+        self.variables, self.constants, self.exponents, self.monomials = Polynomials.compile_Polynomial(polynomial)
 
     def __repr__(self) -> str:
         if len(self.variables) == 1 and self.variables[0] is None:
-            string = "< Constant Object Belonging To Class Polinomial."
+            string = "< Constant Object Belonging To Class Polynomial."
         elif len(self.variables) == 1:
-            string = "< Monomial Object Belonging To Class Polinomial."
+            string = "< Monomial Object Belonging To Class Polynomial."
         elif len(self.variables) == 2:
-            string = "< Binomial Object Belonging To Class Polinomial."
+            string = "< Binomial Object Belonging To Class Polynomial."
         elif len(self.variables) == 3:
-            string = "< Trinomial Object Belonging To Class Polinomial."
+            string = "< Trinomial Object Belonging To Class Polynomial."
         else:
-            string = f"< Polinomial Object With {len(self.variables)} Terms."
+            string = f"< Polynomial Object With {len(self.variables)} Terms."
 
-        return string + f" Expresion: {self.polinomial} >"
+        return string + f" Expresion: {self.polynomial} >"
 
     def __str__(self) -> str:
-        return str(self.polinomial)
+        return str(self.polynomial)
 
     def __call__(self):
-        print("\nExtracting Data From The Polinomial Object...\n")
+        print("\nExtracting Data From The Polynomial Object...\n")
         for index in range(len(self.variables)):
             print(f"< [Term No. {index + 1} : {self.monomials[index]}] Variable: {self.variables[index]} | Constant: {self.constants[index]} | Exponent: {self.exponents[index]} >")
-        print("\nPolinomial Object Data Extraction Complete.\n")
+        print("\nPolynomial Object Data Extraction Complete.\n")
 
     def __add__(self, other: object):
         string = ""
@@ -143,7 +143,7 @@ class Polinomials(metaclass = New_Type):
         return string
 
     def __eq__(self, other: object) -> bool:
-        if str(self.polinomial) == str(other.polinomial):
+        if str(self.polynomial) == str(other.polynomial):
             return True
         if len(self.variables) != len(other.variables):
             return False
@@ -163,13 +163,13 @@ class Polinomials(metaclass = New_Type):
 
     # Defining Some Static Methods...
     @staticmethod
-    def compile_Polinomial(polinomial : str) -> list:
+    def compile_Polynomial(polynomial : str) -> list:
         exponents = {}
         variables = {}
         constants = {}
 
-        polinomial1 = polinomial.replace(' ', '')
-        l = polinomial1.split('+') 
+        polynomial1 = polynomial.replace(' ', '')
+        l = polynomial1.split('+')
         l1 = []
 
         for item in l:
@@ -196,7 +196,7 @@ class Polinomials(metaclass = New_Type):
         for index in range(len(l1)):
             string : str = l1[index]
             # print(string.islower())
-            if Polinomials.is_Variable(string):
+            if Polynomials.is_Variable(string):
 
                 if '^' in string:
                     exponent = string.find('^')
@@ -218,7 +218,7 @@ class Polinomials(metaclass = New_Type):
             else:
 
                 if '^' in string: 
-                    raise Exception(Polinomials.exponentialConstant)
+                    raise Exception(Polynomials.exponentialConstant)
                 exponents[index] = 1 
                 variables[index] = None
                 constants[index] = int(string)
@@ -226,7 +226,7 @@ class Polinomials(metaclass = New_Type):
         # print(f"Exponents:- {exponents}")
         # print(f"Variables:- {variables}")
         # print(f"Constants:- {constants}")
-        # print(polinomial)
+        # print(polynomial)
         return [variables, constants, exponents, l1]
 
     @staticmethod
@@ -246,27 +246,29 @@ class Equations(metaclass = New_Type):
     def __init__(self, equation: str) -> None:
         self.equation = equation
         self.LHS, self.RHS = equation.split('=')
-        self.Left_Polinomial = Polinomials(self.LHS)
-        self.Right_Polinomial = Polinomials(self.RHS)
-        print(self.Left_Polinomial)
-        print(self.Right_Polinomial)
+        self.Left_Polynomial = Polynomials(self.LHS)
+        self.Right_Polynomial = Polynomials(self.RHS)
+        print(self.Left_Polynomial)
+        print(self.Right_Polynomial)
 
 
         
 if __name__ == '__main__':            
 
-    p1 = Polinomials("4x + 2")
-    p2 = Polinomials("2x + 6z")
+    p1 = Polynomials("4x + 2")
+    p2 = Polynomials("2x + 6z")
     p3 = p1 + p2
     print(p3)
-    p3 = Polinomials(p3)
+    p3 = Polynomials(p3)
     # p3()
 
     if p1 == p2:
         print(True)
     else:
         print(False)
-    # print(p1)
+    print(p1)
+    print(p2)
+    print(p3)
 
     # e1 = Equation("2x + 3y = 24") # Let x = 6, y = 4
     # e2 = Equation("3x + 4y = 34") # Let x = 6, y = 4
