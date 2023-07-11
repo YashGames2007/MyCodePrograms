@@ -1,9 +1,9 @@
-import pygame
 import sys
 import random
+import pygame
 
 def path(relative_path):
-    import os, sys
+    import os
     """ Get absolute path to resource, works for dev and for PyInstaller """
     try:
         # PyInstaller creates a temp folder and stores path in _MEIPASS
@@ -12,9 +12,13 @@ def path(relative_path):
         base_path = os.path.abspath(".")
 
     return os.path.join(base_path, relative_path)
-    
+
+
+class Game:
+    def __init__(self):
+        pass
+
 # Initializing Pygame Functions and Attributes...
-pygame.init()
 pygame.display.init()
 pygame.mixer.init()
 
@@ -57,22 +61,22 @@ pygame.display.set_caption("Snake And Ladders - YashGames2007")
 
 # Adding Assets...
 # Playing Board
-game_Board = pygame.transform.scale(pygame.image.load(path("Pygame Basic to Advanced\\Snake & Ladders Game\\Assets\\board.jpg")).convert_alpha(), (screen_Width, screen_Height - 110))
-dice_Box = pygame.transform.scale(pygame.image.load(path("Pygame Basic to Advanced\\Snake & Ladders Game\\Assets\\Dice Sprites\\diceBox.png")).convert_alpha(), (75, 75))
+game_Board = pygame.transform.scale(pygame.image.load(path("Python\\Pygame Basic to Advanced\\Snake & Ladders Game\\Assets\\board.jpg")).convert_alpha(), (screen_Width, screen_Height - 110))
+dice_Box = pygame.transform.scale(pygame.image.load(path("Python\\Pygame Basic to Advanced\\Snake & Ladders Game\\Assets\\Dice Sprites\\diceBox.png")).convert_alpha(), (75, 75))
 # Dice Sprites
 dice = [
-    pygame.transform.scale(pygame.image.load(path("Pygame Basic to Advanced\\Snake & Ladders Game\Assets\\Dice Sprites\\One_dice.jpg")).convert_alpha(), (die_Size, die_Size)),
-    pygame.transform.scale(pygame.image.load(path("Pygame Basic to Advanced\\Snake & Ladders Game\Assets\\Dice Sprites\\Two_dice.jpg")).convert_alpha(), (die_Size, die_Size)),
-    pygame.transform.scale(pygame.image.load(path("Pygame Basic to Advanced\\Snake & Ladders Game\Assets\\Dice Sprites\\Three_dice.jpg")).convert_alpha(), (die_Size, die_Size)),
-    pygame.transform.scale(pygame.image.load(path("Pygame Basic to Advanced\\Snake & Ladders Game\Assets\\Dice Sprites\\Four_dice.jpg")).convert_alpha(), (die_Size, die_Size)),
-    pygame.transform.scale(pygame.image.load(path("Pygame Basic to Advanced\\Snake & Ladders Game\Assets\\Dice Sprites\\Five_dice.jpg")).convert_alpha(), (die_Size, die_Size)),
-    pygame.transform.scale(pygame.image.load(path("Pygame Basic to Advanced\\Snake & Ladders Game\Assets\\Dice Sprites\\Six_dice.jpg")).convert_alpha(), (die_Size, die_Size))
+    pygame.transform.scale(pygame.image.load(path("Python\\Pygame Basic to Advanced\\Snake & Ladders Game\\Assets\\Dice Sprites\\One_dice.jpg")).convert_alpha(), (die_Size, die_Size)),
+    pygame.transform.scale(pygame.image.load(path("Python\\Pygame Basic to Advanced\\Snake & Ladders Game\\Assets\\Dice Sprites\\Two_dice.jpg")).convert_alpha(), (die_Size, die_Size)),
+    pygame.transform.scale(pygame.image.load(path("Python\\Pygame Basic to Advanced\\Snake & Ladders Game\\Assets\\Dice Sprites\\Three_dice.jpg")).convert_alpha(), (die_Size, die_Size)),
+    pygame.transform.scale(pygame.image.load(path("Python\\Pygame Basic to Advanced\\Snake & Ladders Game\\Assets\\Dice Sprites\\Four_dice.jpg")).convert_alpha(), (die_Size, die_Size)),
+    pygame.transform.scale(pygame.image.load(path("Python\\Pygame Basic to Advanced\\Snake & Ladders Game\\Assets\\Dice Sprites\\Five_dice.jpg")).convert_alpha(), (die_Size, die_Size)),
+    pygame.transform.scale(pygame.image.load(path("Python\\Pygame Basic to Advanced\\Snake & Ladders Game\\Assets\\Dice Sprites\\Six_dice.jpg")).convert_alpha(), (die_Size, die_Size))
 ]
 # Tokens
-red_Token = pygame.transform.scale(pygame.image.load(path("Pygame Basic to Advanced\\Snake & Ladders Game\\Assets\\Player Tokens\\RedToken.png")).convert_alpha(), (token_Width, token_Height))
-yellow_Token = pygame.transform.scale(pygame.image.load(path("Pygame Basic to Advanced\\Snake & Ladders Game\\Assets\\Player Tokens\\YellowToken.png")).convert_alpha(), (token_Width,token_Height))
-blue_Token = pygame.transform.scale(pygame.image.load(path("Pygame Basic to Advanced\\Snake & Ladders Game\\Assets\\Player Tokens\\BlueToken.png")).convert_alpha(), (token_Width, token_Height))
-green_Token = pygame.transform.scale(pygame.image.load(path("Pygame Basic to Advanced\\Snake & Ladders Game\\Assets\\Player Tokens\\GreenToken.png")).convert_alpha(), (token_Width, token_Height))
+red_Token = pygame.transform.scale(pygame.image.load(path("Python\\Pygame Basic to Advanced\\Snake & Ladders Game\\Assets\\Player Tokens\\RedToken.png")).convert_alpha(), (token_Width, token_Height))
+yellow_Token = pygame.transform.scale(pygame.image.load(path("Python\\Pygame Basic to Advanced\\Snake & Ladders Game\\Assets\\Player Tokens\\YellowToken.png")).convert_alpha(), (token_Width,token_Height))
+blue_Token = pygame.transform.scale(pygame.image.load(path("Python\\Pygame Basic to Advanced\\Snake & Ladders Game\\Assets\\Player Tokens\\BlueToken.png")).convert_alpha(), (token_Width, token_Height))
+green_Token = pygame.transform.scale(pygame.image.load(path("Python\\Pygame Basic to Advanced\\Snake & Ladders Game\\Assets\\Player Tokens\\GreenToken.png")).convert_alpha(), (token_Width, token_Height))
 
 def snake_And_Ladders(current_Positions, token):
     ladder_Positions = {
