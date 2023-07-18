@@ -103,7 +103,7 @@ class Polynomial(metaclass = New_Type):
         if string[0] == '+':
             string = string[2: ]
 
-        return string
+        return string + Polynomial.reconstruct_Polynomial(Polynomial.dissimilar_Monomials(self, other))
 
     def __sub__(self, other: object):
         string = ""
@@ -169,11 +169,12 @@ class Polynomial(metaclass = New_Type):
 
     # Defining Some Static Methods...
     @staticmethod
-    def deconstruct_Polynomial(polynomial : str, monomial_Needed : bool = True) -> dict:
+    def deconstruct_Polynomial(polynomial : str) -> dict:
         data = {
             "variables" : {},
             "constants" : {},
-            "exponents" : {}
+            "exponents" : {},
+            "monomials" : []
         }
 
         polynomial1 = polynomial.replace(' ', '')
@@ -230,9 +231,7 @@ class Polynomial(metaclass = New_Type):
                 data["exponents"][index] = 1 
                 data["variables"][index] = None
                 data["constants"][index] = int(string)
-        if monomial_Needed:
-            data["monomials"] = l1
-
+        data["monomials"] = l1
         return data
 
     @staticmethod
@@ -246,6 +245,7 @@ class Polynomial(metaclass = New_Type):
 
     @staticmethod
     def reconstruct_Polynomial(data:dict) -> str:
+        print
         poly_Str = ""
         for variable, constant, exponent in zip(data["variables"].values(), data["constants"].values(), data["exponents"].values()):
 
@@ -256,7 +256,7 @@ class Polynomial(metaclass = New_Type):
         return poly_Str
 
     @staticmethod
-    def dissimilar_Monomials(polynomial1 : object, polynomial2 : object) -> list[dict]:
+    def dissimilar_Monomials(polynomial1 : object, polynomial2 : object) -> dict:
         data = {
             "variables": {},
             "constants": {},
@@ -286,7 +286,7 @@ class Polynomial(metaclass = New_Type):
 
 
 
-class Equations(metaclass = New_Type):
+class Equation(metaclass = New_Type):
 
     def __init__(self, equation: str) -> None:
         self.equation = equation
@@ -299,7 +299,7 @@ class Equations(metaclass = New_Type):
         
 if __name__ == '__main__':            
 
-    # print(Polynomial.reconstruct_Polynomial(Polynomial.deconstruct_Polynomial("")))
+    print(Polynomial.reconstruct_Polynomial(Polynomial.deconstruct_Polynomial("4x + 3y^3 - 5")))
 
     p1 = Polynomial("4x + 2")
     p2 = Polynomial("2x + 6z")
@@ -308,8 +308,8 @@ if __name__ == '__main__':
     p3 = Polynomial(p3)
 
 
-    p3(True)
-    p3()
+    # p3(True)
+    # p3()
 
     print(f"Printing:  {Polynomial.dissimilar_Monomials(p1, p2)}")
 
@@ -321,6 +321,6 @@ if __name__ == '__main__':
     print(p2)
     print(p3)
 
-    # e1 = Equation("2x + 3y = 24") # Let x = 6, y = 4
-    # e2 = Equation("3x + 4y = 34") # Let x = 6, y = 4
+    e1 = Equation("2x + 3y = 24") # Let x = 6, y = 4
+    e2 = Equation("3x + 4y = 34") # Let x = 6, y = 4
 
