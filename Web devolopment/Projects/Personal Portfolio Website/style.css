@@ -12,7 +12,7 @@ nav{
     justify-content: space-around;
     align-items: center;
     height: 40px;
-    background-color: rgb(44, 3, 92);
+    background-color: rgb(0 90 255 / 69%);
 }
 nav ul{
     display: flex;
@@ -26,15 +26,21 @@ nav ul li{
 nav ul li a{
     text-decoration: double;
     font-weight:500;
-    color: white;
+    color: rgb(238, 238, 238);
 }
 nav ul li a:hover{
     font-size: 1.02rem;
-    color: rgb(157, 255, 255);
+    color: rgb(255, 196, 0);
 }
 .left{
     font-size: 1.5rem;
     font-weight: 500;
+}
+.right{
+    padding-top: 1%;
+}
+main {
+    margin-bottom: 200px;
 }
 .firstSection{
     display: flex;
@@ -61,6 +67,19 @@ nav ul li a:hover{
     width: 110%;
     margin: 35px 0;
 }
+.secondSection .box{
+    background: rgb(157, 255, 255);
+    width: 85vw;
+    height: 1.5px;
+    margin: 95px 0;
+    display: flex;
+}
+.secondSection .vertical{
+    height: 75px;
+    width: 1px;
+    background-color: rgb(157, 255, 255);
+    margin: 0 100px;
+}
 .myName{
     color: rgb(0, 183, 255);
 }
@@ -72,4 +91,29 @@ main hr{
     background: rgb(142, 213, 247);
     height: 1.2px;
     margin: 40px 50px;
+}
+.grey{
+    color: rgb(76 189 189);
+}
+.image-top{
+    width: 55px;
+    position: relative;
+    top: -65px;
+    left: -25px;
+}
+.vertical-title{
+    position: relative;
+    top: 12px;
+    width: 155px;
+}
+.vertical-desc{
+    position: relative;
+    top: 25px;
+    color: rgb(201, 189, 105);
+    width: 150px;
+    font-size: 11px;
+}
+div .swipebox {
+    border-width: 2px;
+    border-color: aqua;
 }
