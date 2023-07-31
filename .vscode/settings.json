@@ -1,5 +1,19 @@
 {
     "cSpell.words": [
-        "pygame"
-    ]
+        "clickup",
+        "gdrive",
+        "msedge",
+        "MSPC",
+        "onedrive",
+        "padx",
+        "pady",
+        "POWERPNT",
+        "pygame",
+        "startfile",
+        "SYSTEMDRIVE",
+        "taskmgr",
+        "WINWORD",
+        "wordpad"
+    ],
+    "python.formatting.provider": "black"
 }
