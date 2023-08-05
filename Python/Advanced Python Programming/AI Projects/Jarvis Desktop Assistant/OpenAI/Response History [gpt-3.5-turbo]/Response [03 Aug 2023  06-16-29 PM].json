@@ -1,0 +1,21 @@
+{
+    "id": "chatcmpl-7jS0iMMtF9YvpSupd5fU5La8bbxPp",
+    "object": "chat.completion",
+    "created": 1691066788,
+    "model": "gpt-3.5-turbo-0613",
+    "choices": [
+        {
+            "index": 0,
+            "message": {
+                "role": "assistant",
+                "content": "I am an AI language model developed by OpenAI. I am here to assist and answer any questions you may have."
+            },
+            "finish_reason": "stop"
+        }
+    ],
+    "usage": {
+        "prompt_tokens": 12,
+        "completion_tokens": 24,
+        "total_tokens": 36
+    }
+}
