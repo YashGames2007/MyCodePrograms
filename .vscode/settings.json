@@ -12,8 +12,12 @@
         "startfile",
         "SYSTEMDRIVE",
         "taskmgr",
+        "unclosables",
         "WINWORD",
         "wordpad"
     ],
-    "python.formatting.provider": "black"
+    "python.formatting.provider": "black",
+    "python.analysis.extraPaths": [
+        "./Python/Advanced Python Programming/AI Projects/Jarvis Desktop Assistant/Openers"
+    ]
 }

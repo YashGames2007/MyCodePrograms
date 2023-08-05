@@ -5,10 +5,11 @@ import datetime
 # import smtplib
 
 # Library Components
-from web_opener import web
-from app_opener import app
-
-closings = ["no thanks", "nothing", "quit", "exit", "shutdown", "bye"]
+from Openers.web_opener import Web
+from Openers.app_opener import App
+from Openers.custom_commands import Custom
+from Openers.openai_opener import OpenAI
+from src.triggers import quitting_triggers
 
 class Jarvis:
     engine = pyttsx3.init('sapi5')
@@ -16,10 +17,11 @@ class Jarvis:
     engine.setProperty('voice', voices[0].id)
 
     def __init__(self):
-        print(self.voices)
-        webSearch = web()
-        appSearch = app()
-        self.query_operators = [webSearch, appSearch]
+        webSearch = Web()
+        appSearch = App()
+        customSearch = Custom()
+        openaiSearch = OpenAI()
+        self.query_operators = [webSearch, appSearch, customSearch, openaiSearch]
 
     def speak (self, audio):
         self.engine.say(audio)
@@ -45,7 +47,7 @@ class Jarvis:
         with speech.Microphone() as source:
             print("Listening...")
             mic.energy_threshold = 1000
-            mic.pause_threshold = 0.5
+            mic.pause_threshold = 1.5
             audio = mic.listen(source)
             print("Ok!")
             try:
@@ -65,9 +67,9 @@ class Jarvis:
             isWorking = function.open(query)
             if isWorking: 
                 self.speak("Okay! " + isWorking)
-                break
+                return True
 
-        for word in closings:
+        for word in quitting_triggers:
             if word in query:
                 return False
 
