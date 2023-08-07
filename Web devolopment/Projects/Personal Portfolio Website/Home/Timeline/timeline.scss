@@ -1,5 +1,7 @@
-$primary-color: rgb(255, 208, 60);
-$secondary-color: rgb(0, 183, 255);
+@use '../../Graphics/globals';
+
+$primary-color: globals.$brand_color_1;
+$secondary-color: globals.$brand_color_2;
 
 .swiper-container-wrapper {
   &--timeline {
@@ -116,7 +118,7 @@ $secondary-color: rgb(0, 183, 255);
           }
           ~ .swiper-pagination-switch {
             .switch-title {
-              color: $secondary-color;
+              color: globals.$brand_color_3;
               font-weight: 16px;
               &:after {
                 background: $secondary-color;

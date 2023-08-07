@@ -14,18 +14,17 @@
     <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
-    <link rel="stylesheet" href=".\Graphics\scss\timeline.css">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="footer.css">
+    <link rel="stylesheet" href="../Timeline/timeline.css">
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="../../Footer/footer.css">
 </head>
 <!-- 
     Add these features:
-    Separate Files for mini tasks
-    Edit Navbar with typed headers
     Add text in timeline
-    CSS -> SCSS
     Theme Switch Button
+    Add pages (Projects, Resources, Downloads, About)
  -->
+
 <body>
     <!-- Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -33,7 +32,7 @@
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
-    <script src="timeline.js"></script>
+    <script src="../Timeline/timeline.js"></script>
 
     <!-- Header -->
     <header>
@@ -41,13 +40,14 @@
             <div class="left">Yash's Portfolio</div>
             <di class="right">
                 <ul>
-                    <li><a class="nav_anchor"><span id="nav_anchor">Home</span></a></li>
-                    <li><a class="nav_anchor">About</a></li>
-                    <li><a class="nav_anchor">Services</a></li>
-                    <li><a class="nav_anchor">Projects</a></li>
-                    <li><a class="nav_anchor">Contact Me</a></li>
+                    <li><a class="nav_anchor"><span id="nav_home">Home</span></a></li>
+                    <li><a class="nav_anchor"><span id="nav_projects">Projects</span></a></li>
+                    <li><a class="nav_anchor"><span id="nav_resources">Resources</span></a></li>
+                    <li><a class="nav_anchor"><span id="nav_downloads">Downloads</span></a></li>
+                    <li><a class="nav_anchor"><span id="nav_about">About</span></a></li>
                     </div>
     </header>
+
     <!-- Main -->
     <main>
         <section class="firstSection">
@@ -59,7 +59,7 @@
                 </div>
             </div>
             <div class="rightSection">
-                <img src="./Graphics/home_page.png" alt="">
+                <img src="../../Graphics/home_page.png" alt="">
             </div>
         </section>
         <hr>
@@ -93,6 +93,7 @@
             </div>
         </section>
     </main>
+
     <!-- Footer -->
     <footer class="new_footer_area bg_color">
         <div class="new_footer_top">
@@ -102,10 +103,11 @@
                         <div class="f_widget company_widget wow fadeInLeft" data-wow-delay="0.2s"
                             style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInLeft;">
                             <h3 class="f-title f_600 t_color f_size_18">Get in Touch</h3>
-                            <p>Don’t miss any updates of our new templates and extensions.!</p>
+                            <p>Don't miss any updates of our new templates and extensions.!</p>
                             <form action="#" class="f_subscribe_two mailchimp" method="post" novalidate="true"
                                 _lpchecked="1">
-                                <input type="text" name="EMAIL" class="form-control memail" placeholder="Email">
+                                <input type="text" name="EMAIL" class="mail memail form-control" id="mail_me"
+                                    placeholder="Email">
                                 <button class="btn btn_get btn_get_two" type="submit">Subscribe</button>
                                 <p class="mchimp-errmessage" style="display: none;"></p>
                                 <p class="mchimp-sucmessage" style="display: none;"></p>
@@ -163,17 +165,17 @@
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-lg-6 col-sm-7">
-                        <p class="mb-0 f_400">© cakecounter Inc.. 2019 All rights reserved.</p>
+                        <p class="mb-0 f_400">© YashGames2007 Inc.. 2023 All rights reserved.</p>
                     </div>
                     <div class="col-lg-6 col-sm-5 text-right">
-                        <p>Made with <i class="icon_heart"></i> in <a href="http://cakecounter.com"
-                                target="_blank">CakeCounter</a></p>
+                        <p>Made by YashGames2007</p>
                     </div>
                 </div>
             </div>
         </div>
     </footer>
 
+    <!-- Scripts -->
     <script>
         var typed = new Typed('#element', {
             strings: ['C', 'Python', 'C++', 'Java', 'C#', 'HTML/CSS', 'JavaScript', 'Android Development', 'Game Development', 'Web Development'],
@@ -186,7 +188,7 @@
             backDelay: 1500,
         });
     </script>
-    <script src="./header.js"></script>
+    <script src="../../Header/header.js"></script>
 </body>
 
 </html>

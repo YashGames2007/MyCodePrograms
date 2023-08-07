@@ -1,0 +1,135 @@
+body {
+  background-color: rgb(14, 17, 49);
+  color: rgb(255, 255, 255);
+  font-family: "Rubik", sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+nav {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 40px;
+  background-color: rgba(0, 90, 255, 0.69);
+}
+nav ul {
+  display: flex;
+  justify-content: center;
+}
+nav ul li {
+  list-style: none;
+  margin: 0 20px;
+}
+nav ul li a {
+  -webkit-text-decoration: double;
+          text-decoration: double;
+  font-weight: 500;
+  color: rgb(238, 238, 238);
+}
+nav ul li a:hover {
+  font-size: 1.02rem;
+  color: rgb(255, 154, 60);
+}
+
+.left {
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.right {
+  padding-top: 1%;
+}
+
+.switch-title {
+  color: rgb(255, 255, 255);
+}
+
+.form-control::-moz-placeholder {
+  color: rgb(159, 146, 231);
+}
+
+.form-control::placeholder {
+  color: rgb(159, 146, 231);
+}
+
+.form-control::-ms-input-placeholder {
+  color: rgb(159, 146, 231);
+}
+
+input.mail#mail_me {
+  border-color: rgb(159, 146, 231);
+  background-color: rgb(38, 29, 112);
+}
+
+main {
+  margin-bottom: 200px;
+}
+main hr {
+  border: 0;
+  background: rgb(159, 146, 231);
+  height: 1.2px;
+  margin: 40px 50px;
+}
+
+.firstSection {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 110px 0;
+}
+.firstSection > div {
+  width: 35%;
+}
+
+.secondSection {
+  max-width: 80vw;
+  margin: 35px 75px;
+}
+.secondSection h1 {
+  font-size: 1.6rem;
+  color: rgb(159, 146, 231);
+}
+.secondSection .box {
+  background: rgb(157, 255, 255);
+  width: 85vw;
+  height: 1.5px;
+  margin: 95px 0;
+  display: flex;
+}
+.secondSection .vertical {
+  height: 75px;
+  width: 1px;
+  background-color: rgb(157, 255, 255);
+  margin: 0 100px;
+}
+
+.leftSection {
+  font-size: 2.7rem;
+  font-weight: 400;
+}
+
+.rightSection img {
+  width: 110%;
+  margin: 35px 0;
+}
+
+.myName {
+  color: rgb(0, 238, 255);
+}
+
+#element {
+  color: rgb(255, 154, 60);
+}
+
+.grey {
+  color: rgb(0, 238, 255);
+}
+
+div .swipebox {
+  border-width: 2px;
+  border-color: aqua;
+}/*# sourceMappingURL=style.css.map */
