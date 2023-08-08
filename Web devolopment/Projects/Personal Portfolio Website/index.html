@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YashGames2007 | Home</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Laila:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100;0,200;0,400;0,600;0,700;1,100;1,200;1,400;1,600;1,700&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    <link rel="stylesheet" href="./Pages/Home/Timeline/timeline.css">
+    <link rel="stylesheet" href="./Pages/Home/Main/style.css">
+    <link rel="stylesheet" href="./Layout/Footer/footer.css">
+</head>
+<!-- 
+    Add these features:
+    Add text in timeline
+    Theme Switch Button
+    Add pages (Projects, Resources, Downloads, About)
+ -->
+
+<body>
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.8.4/swiper-bundle.min.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+    <script src="./Pages/Home/Timeline/timeline.js"></script>
+
+    <!-- Header -->
+    <header id="header"></header>
+
+    <!-- Main -->
+    <main>
+        <section class="firstSection">
+            <div class="leftSection">
+                Hi, My name is <span class="myName">Yash</span>
+                <div>
+                    and I am a skilled programmer in
+                    <div><span id="element"></span></div>
+                </div>
+            </div>
+            <div class="rightSection">
+                <img src="./Graphics/home_page.png" alt="">
+            </div>
+        </section>
+        <hr>
+        </hr>
+        <section class="secondSection">
+            <span class="grey">What skills I have gained so far</span>
+            <h1>Skills Accomplishments</h1>
+            <div class="container">
+                <div class="swiper-container-wrapper swiper-container-wrapper--timeline">
+                    <!-- Timeline -->
+                    <ul class="swiper-pagination-custom">
+                        <li class='swiper-pagination-switch first active'><span class='switch-title'>​<br>2021</span>
+                        </li>
+                        <li class='swiper-pagination-switch'><span class='switch-title'>​<br>2022</span></li>
+                        <li class='swiper-pagination-switch'><span class='switch-title'>January<br>2023</span></li>
+                        <li class='swiper-pagination-switch last'><span class='switch-title'>June<br>2023</span></li>
+                    </ul>
+                    <!-- Progressbar -->
+                    <div class="swiper-pagination swiper-pagination-progressbar swiper-pagination-horizontal"></div>
+                    <!-- Swiper -->
+                    <div class="swiper swiper-container swiper-container--timeline">
+                        <div class="swiper-wrapper">
+                            <!-- Slides -->
+                            <div class="swiper-slide"><span class="title">Title 1</span></div>
+                            <div class="swiper-slide"><span class="title">Title 2</span></div>
+                            <div class="swiper-slide"><span class="title">Title 3</span></div>
+                            <div class="swiper-slide"><span class="title">Title 4</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer id="footer"></footer>
+    
+    <!-- Scripts -->
+    <script>
+        var typed = new Typed('#element', {
+            strings: ['C', 'Python', 'C++', 'Java', 'C#', 'HTML/CSS', 'JavaScript', 'Android Development', 'Game Development', 'Web Development'],
+            typeSpeed: 40,
+            backSpeed: 10,
+            shuffle: true,
+            fadeOut: true,
+            loop: true,
+            loopCount: Infinity,
+            backDelay: 1500,
+        });
+    </script>
+    <script>
+        $("#header").load("./Layout/Header/header.html");
+        $("#footer").load("./Layout/Footer/footer.html");
+    </script>
+    <script src="./Layout/Header/header.js"></script>
+</body>
+
+</html>

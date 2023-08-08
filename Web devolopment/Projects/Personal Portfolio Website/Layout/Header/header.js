@@ -1,5 +1,16 @@
 typed_Elements = {};
 page_elements = {};
+pages = {
+    "index.html": "Home",
+    "projects.html": "Projects",
+    "resources.html": "Resources",
+    "downloads.html": "Downloads",
+    "about.html": "About",
+}
+
+
+let url = window.location.pathname;
+let filename = url.substring(url.lastIndexOf('/')+1);
 
 let addHeader = (name, id) => {
 	typed_Elements[name] = new Typed(id, {
@@ -8,7 +19,7 @@ let addHeader = (name, id) => {
 		backSpeed: 10,
 		fadeOut: true,
 		backDelay: 1000,
-        showCursor: false,
+        showCursor: (name==pages[filename])
 	});
 	page_elements[name] = document.querySelector(id);
 

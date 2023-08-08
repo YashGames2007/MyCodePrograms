@@ -1,7 +1,10 @@
-@use '../../Graphics/globals';
+@use '../../../Graphics/globals';
 
 $primary-color: globals.$brand_color_1;
 $secondary-color: globals.$brand_color_2;
+
+$right_margin: 56%;
+$left_margin: 100%;
 
 .swiper-container-wrapper {
   &--timeline {
@@ -47,8 +50,8 @@ $secondary-color: globals.$brand_color_2;
       &:before {
         position: absolute;
         top: 2px;
-        left: -100%;
-        width: 100%;
+        left: -{$left_margin};
+        width: $left_margin;
         height: 3px;
         background-color: $primary-color;
         content: "";
@@ -56,8 +59,8 @@ $secondary-color: globals.$brand_color_2;
       &:after {
         position: absolute;
         top: 3px;
-        right: -56%;
-        width: 100%;
+        right: -#{$right_margin};
+        width: $right_margin;
         height: 1px;
         background-color: $secondary-color;
         content: "";
