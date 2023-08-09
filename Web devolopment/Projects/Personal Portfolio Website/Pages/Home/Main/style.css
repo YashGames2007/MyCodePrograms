@@ -108,7 +108,7 @@ main hr {
 }
 
 .leftSection {
-  font-size: 2.7rem;
+  font-size: 3.3vw;
   font-weight: 400;
 }
 
@@ -132,4 +132,16 @@ main hr {
 div .swipebox {
   border-width: 2px;
   border-color: aqua;
+}
+
+@media screen and (max-width: 500px) {
+  .firstSection {
+    flex-direction: column-reverse;
+  }
+  .firstSection div {
+    width: 70%;
+  }
+  .leftSection {
+    font-size: 5.5vw;
+  }
 }/*# sourceMappingURL=style.css.map */
