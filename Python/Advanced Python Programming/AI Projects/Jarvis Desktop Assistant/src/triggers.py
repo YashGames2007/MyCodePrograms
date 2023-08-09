@@ -1,8 +1,20 @@
-dir_triggers = ["folder", "drive", "directory"]
+quitting_triggers = ["no thanks", "nothing", "quit", "exit", "shutdown", "bye"]
+
+using_triggers = ["by", "using", "with the help of", "according to"]
+
+web_triggers = ["on the web", "online", "in browser", "on web"]
+
+show_triggers = ["show", "give", "tell", "what is", "what's"]
 
 unclosable_triggers = ["task manager", "file explorer"]
 
-quitting_triggers = ["no thanks", "nothing", "quit", "exit", "shutdown", "bye"]
+dir_triggers = ["folder", "drive", "directory"]
+
+ms_triggers = ["", "ms ", "microsoft "]
+
+person_triggers = ["me ", ""]
+
+suffix_triggers = ["s", ""]
 
 open_triggers = {
     "open": "opening",
@@ -21,4 +33,3 @@ close_triggers = {
     "kill": "killing",
     "terminate": "terminating",
 }
-

@@ -1,82 +1,54 @@
 import webbrowser
-import re
 
-"""
-ADDITIONS:
+# import re
 
-Skype
-Loop
-Outlook
-OneNote
-MS Calendar
-MS To Do
-Sway
-Teams
+from src.triggers import web_triggers, ms_triggers, open_triggers
+from src.paths import ms_webApp_paths, ms_website_paths, website_paths
+from src.toolkit import check_pattern
 
-Chrome Web Store
-Linked In
-Repl It
-Google Meet
-Zoom Meet
-Typing Trainer
-Typing Racer
-
-Photoshop
-Firefly
-More Adobe Tools on the web
-
-Facebook
-Instagram
-Wikipedia
-
-
-"""
-
-websites = {
-    "youtube|yt": ["youtube", "https://www.youtube.com/"],
-    "whatsapp": ["whatsapp", "https://web.whatsapp.com/"],
-    "telegram": ["telegram", "https://web.telegram.org/k/#777000"],
-    "stack overflow": ["your stackoverflow", "https://stackoverflow.com/users/17628133/yashgames2007"],
-    "docs|google docs": ["google docs", "https://docs.google.com/document/u/0/"],
-    "sheets|google sheets": ["google sheets", "https://docs.google.com/spreadsheets/u/0/"],
-    "slides|google slides": ["google slides", "https://docs.google.com/presentation/u/0/"],
-    "google|search": ["google", "https://www.google.com/"],
-    "gmail|email|mail": ["gmail", "https://mail.google.com/mail/u/0/#inbox"],
-    "google drive|gdrive|g drive": ["google drive", "https://drive.google.com/drive/u/0/my-drive?ths=true"],
-    "notion": ["notion", "https://www.notion.so/yashgames2007/My-Dashboard-78a391e7ee3f447584f7c4e69d5fd10d"],
-    "click up": ["clickup", "https://app.clickup.com/9002068348/home"],
-    "whimsical": ["whimsical", "https://whimsical.com/my-files-MX2S26bgNM8xJYwzsWzWDk"],
-    "spotify": ["spotify", "https://open.spotify.com/"],
-    "chat gpt|open ai": ["chat gpt", "https://chat.openai.com/"],
-    "bard|google bard|google ai": ["google bard", "https://bard.google.com/u/1/"], 
-    "file converter|online converter|web converter": ["online file converter", "https://www.online-convert.com/"], 
-    "calendar|google calendar|gcal": ["google calendar", "https://calendar.google.com/calendar/u/0/r"],
-    "github|get hub": ["your github", "https://github.com/YashManojraoBhavsar"],
-    "forms|ms forms": ["ms forms", "https://www.office.com/launch/forms?auth=1"],
-    "office|ms office|microsoft office": ["ms office online", "https://www.office.com/?auth=1"],
-}
-
-webApps = {
-    "word|ms word|microsoft word": ["ms word", "https://www.office.com/launch/word?auth=1"],
-    "excel|ms excel|microsoft excel": ["ms excel", "https://www.office.com/launch/excel?auth=1"],
-    "powerpoint|ms powerpoint|microsoft powerpoint": ["ms powerpoint", "https://www.office.com/launch/powerpoint?auth=1"],
-    "onedrive|ms onedrive|microsoft onedrive": ["onedrive", "https://onedrive.live.com/?WT.mc_id=PROD%5FOL%2DWeb%5FInApp%5FLeftNav%5FFreeOfficeBarOD&ocid=PROD%5FOL%2DWeb%5FInApp%5FLeftNav%5FFreeOfficeBarOD&id=root&cid=E21EFB7D22FEDAA2"],
-}
-
-triggers = ["on the web", "online", "in browser", "on web"]
 
 class Web:
     browser_path = "C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe %s"
 
-    def open(self, query: str) -> str|bool:
-        for website, url in websites.items():
-            if "open " in query and re.search(website, query) != None:
-                webbrowser.get(self.browser_path).open(url[1])
-                return f"Opening {url[0]}"
-        for trigger in triggers:
-            if trigger in query:
-                for website, url in webApps.items():
-                    if re.search(f"open .{website} {trigger}", query):
-                        webbrowser.get(self.browser_path).open(url[1])
-                        return f"Opening {url[0]}"
+    def open(self, query: str) -> str | bool:
+        # TODO: Implement DRY
+
+        # Checking for Opening Websites
+        result = check_pattern(
+            query, "{} {}", [open_triggers.keys(), website_paths.keys()]
+        )
+        if result != []:
+            return self.__openWeb(result[1], result[0], self.__getPath(result[1]))
+
+        # Checking for Opening MS Websites
+        result = check_pattern(
+            query,
+            "{} {}{}",
+            [open_triggers.keys(), ms_triggers, ms_website_paths.keys()],
+        )
+        if result != []:
+            return self.__openWeb(result[2], result[0], self.__getPath(result[2]))
+
+        # Checking for Opening MS WebApps
+        result = check_pattern(
+            query,
+            "{} {}{} {}",
+            [open_triggers.keys(), ms_triggers, ms_webApp_paths.keys(), web_triggers],
+        )
+        if result != []:
+            return self.__openWeb(result[2], result[0], self.__getPath(result[2]))
+
         return False
+
+    def __openWeb(self, website: str, trigger: str, paths: dict) -> str:
+        webbrowser.get(self.browser_path).open(paths[website][1])
+        return f"{open_triggers[trigger]} {paths[website][0]}"
+
+    def __getPath(self, website: str) -> dict:
+        if website in website_paths:
+            paths = website_paths
+        elif website in ms_website_paths:
+            paths = ms_website_paths
+        elif website in ms_webApp_paths:
+            paths = ms_webApp_paths
+        return paths

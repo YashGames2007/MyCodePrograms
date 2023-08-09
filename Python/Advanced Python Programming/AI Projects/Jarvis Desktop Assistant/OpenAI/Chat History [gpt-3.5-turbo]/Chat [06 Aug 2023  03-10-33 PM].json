@@ -1,0 +1,10 @@
+[
+    {
+        "role": "user",
+        "content": "what is today's date by ai"
+    },
+    {
+        "role": "assistant",
+        "content": "Today's date is November 24, 2021."
+    }
+]

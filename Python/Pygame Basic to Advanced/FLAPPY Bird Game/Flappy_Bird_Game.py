@@ -222,11 +222,11 @@ ground_Y = screen_Height * 0.8
 game_Sprites = {}
 game_Sounds = {}
 
-player_Bird = path('FLAPPY Bird Game\\Game_Sprites\\bird.png')
-backGround = path('FLAPPY Bird Game\\Game_Sprites\\background.png')
-pipe = path('FLAPPY Bird Game\\Game_Sprites\\pipe.png')
-logo = path('FLAPPY Bird Game\\Game_Sprites\\logo.png')
-base = path('FLAPPY Bird Game\\Game_Sprites\\base.png')
+player_Bird = path('Python\\Pygame Basic to Advanced\\FLAPPY Bird Game\\Game_Sprites\\bird.png')
+backGround = path('Python\\Pygame Basic to Advanced\\FLAPPY Bird Game\\Game_Sprites\\background.png')
+pipe = path('Python\\Pygame Basic to Advanced\\FLAPPY Bird Game\\Game_Sprites\\pipe.png')
+logo = path('Python\\Pygame Basic to Advanced\\FLAPPY Bird Game\\Game_Sprites\\logo.png')
+base = path('Python\\Pygame Basic to Advanced\\FLAPPY Bird Game\\Game_Sprites\\base.png')
 
 if __name__ == '__main__':
     # main function
@@ -236,16 +236,16 @@ if __name__ == '__main__':
     pygame.display.set_caption('Flappy Bird Game - YashGames2007.')
 
     game_Sprites['numbers'] = (
-        pygame.image.load(path('FLAPPY Bird Game\\Game_Sprites\\0.png')).convert_alpha(),
-        pygame.image.load(path('FLAPPY Bird Game\\Game_Sprites\\1.png')).convert_alpha(),
-        pygame.image.load(path('FLAPPY Bird Game\\Game_Sprites\\2.png')).convert_alpha(),
-        pygame.image.load(path('FLAPPY Bird Game\\Game_Sprites\\3.png')).convert_alpha(),
-        pygame.image.load(path('FLAPPY Bird Game\\Game_Sprites\\4.png')).convert_alpha(),
-        pygame.image.load(path('FLAPPY Bird Game\\Game_Sprites\\5.png')).convert_alpha(),
-        pygame.image.load(path('FLAPPY Bird Game\\Game_Sprites\\6.png')).convert_alpha(),
-        pygame.image.load(path('FLAPPY Bird Game\\Game_Sprites\\7.png')).convert_alpha(),
-        pygame.image.load(path('FLAPPY Bird Game\\Game_Sprites\\8.png')).convert_alpha(),
-        pygame.image.load(path('FLAPPY Bird Game\\Game_Sprites\\9.png')).convert_alpha()
+        pygame.image.load(path('Python\\Pygame Basic to Advanced\\FLAPPY Bird Game\\Game_Sprites\\0.png')).convert_alpha(),
+        pygame.image.load(path('Python\\Pygame Basic to Advanced\\FLAPPY Bird Game\\Game_Sprites\\1.png')).convert_alpha(),
+        pygame.image.load(path('Python\\Pygame Basic to Advanced\\FLAPPY Bird Game\\Game_Sprites\\2.png')).convert_alpha(),
+        pygame.image.load(path('Python\\Pygame Basic to Advanced\\FLAPPY Bird Game\\Game_Sprites\\3.png')).convert_alpha(),
+        pygame.image.load(path('Python\\Pygame Basic to Advanced\\FLAPPY Bird Game\\Game_Sprites\\4.png')).convert_alpha(),
+        pygame.image.load(path('Python\\Pygame Basic to Advanced\\FLAPPY Bird Game\\Game_Sprites\\5.png')).convert_alpha(),
+        pygame.image.load(path('Python\\Pygame Basic to Advanced\\FLAPPY Bird Game\\Game_Sprites\\6.png')).convert_alpha(),
+        pygame.image.load(path('Python\\Pygame Basic to Advanced\\FLAPPY Bird Game\\Game_Sprites\\7.png')).convert_alpha(),
+        pygame.image.load(path('Python\\Pygame Basic to Advanced\\FLAPPY Bird Game\\Game_Sprites\\8.png')).convert_alpha(),
+        pygame.image.load(path('Python\\Pygame Basic to Advanced\\FLAPPY Bird Game\\Game_Sprites\\9.png')).convert_alpha()
     )
 
     game_Sprites['logo'] = pygame.transform.scale((pygame.image.load(logo).convert_alpha()), (400, 500))
@@ -257,14 +257,14 @@ if __name__ == '__main__':
         pygame.transform.scale(pygame.image.load(pipe).convert_alpha(),                               (70, 500))
     )
 
-    game_Sounds['die'] = pygame.mixer.Sound(path('FLAPPY Bird Game\\Game_Audio\\die.wav'))
-    game_Sounds['hit'] = pygame.mixer.Sound(path('FLAPPY Bird Game\\Game_Audio\\hit.wav'))
-    game_Sounds['wing'] = pygame.mixer.Sound(path('FLAPPY Bird Game\\Game_Audio\\wing.wav'))
-    game_Sounds['point'] = pygame.mixer.Sound(path('FLAPPY Bird Game\\Game_Audio\\point.mp3'))
-    game_Sounds['swoosh'] = pygame.mixer.Sound(path('FLAPPY Bird Game\\Game_Audio\\swoosh.wav'))
-    game_Sounds['upgrade'] = pygame.mixer.Sound(path('FLAPPY Bird Game\\Game_Audio\\levelup.mp3'))
+    game_Sounds['die'] = pygame.mixer.Sound(path('Python\\Pygame Basic to Advanced\\FLAPPY Bird Game\\Game_Audio\\die.wav'))
+    game_Sounds['hit'] = pygame.mixer.Sound(path('Python\\Pygame Basic to Advanced\\FLAPPY Bird Game\\Game_Audio\\hit.wav'))
+    game_Sounds['wing'] = pygame.mixer.Sound(path('Python\\Pygame Basic to Advanced\\FLAPPY Bird Game\\Game_Audio\\wing.wav'))
+    game_Sounds['point'] = pygame.mixer.Sound(path('Python\\Pygame Basic to Advanced\\FLAPPY Bird Game\\Game_Audio\\point.mp3'))
+    game_Sounds['swoosh'] = pygame.mixer.Sound(path('Python\\Pygame Basic to Advanced\\FLAPPY Bird Game\\Game_Audio\\swoosh.wav'))
+    game_Sounds['upgrade'] = pygame.mixer.Sound(path('Python\\Pygame Basic to Advanced\\FLAPPY Bird Game\\Game_Audio\\levelup.mp3'))
 
-    backGround_Music = pygame.mixer.Sound(path('FLAPPY Bird Game\\Game_Audio\\background.mp3'))
+    backGround_Music = pygame.mixer.Sound(path('Python\\Pygame Basic to Advanced\\FLAPPY Bird Game\\Game_Audio\\background.mp3'))
 
     score = 0
     while True:
