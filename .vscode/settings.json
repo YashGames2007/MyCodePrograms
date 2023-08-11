@@ -16,8 +16,11 @@
         "WINWORD",
         "wordpad"
     ],
-    "python.formatting.provider": "black",
+    "python.formatting.provider": "none",
     "python.analysis.extraPaths": [
         "./Python/Advanced Python Programming/AI Projects/Jarvis Desktop Assistant/Openers"
-    ]
+    ],
+    "[python]": {
+        "editor.defaultFormatter": "ms-python.black-formatter"
+    }
 }
