@@ -1,73 +1,105 @@
-import pygame
+""" Main Script for Chess Game in Python """
 import sys
+import pygame
 
 import game_objects as obj
 import game_constants as const
 
-size = 82.5
-temp = pygame.transform.scale(pygame.image.load("Python\\Pygame Basic to Advanced\\Snake & Ladders Game\\Assets\\Dice Sprites\\One_dice.jpg").convert_alpha(), (size, size))
 
-def welcomeScreen():
-    while True:
-        pygame.display.update()
-        obj.clock.tick(const.fps_Value)
-        obj.game_Window.fill(const.blue)
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                pygame.quit()
-                sys.exit()
-            if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_RETURN:
-                    gameLoop()
+class ChessGame:
+    """Main Handler Class for Chess Game."""
 
-def endScreen():
-    while True:
-        pygame.display.update()
-        obj.clock.tick(const.fps_Value)
-        obj.game_Window.fill(const.blue)
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                pygame.quit()
-                sys.exit()
-            if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_RETURN:
-                    gameLoop()
+    @classmethod
+    def welcome_screen(cls):
+        """
+        The function displays a welcome screen in a Pygame window and waits for the user to
+        press the Enter key to start the game  or close to end it.
 
-def gameLoop():
-    gameOver = False
-    obj.Token()
-    Game_Board = obj.Board()
-    Game_Board.reset_board()
+        :param cls: The parameter "cls" in the function "welcome_screen" is typically used as a
+        convention to refer to the class itself.
+        """
+        while True:
+            pygame.display.update()
+            obj.clock.tick(const.FPS_VALUE)
+            obj.game_Window.fill(const.blue)
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    pygame.quit()
+                    sys.exit()
+                if event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_RETURN:
+                        cls.game_loop()
 
-    while not gameOver:
-        pygame.display.update() # Updating Display.
-        obj.clock.tick(const.fps_Value) # Setting The FPS Value For The Game.
-        obj.game_Window.fill(const.background) # Filling The Display With Color.
-        obj.game_Window.blit(obj.Board.board, (obj.Board.board_padding/2, obj.Board.board_padding/2))
-        Game_Board.render_tokens()
-        
+    @classmethod
+    def end_screen(cls):
+        """
+        The function `end_screen` displays a blue screen and waits for the user to press the Enter
+        key to start the game loop or close to end it.
 
-        for event in pygame.event.get(): # Getting The Event In Pygame.
-            if event.type == pygame.QUIT: # Checking If The Close Button Is Pressed.
-                pygame.quit() # Quiting The Game...
-                sys.exit() # Exiting All Functions...
+        :param cls: The parameter "cls" in the function "end_screen" is typically used as a
+        convention to refer to the class itself.
+        """
+        while True:
+            pygame.display.update()
+            obj.clock.tick(const.FPS_VALUE)
+            obj.game_Window.fill(const.blue)
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    pygame.quit()
+                    sys.exit()
+                if event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_RETURN:
+                        cls.game_loop()
 
-            if event.type == pygame.MOUSEBUTTONDOWN: # Checking If Any Mouse Button Is Pressed.
-                if event.button == pygame.BUTTON_LEFT: # Checking If The Left Mouse Button Is Pressed.
-                    pass
-            if event.type == pygame.KEYDOWN: # Checking If Any Key Is Pressed.
-                if event.key == pygame.K_RETURN: # Checking If Enter(Return) Key Is Pressed.
-                    pass
+    @classmethod
+    def game_loop(cls):
+        """
+        The function `game_loop` is a loop that handles the main game logic and events, including
+        updating the display, handling mouse and keyboard events, and checking for game over
+        conditions.
 
-    if gameOver == True: #Checking If The Game Is Over.
-        endScreen() # Calling Ending Screen...
+        :param cls: The parameter "cls" is a reference to the class that the method belongs to.
+        It is used to access the class's attributes and methods within the method
+        """
 
-gameLoop() # Calling Welcome Screen...
+        game_over = False
+        obj.Token()
+        game_board = obj.Board()
+        game_board.reset_board()
 
-"""
+        while not game_over:
+            pygame.display.update()  # Updating Display.
+            obj.clock.tick(const.FPS_VALUE)  # Setting The FPS Value For The Game.
+            obj.game_Window.fill(const.background)  # Filling The Display With Color.
+            obj.game_Window.blit(
+                obj.Board.board,
+                (obj.Board.board_padding / 2, obj.Board.board_padding / 2),
+            )
+            game_board.render_tokens()
 
-TOP LEFT:       70, 70
-BOTTOM RIGHT:   732, 732
+            for event in pygame.event.get():  # Getting The Event In Pygame.
+                if (
+                    event.type == pygame.QUIT
+                ):  # Checking If The Close Button Is Pressed.
+                    pygame.quit()  # Quiting The Game...
+                    sys.exit()  # Exiting All Functions...
+
+                if (
+                    event.type == pygame.MOUSEBUTTONDOWN
+                ):  # Checking If Any Mouse Button Is Pressed.
+                    if (
+                        event.button == pygame.BUTTON_LEFT
+                    ):  # Checking If The Left Mouse Button Is Pressed.
+                        pass
+                if event.type == pygame.KEYDOWN:  # Checking If Any Key Is Pressed.
+                    if (
+                        event.key == pygame.K_RETURN
+                    ):  # Checking If Enter(Return) Key Is Pressed.
+                        pass
+
+        if game_over:  # Checking If The Game Is Over.
+            cls.endScreen()  # Calling Ending Screen...
 
 
-"""
+if __name__ == "__main__":
+    ChessGame.game_loop()  # Calling Welcome Screen...
