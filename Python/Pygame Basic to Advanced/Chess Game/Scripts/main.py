@@ -66,16 +66,22 @@ class ChessGame:
         obj.Token()
         game_board = obj.Board()
         game_board.reset_board()
+        box_pos = (-1, -1)
 
         while not game_over:
-            pygame.display.update()  # Updating Display.
+            # pygame.display.update()  # Updating Display.
             obj.clock.tick(const.FPS_VALUE)  # Setting The FPS Value For The Game.
             obj.game_Window.fill(const.background)  # Filling The Display With Color.
             obj.game_Window.blit(
                 obj.Board.board,
                 (obj.Board.board_padding / 2, obj.Board.board_padding / 2),
             )
+            if box_pos != (-1, -1):
+                game_board.draw_box(box_pos)
+
+            # game_board.draw_dot((5, 5))
             game_board.render_tokens()
+            pygame.display.update()
 
             for event in pygame.event.get():  # Getting The Event In Pygame.
                 if (
@@ -84,17 +90,14 @@ class ChessGame:
                     pygame.quit()  # Quiting The Game...
                     sys.exit()  # Exiting All Functions...
 
-                if (
-                    event.type == pygame.MOUSEBUTTONDOWN
-                ):  # Checking If Any Mouse Button Is Pressed.
-                    if (
-                        event.button == pygame.BUTTON_LEFT
-                    ):  # Checking If The Left Mouse Button Is Pressed.
-                        pass
+                # Checking If Any Mouse Button Is Pressed.
+                if event.type == pygame.MOUSEBUTTONDOWN:
+                    # Checking If The Left Mouse Button Is Pressed.
+                    if event.button == pygame.BUTTON_LEFT:
+                        box_pos = game_board.get_position(pygame.mouse.get_pos())
                 if event.type == pygame.KEYDOWN:  # Checking If Any Key Is Pressed.
-                    if (
-                        event.key == pygame.K_RETURN
-                    ):  # Checking If Enter(Return) Key Is Pressed.
+                    # Checking If Enter(Return) Key Is Pressed.
+                    if event.key == pygame.K_RETURN:
                         pass
 
         if game_over:  # Checking If The Game Is Over.

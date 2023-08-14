@@ -77,15 +77,15 @@ class Token:
         game window at the specified position with an offset.
 
         :param cls: The parameter `cls` is a reference to the class that the method `render` belongs
-        to. It is commonly used as a convention to refer to the class itself within a class method. 
+        to. It is commonly used as a convention to refer to the class itself within a class method.
         However, in the given code snippet, the parameter `cls` is not used, so it can be safely
-        :param token_name: The `token_name` parameter is a string that represents the name of the 
+        :param token_name: The `token_name` parameter is a string that represents the name of the
         token to be rendered
         :type token_name: str
-        :param pos_x: The `pos_x` parameter represents the x-coordinate of the position where the 
+        :param pos_x: The `pos_x` parameter represents the x-coordinate of the position where the
         token will be rendered on the game board
         :type pos_x: int
-        :param pos_y: The parameter `pos_y` represents the y-coordinate of the position where the 
+        :param pos_y: The parameter `pos_y` represents the y-coordinate of the position where the
         token will be rendered on the game window
         :type pos_y: int
         """
@@ -100,7 +100,8 @@ class Token:
 
 
 class Board:
-    """ The Board class represents a game board. """
+    """The Board class represents a game board."""
+
     board_padding = 50  # Making the board 50 pixel smaller than game_Window
     board = object_loader("chess board")
 
@@ -111,15 +112,15 @@ class Board:
     def move_token(self, token_name: str, pos_from: tuple, pos_to: tuple) -> None:
         """
         The function moves a token from one position on a token board to another position.
-        
+
         :param token_name: The name of the token that you want to move
         :type token_name: str
-        :param pos_from: The `pos_from` parameter is a tuple representing the current position of 
-        the token on the board. It contains two values: the row index and the column index of the 
+        :param pos_from: The `pos_from` parameter is a tuple representing the current position of
+        the token on the board. It contains two values: the row index and the column index of the
         token's current position
         :type pos_from: tuple
         :param pos_to: The `pos_to` parameter is a tuple representing the position where the token
-        should be moved to. It contains two elements: the row index and the column index of the 
+        should be moved to. It contains two elements: the row index and the column index of the
         position
         :type pos_to: tuple
         """
@@ -129,7 +130,7 @@ class Board:
 
     def render_tokens(self):
         """
-        The function `render_tokens` iterates over the `token_board` and calls the `render` method 
+        The function `render_tokens` iterates over the `token_board` and calls the `render` method
         of each non-empty token.
         """
         # print(self.token_board)
@@ -142,7 +143,7 @@ class Board:
 
     def reset_board(self):
         """
-        The function `reset_board` sets up the initial positions of the pawns, rocks, knights, 
+        The function `reset_board` sets up the initial positions of the pawns, rocks, knights,
         bishops, queens, and kings on a chessboard.
         """
         for color in const.colors:
@@ -159,3 +160,63 @@ class Board:
             # Setting Queens & Kings positions...
             self.token_board[3][layer[0]] = f"{color} queen"
             self.token_board[4][layer[0]] = f"{color} king"
+
+    def draw_box(self, pos: tuple[int]):
+        """
+        The function `draw_box` draws a rectangular box on a pygame board at a specified position.
+
+        :param pos: The `pos` parameter is a tuple of two integers representing the position of the 
+        box on the game board. The first integer represents the row index, and the second integer
+        represents the column index
+        :type pos: tuple[int]
+        """
+        pygame.draw.rect(
+            self.board,
+            const.pos_marker,
+            [
+                const.board_positions[pos[0]][pos[1]][0] + const.BOX_OFSET,
+                const.board_positions[pos[0]][pos[1]][1] + const.BOX_OFSET,
+                const.BOX_SIZE,
+                const.BOX_SIZE,
+            ],
+            const.BOX_WIDTH,
+        )
+
+    def draw_dot(self, pos: tuple[int]):
+        """
+        The function `draw_dot` draws a dot on a pygame board at a specified position.
+
+        :param pos: The `pos` parameter is a tuple of two integers representing the position of the 
+        dot on the game board. The first integer represents the row index, and the second integer 
+        represents the column index
+        :type pos: tuple[int]
+        """
+        pygame.draw.circle(
+            self.board,
+            const.pos_marker,
+            [
+                const.board_positions[pos[0]][pos[1]][0] + const.DOT_OFSET,
+                const.board_positions[pos[0]][pos[1]][1] + const.DOT_OFSET,
+            ],
+            const.DOT_RADIUS,
+            const.DOT_WIDTH,
+        )
+
+    def get_position(self, cursor_position: tuple[int]) -> tuple[int]:
+        """
+        The function that detects the board position where user has clicked.
+
+        :param cursor_position: The current cursor position where user has clicked.
+        :type token_name: tuple[int]
+        """
+        for i in range(8):
+            for j in range(8):
+                current = const.board_positions[i][j]
+                right = const.board_positions[i + 1][j]
+                down = const.board_positions[i][j + 1]
+
+                if current[0] <= cursor_position[0] < right[0]:
+                    if current[1] <= cursor_position[1] < down[1]:
+                        print(f"({i}, {j}): {self.token_board[i][j]}")
+                        return (i, j)
+        return (-1, -1)

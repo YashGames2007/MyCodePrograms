@@ -23,5 +23,5 @@
     "[python]": {
         "editor.defaultFormatter": "ms-python.black-formatter"
     },
-    "docwriter.progress.trackMethods": true
+    "docwriter.progress.trackMethods": false
 }

@@ -37,13 +37,22 @@ tokens_ofset = {
     "king": (10, -56),
 }
 
-block_locations = [67.5, 151, 235.5, 317, 401.5, 484, 567.5, 651]
+block_locations = [67.5, 151, 235.5, 317, 401.5, 484, 567.5, 651, 734.5]
 board_positions = [[(x, y) for y in block_locations] for x in block_locations]
 
 # Creating Game Constant Variables...
 SCREEN_WIDTH = 800
 SCREEN_HEIGHT = 800
-FPS_VALUE = 1
+FPS_VALUE = 10
+
+BOX_SIZE = 80
+BOX_WIDTH = 3
+BOX_OFSET = -23
+
+DOT_RADIUS = 7
+DOT_WIDTH = 0
+DOT_OFSET = 15
+
 
 # Adding Some Colors...
 white = (255, 255, 255)
@@ -52,3 +61,4 @@ red = (255, 0, 0)
 green = (0, 255, 0)
 blue = (0, 0, 255)
 background = (255, 191, 141)
+pos_marker = (75, 155, 15)
