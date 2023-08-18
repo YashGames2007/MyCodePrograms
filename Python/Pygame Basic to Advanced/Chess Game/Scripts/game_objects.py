@@ -104,6 +104,8 @@ class Board:
 
     board_padding = 50  # Making the board 50 pixel smaller than game_Window
     board = object_loader("chess board")
+    box = object_loader("position box")
+    dot = object_loader("position dot")
 
     def __init__(self) -> None:
         Token.init()
@@ -165,29 +167,23 @@ class Board:
         """
         The function `draw_box` draws a rectangular box on a pygame board at a specified position.
 
-        :param pos: The `pos` parameter is a tuple of two integers representing the position of the 
+        :param pos: The `pos` parameter is a tuple of two integers representing the position of the
         box on the game board. The first integer represents the row index, and the second integer
         represents the column index
         :type pos: tuple[int]
         """
-        pygame.draw.rect(
-            self.board,
-            const.pos_marker,
-            [
-                const.board_positions[pos[0]][pos[1]][0] + const.BOX_OFSET,
-                const.board_positions[pos[0]][pos[1]][1] + const.BOX_OFSET,
-                const.BOX_SIZE,
-                const.BOX_SIZE,
-            ],
-            const.BOX_WIDTH,
-        )
+        game_Window.blit(self.box, (
+            const.board_positions[pos[0]][pos[1]][0] + const.BOX_OFSET,
+            const.board_positions[pos[0]][pos[1]][1] + const.BOX_OFSET,
+        ))
+        
 
     def draw_dot(self, pos: tuple[int]):
         """
         The function `draw_dot` draws a dot on a pygame board at a specified position.
 
-        :param pos: The `pos` parameter is a tuple of two integers representing the position of the 
-        dot on the game board. The first integer represents the row index, and the second integer 
+        :param pos: The `pos` parameter is a tuple of two integers representing the position of the
+        dot on the game board. The first integer represents the row index, and the second integer
         represents the column index
         :type pos: tuple[int]
         """
@@ -220,3 +216,11 @@ class Board:
                         print(f"({i}, {j}): {self.token_board[i][j]}")
                         return (i, j)
         return (-1, -1)
+
+    def show_board(self):
+        # clock.tick(const.FPS_VALUE)  # Setting The FPS Value For The Game.
+        game_Window.fill(const.background)  # Filling The Display With Color.
+        game_Window.blit(
+            self.board,
+            (self.board_padding / 2, self.board_padding / 2),
+        )

@@ -10,7 +10,11 @@ tokens = ["pawn", "rock", "knight", "bishop", "queen", "king"]
 layers = {"white": [7, 6], "black": [0, 1]}
 
 
-object_locations = {"chess board": os.path.join(ROOT_DIR, "Assets/board.jpg")}
+object_locations = {
+    "chess board": os.path.join(ROOT_DIR, "Assets/board.jpg"),
+    "position box": os.path.join(ROOT_DIR, "Assets/box.png"),
+    "position dot": os.path.join(ROOT_DIR, "Assets/dot.png"),
+}
 # Coping Token Locations in the object_locations dict
 for color in colors:
     for token in tokens:
@@ -26,6 +30,8 @@ object_sizes = {
     "queen": (9.9, 19.4),
     "king": (9.7, 18.8),
     "chess board": (115, 115),
+    "position box": (13, 13),
+    "position dot": (7, 7),
 }
 
 tokens_ofset = {
@@ -47,7 +53,7 @@ FPS_VALUE = 10
 
 BOX_SIZE = 80
 BOX_WIDTH = 3
-BOX_OFSET = -23
+BOX_OFSET = 0
 
 DOT_RADIUS = 7
 DOT_WIDTH = 0
