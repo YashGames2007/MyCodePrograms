@@ -67,7 +67,10 @@ class ChessGame:
         game_board = obj.Board()
         game_board.reset_board()
         game_board.move_token((0, 0), (3, 3))
-        box_pos = (-1, -1)
+        selected_pos = (-1, -1)
+        token_pos = (-1, -1)
+        available_moves = []
+        is_selected = False
 
         while not game_over:
             obj.clock.tick(const.FPS_VALUE)
@@ -76,8 +79,15 @@ class ChessGame:
             game_board.show_board()
             game_board.render_tokens()
 
-            if box_pos != (-1, -1):
-                game_board.show_moves(box_pos)
+            if is_selected and selected_pos != token_pos:
+                game_board.move_token(token_pos, selected_pos)
+                selected_pos = (-1, -1)
+                is_selected = False
+
+            elif selected_pos != (-1, -1):
+                available_moves = game_board.show_moves(selected_pos)
+                token_pos = selected_pos
+                is_selected = bool(available_moves)
                 # box_pos = (-1, -1)
 
 
@@ -94,9 +104,9 @@ class ChessGame:
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     # Checking If The Left Mouse Button Is Pressed.
                     if event.button == pygame.BUTTON_LEFT:
-                        box_pos = (-1, -1)
+                        selected_pos = (-1, -1)
                         # game_board.show_board()
-                        box_pos = game_board.get_position(pygame.mouse.get_pos())
+                        selected_pos = game_board.get_position(pygame.mouse.get_pos())
                 if event.type == pygame.KEYDOWN:  # Checking If Any Key Is Pressed.
                     # Checking If Enter(Return) Key Is Pressed.
                     if event.key == pygame.K_RETURN:
