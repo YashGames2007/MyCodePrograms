@@ -1,6 +1,7 @@
 """ All constants related to game is present in ths file. """
 
 import os
+import pygame
 
 ROOT_DIR = "Python/Pygame Basic to Advanced/Chess Game/"
 
@@ -83,3 +84,50 @@ green = (0, 255, 0)
 blue = (0, 0, 255)
 background = (255, 191, 141)
 pos_marker = (75, 155, 15)
+
+
+# Initializing Pygame Functions and Attributes...
+# pygame.init()
+pygame.display.init()
+
+clock = pygame.time.Clock()
+game_Window = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+pygame.display.set_caption("Chess - YashGames2007")
+
+
+def image(path: str, size: tuple, scale: float) -> pygame.Surface:
+    """
+    The function takes an image file path, size tuple, and scale
+    factor as input, and returns a scaled pygame Surface object of the image.
+
+    :param path: The path parameter is a string that
+    represents the file path of the image file you want to load
+    :type path: str
+
+    :param size: The size parameter is a tuple that
+    represents the desired width and height of the image
+    :type size: tuple
+
+    :param scale: The scale parameter is a float value that
+    determines the scaling factor for the image.
+    It is used to resize the image by multiplying the original size with the scale value
+    :type scale: float
+    :return: a pygame.Surface object.
+    """
+    return pygame.transform.scale(
+        pygame.image.load(path).convert_alpha(), (size[0] * scale, size[1] * scale)
+    )
+
+def object_loader(name: str):
+    """
+    The function `object_loader` loads an image of an object based on its name and size.
+
+    :param name: The name parameter is a string that represents the name of the object to be loaded
+    :type name: str
+    :return: an image object.
+    """
+    return image(
+        object_locations[name],
+        object_sizes[name.replace("white ", "").replace("black ", "")],
+        OBJECT_SIZE_RATIO,
+    )

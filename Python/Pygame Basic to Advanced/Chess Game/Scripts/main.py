@@ -1,12 +1,12 @@
-""" Main Script for Chess Game in Python """
+""" Main User Interface Script for Chess Game in Python """
 import sys
 import pygame
 
-import game_objects as obj
+import chess_backend as chess
 import game_constants as const
 
 
-class ChessGame:
+class GameUI:
     """Main Handler Class for Chess Game."""
 
     @classmethod
@@ -20,8 +20,8 @@ class ChessGame:
         """
         while True:
             pygame.display.update()
-            obj.clock.tick(const.FPS_VALUE)
-            obj.game_Window.fill(const.blue)
+            const.clock.tick(const.FPS_VALUE)
+            const.game_Window.fill(const.blue)
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     pygame.quit()
@@ -41,8 +41,8 @@ class ChessGame:
         """
         while True:
             pygame.display.update()
-            obj.clock.tick(const.FPS_VALUE)
-            obj.game_Window.fill(const.blue)
+            const.clock.tick(const.FPS_VALUE)
+            const.game_Window.fill(const.blue)
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     pygame.quit()
@@ -63,31 +63,15 @@ class ChessGame:
         """
 
         game_over = False
-        obj.Token()
-        game_board = obj.Board()
-        game_board.reset_board()
-        game_board.move_token((0, 0), (3, 3))
         selected_pos = (-1, -1)
-        token_pos = (-1, -1)
-        available_moves = []
-        is_selected = False
+        chess_board = chess.ChessGame()
 
         while not game_over:
-            obj.clock.tick(const.FPS_VALUE)
+            const.clock.tick(const.FPS_VALUE)
             pygame.display.flip()
+            selected_pos, game_over = chess_board.play(selected_pos)
             # pygame.display.update()  # Updating Display.
-            game_board.show_board()
-            game_board.render_tokens()
 
-            if is_selected and selected_pos != token_pos:
-                game_board.move_token(token_pos, selected_pos)
-                selected_pos = (-1, -1)
-                is_selected = False
-
-            elif selected_pos != (-1, -1):
-                available_moves = game_board.show_moves(selected_pos)
-                token_pos = selected_pos
-                is_selected = bool(available_moves)
                 # box_pos = (-1, -1)
 
 
@@ -106,15 +90,15 @@ class ChessGame:
                     if event.button == pygame.BUTTON_LEFT:
                         selected_pos = (-1, -1)
                         # game_board.show_board()
-                        selected_pos = game_board.get_position(pygame.mouse.get_pos())
+                        selected_pos = pygame.mouse.get_pos()
                 if event.type == pygame.KEYDOWN:  # Checking If Any Key Is Pressed.
                     # Checking If Enter(Return) Key Is Pressed.
                     if event.key == pygame.K_RETURN:
                         pass
 
         if game_over:  # Checking If The Game Is Over.
-            cls.endScreen()  # Calling Ending Screen...
+            cls.end_screen()  # Calling Ending Screen...
 
 
 if __name__ == "__main__":
-    ChessGame.game_loop()  # Calling Welcome Screen...
+    GameUI.game_loop()  # Calling Welcome Screen...
