@@ -51,9 +51,28 @@ class Token:
         )
 
     @classmethod
-    def get_moves(
-        cls, token_board: list[list[int]], token_x: int, token_y: int
+    def get_moves(cls, token_board: list[list[int]], token_x: int, token_y: int
     ) -> list[tuple[int]]:
+        """
+        The function `get_moves` takes a token board, token coordinates, and returns a list of legal
+        moves for that token.
+        
+        :param cls: The parameter `cls` is a reference to the class itself. It is used to access 
+        class methods and attributes within the method
+        :param token_board: The `token_board` parameter is a 2-dimensional list representing the 
+        current state of the chessboard. Each element in the list represents a square on the board 
+        and can be one of the following values:
+        :type token_board: list[list[int]]
+        :param token_x: The parameter `token_x` represents the x-coordinate of the token on the 
+        board. It is an integer value
+        :type token_x: int
+        :param token_y: The parameter `token_y` represents the y-coordinate of the token on the 
+        token board
+        :type token_y: int
+        :return: The function `get_moves` returns a list of tuples representing the legal moves for 
+        a given token on a token board.
+        """
+
         legal_moves = []
         # Checking for Pawns
         for color, y_offset, pos in [("white pawn", -1, 6), ("black pawn", +1, 1)]:
@@ -124,12 +143,33 @@ class Token:
         return legal_moves
 
     @classmethod
-    def check_color(
-        cls,
+    def check_color(cls,
         token_board: list[list[int]],
         token1_pos: tuple[int],
         token2_pos: tuple[int],
     ) -> bool:
+        """
+        The `check_color` function checks if two tokens on a token board have the same color.
+        
+        :param cls: The parameter `cls` is a reference to the class that the method belongs to. It 
+        is not used in the method implementation provided
+        :param token_board: The `token_board` parameter is a 2-dimensional list representing the 
+        game board. Each element in the list represents a token on the board. The value of each 
+        element is an integer representing the color of the token. If a token is not present at a 
+        particular position, the value will be `
+        :type token_board: list[list[int]]
+        :param token1_pos: The `token1_pos` parameter is a tuple of two integers representing the
+        position of the first token on the `token_board`. The first integer represents the row index
+        and the second integer represents the column index
+        :type token1_pos: tuple[int]
+        :param token2_pos: The `token2_pos` parameter is a tuple representing the position of the 
+        second token on the `token_board`. It contains two integers, where the first integer 
+        represents the row index and the second integer represents the column index of the token on 
+        the board
+        :type token2_pos: tuple[int]
+        :return: a boolean value.
+        """
+
         token1 = token_board[token1_pos[0]][token1_pos[1]]
         token2 = token_board[token2_pos[0]][token2_pos[1]]
         if token1 is None or token2 is None:

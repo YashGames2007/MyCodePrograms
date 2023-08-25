@@ -75,6 +75,18 @@ class Board:
             self.token_board[4][layer[0]] = f"{color} king"
 
     def draw_box(self, pos: tuple[int], color: str = "green") -> None:
+        """
+        The `draw_box` function is used to draw a colored box on a game window at a specified 
+        position.
+
+        :param pos: The `pos` parameter is a tuple of two integers representing the position of the 
+        box on the game board. The first integer represents the row index and the second integer 
+        represents the column index
+        :type pos: tuple[int]
+        :param color: The "color" parameter is a string that represents the color of the box to be
+        drawn. It has a default value of "green" if no color is specified, defaults to green
+        :type color: str (optional)
+        """
         const.game_Window.blit(
             self.box[color],
             (
@@ -84,6 +96,18 @@ class Board:
         )
 
     def draw_dot(self, pos: tuple[int], color: str = "green") -> None:
+        """
+        The function `draw_dot` is used to draw a dot on a game window at a specified position with 
+        an optional color.
+        
+        :param pos: The `pos` parameter is a tuple of two integers representing the position of the 
+        dot on the game board. The first integer represents the row index and the second integer 
+        represents the column index
+        :type pos: tuple[int]
+        :param color: The "color" parameter is a string that represents the color of the dot to be
+        drawn. It has a default value of "green" if no color is specified, defaults to green
+        :type color: str (optional)
+        """
         const.game_Window.blit(
             self.dot[color],
             (
@@ -111,6 +135,9 @@ class Board:
         return (-1, -1)
 
     def show_board(self):
+        """
+        The function "show_board" fills the display with color and blits the board onto the display.
+        """
         # clock.tick(const.FPS_VALUE)  # Setting The FPS Value For The Game.
         const.game_Window.fill(const.background)  # Filling The Display With Color.
         const.game_Window.blit(
@@ -119,6 +146,17 @@ class Board:
         )
 
     def show_moves(self, token_pos: tuple[int]) -> list[tuple[int]]:
+        """
+        The `show_moves` function takes a token position as input and returns a list of possible 
+        moves for that token, while also visually rendering the moves on a board.
+        
+        :param token_pos: The `token_pos` parameter is a tuple of two integers representing the 
+        position of a token on the token board. The first integer represents the x-coordinate and 
+        the second integer represents the y-coordinate of the token
+        :type token_pos: tuple[int]
+        :return: The function `show_moves` returns a list of tuples, where each tuple represents a
+        possible move for a token on the token board.
+        """
         token_x, token_y = token_pos
         if self.token_board[token_x][token_y] is None:
             return []
