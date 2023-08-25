@@ -23,5 +23,6 @@
     "[python]": {
         "editor.defaultFormatter": "ms-python.black-formatter"
     },
-    "docwriter.progress.trackMethods": false
+    "docwriter.progress.trackMethods": false,
+    "vscode_custom_css.imports": [],
 }

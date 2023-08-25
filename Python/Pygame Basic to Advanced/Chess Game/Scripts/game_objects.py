@@ -90,13 +90,99 @@ class Token:
         :type pos_y: int
         """
         position = const.board_positions[pos_x][pos_y]
-        ofset = const.tokens_ofset[
+        offset = const.tokens_offset[
             token_name.replace("white ", "").replace("black ", "")
         ]
         game_Window.blit(
             Token.game_tokens[token_name],
-            (position[0] + ofset[0], position[1] + ofset[1]),
+            (position[0] + offset[0], position[1] + offset[1]),
         )
+
+    @classmethod
+    def get_moves(
+        cls, token_board: list[list[int]], token_x: int, token_y: int
+    ) -> list[tuple[int]]:
+        legal_moves = []
+        # Checking for Pawns
+        for color, y_offset, pos in [("white pawn", -1, 6), ("black pawn", +1, 1)]:
+            if token_board[token_x][token_y] == color:
+                if 0 <= (token_y + (1 * y_offset)) <= 7:
+                    if token_board[token_x][token_y + (1 * y_offset)] is None:
+                        # For 1st forward move
+                        legal_moves.append((token_x, token_y + (1 * y_offset)))
+                        if (
+                            ((0 <= (token_y + (2 * y_offset)) <= 7))
+                            and token_board[token_x][token_y + (2 * y_offset)] is None
+                            and token_y == pos
+                        ):
+                            # For 2nd forward move
+                            # (Only applies when token is at its initial position)
+                            legal_moves.append((token_x, token_y + (2 * y_offset)))
+
+                    for x_offset in [+1, -1]:
+                        if (
+                            (0 <= (token_x + x_offset) <= 7)
+                            and (
+                                token_board[token_x + x_offset][
+                                    token_y + (1 * y_offset)
+                                ]
+                                is not None
+                            )
+                            and (
+                                not cls.check_color(
+                                    token_board,
+                                    (token_x, token_y),
+                                    (token_x + x_offset, token_y + (1 * y_offset)),
+                                )
+                            )
+                        ):
+                            # For right and left killing positions
+                            legal_moves.append(
+                                (token_x + x_offset, token_y + (1 * y_offset))
+                            )
+
+        for token, moves in (
+            (token, moves)
+            for token, moves in const.tokens_moves.items()
+            if token in token_board[token_x][token_y]
+        ):
+            # Checking for Knights or Kings
+            if token in ["knight", "king"]:
+                for move in moves:
+                    _x, _y = token_x + move[0], token_y + move[1]
+                    if 0 <= _x <= 7 and 0 <= _y <= 7:
+                        if not cls.check_color(
+                            token_board, (token_x, token_y), (_x, _y)
+                        ):
+                            legal_moves.append((_x, _y))
+            else:
+                for move in moves:
+                    _x, _y = token_x + move[0], token_y + move[1]
+                    while 0 <= _x <= 7 and 0 <= _y <= 7:
+                        if token_board[_x][_y] is None:
+                            legal_moves.append((_x, _y))
+                            continue
+                        if not cls.check_color(
+                            token_board, (token_x, token_y), (_x, _y)
+                        ):
+                            legal_moves.append((_x, _y))
+                            break
+        return legal_moves
+
+    @classmethod
+    def check_color(
+        cls,
+        token_board: list[list[int]],
+        token1_pos: tuple[int],
+        token2_pos: tuple[int],
+    ) -> bool:
+        token1 = token_board[token1_pos[0]][token1_pos[1]]
+        token2 = token_board[token2_pos[0]][token2_pos[1]]
+        if token1 is None or token2 is None:
+            return False
+        if token1.split(" ")[0] == token2.split(" ")[0]:
+            return True
+        return False
 
 
 class Board:
@@ -104,19 +190,24 @@ class Board:
 
     board_padding = 50  # Making the board 50 pixel smaller than game_Window
     board = object_loader("chess board")
-    box = object_loader("position box")
-    dot = object_loader("position dot")
 
     def __init__(self) -> None:
         Token.init()
         self.token_board = [[None for x in range(8)] for y in range(8)]
 
-    def move_token(self, token_name: str, pos_from: tuple, pos_to: tuple) -> None:
+        self.box = {
+            "green": object_loader("position box"),
+            "red": object_loader("position box red"),
+        }
+        self.dot = {
+            "green": object_loader("position dot"),
+            "red": object_loader("position dot red"),
+        }
+
+    def move_token(self, pos_from: tuple, pos_to: tuple) -> None:
         """
         The function moves a token from one position on a token board to another position.
 
-        :param token_name: The name of the token that you want to move
-        :type token_name: str
         :param pos_from: The `pos_from` parameter is a tuple representing the current position of
         the token on the board. It contains two values: the row index and the column index of the
         token's current position
@@ -126,9 +217,9 @@ class Board:
         position
         :type pos_to: tuple
         """
-        if self.token_board[pos_from[0]][pos_from[1]] == token_name:
-            self.token_board[pos_from[0]][pos_from[1]] = None
-            self.token_board[pos_to[0]][pos_to[1]] = token_name
+        token_name = self.token_board[pos_from[0]][pos_from[1]]
+        self.token_board[pos_from[0]][pos_from[1]] = None
+        self.token_board[pos_to[0]][pos_to[1]] = token_name
 
     def render_tokens(self):
         """
@@ -163,39 +254,22 @@ class Board:
             self.token_board[3][layer[0]] = f"{color} queen"
             self.token_board[4][layer[0]] = f"{color} king"
 
-    def draw_box(self, pos: tuple[int]):
-        """
-        The function `draw_box` draws a rectangular box on a pygame board at a specified position.
+    def draw_box(self, pos: tuple[int], color: str = "green") -> None:
+        game_Window.blit(
+            self.box[color],
+            (
+                const.board_positions[pos[0]][pos[1]][0] + const.BOX_OFFSET,
+                const.board_positions[pos[0]][pos[1]][1] + const.BOX_OFFSET,
+            ),
+        )
 
-        :param pos: The `pos` parameter is a tuple of two integers representing the position of the
-        box on the game board. The first integer represents the row index, and the second integer
-        represents the column index
-        :type pos: tuple[int]
-        """
-        game_Window.blit(self.box, (
-            const.board_positions[pos[0]][pos[1]][0] + const.BOX_OFSET,
-            const.board_positions[pos[0]][pos[1]][1] + const.BOX_OFSET,
-        ))
-        
-
-    def draw_dot(self, pos: tuple[int]):
-        """
-        The function `draw_dot` draws a dot on a pygame board at a specified position.
-
-        :param pos: The `pos` parameter is a tuple of two integers representing the position of the
-        dot on the game board. The first integer represents the row index, and the second integer
-        represents the column index
-        :type pos: tuple[int]
-        """
-        pygame.draw.circle(
-            self.board,
-            const.pos_marker,
-            [
-                const.board_positions[pos[0]][pos[1]][0] + const.DOT_OFSET,
-                const.board_positions[pos[0]][pos[1]][1] + const.DOT_OFSET,
-            ],
-            const.DOT_RADIUS,
-            const.DOT_WIDTH,
+    def draw_dot(self, pos: tuple[int], color: str = "green") -> None:
+        game_Window.blit(
+            self.dot[color],
+            (
+                const.board_positions[pos[0]][pos[1]][0] + const.DOT_OFFSET,
+                const.board_positions[pos[0]][pos[1]][1] + const.DOT_OFFSET,
+            ),
         )
 
     def get_position(self, cursor_position: tuple[int]) -> tuple[int]:
@@ -224,3 +298,26 @@ class Board:
             self.board,
             (self.board_padding / 2, self.board_padding / 2),
         )
+
+    def show_moves(self, token_pos: tuple[int]) -> list[tuple[int]]:
+        token_x, token_y = token_pos
+        if self.token_board[token_x][token_y] is None:
+            return []
+
+        moves = Token.get_moves(self.token_board, token_x, token_y)
+
+        if not moves:
+            self.draw_box(token_pos, "red")
+            self.render_tokens()
+        else:
+            self.draw_box(token_pos)
+            self.render_tokens()
+
+            for move in moves:
+                _x, _y = move
+                if self.token_board[_x][_y] is not None:
+                    self.draw_dot(move, "red")
+                else:
+                    self.draw_dot(move)
+
+        return moves

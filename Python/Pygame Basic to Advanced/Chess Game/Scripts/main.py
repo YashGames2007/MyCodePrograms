@@ -66,6 +66,7 @@ class ChessGame:
         obj.Token()
         game_board = obj.Board()
         game_board.reset_board()
+        game_board.move_token((3, 0), (3, 3))
         box_pos = (-1, -1)
 
         while not game_over:
@@ -73,11 +74,12 @@ class ChessGame:
             pygame.display.flip()
             # pygame.display.update()  # Updating Display.
             game_board.show_board()
-            if box_pos != (-1, -1):
-                game_board.draw_box(box_pos)
-                # box_pos = (-1, -1)
-            
             game_board.render_tokens()
+
+            if box_pos != (-1, -1):
+                game_board.show_moves(box_pos)
+                # box_pos = (-1, -1)
+
 
             # game_board.draw_dot((5, 5))
 

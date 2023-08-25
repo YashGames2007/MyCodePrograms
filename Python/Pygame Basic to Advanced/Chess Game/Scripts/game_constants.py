@@ -13,7 +13,9 @@ layers = {"white": [7, 6], "black": [0, 1]}
 object_locations = {
     "chess board": os.path.join(ROOT_DIR, "Assets/board.jpg"),
     "position box": os.path.join(ROOT_DIR, "Assets/box.png"),
+    "position box red": os.path.join(ROOT_DIR, "Assets/box_red.png"),
     "position dot": os.path.join(ROOT_DIR, "Assets/dot.png"),
+    "position dot red": os.path.join(ROOT_DIR, "Assets/dot_red.png"),
 }
 # Coping Token Locations in the object_locations dict
 for color in colors:
@@ -31,16 +33,29 @@ object_sizes = {
     "king": (9.7, 18.8),
     "chess board": (115, 115),
     "position box": (13, 13),
-    "position dot": (7, 7),
+    "position box red": (13, 13),
+    "position dot": (2.5, 2.5),
+    "position dot red": (2.5, 2.5),
 }
 
-tokens_ofset = {
+tokens_offset = {
     "pawn": (12, -95),
     "rock": (9, -85),
     "knight": (10, -95),
     "bishop": (10, -77),
     "queen": (10, -60),
     "king": (10, -56),
+}
+
+tokens_moves = {
+    "rock": [(+1, 0), (-1, 0), (0, +1), (0, -1)],
+    "knight": [ (+2, +1), (+2, -1), (-2, +1), (-2, -1), 
+               (+1, +2), (+1, -2), (-1, +2), (-1, -2)],
+    "bishop": [(+1, +1), (+1, -1), (-1, +1), (-1, -1)],
+    "queen": [(+1, +1), (+1, 0), (+1, -1), (-1, +1), 
+              (-1, 0), (-1, -1), (0, +1), (0, -1)],
+    "king": [(+1, +1), (+1, 0), (+1, -1), (-1, +1), 
+              (-1, 0), (-1, -1), (0, +1), (0, -1)],
 }
 
 block_locations = [67.5, 151, 235.5, 317, 401.5, 484, 567.5, 651, 734.5]
@@ -53,11 +68,11 @@ FPS_VALUE = 10
 
 BOX_SIZE = 80
 BOX_WIDTH = 3
-BOX_OFSET = 0
+BOX_OFFSET = 0
 
 DOT_RADIUS = 7
 DOT_WIDTH = 0
-DOT_OFSET = 15
+DOT_OFFSET = 32.5
 
 
 # Adding Some Colors...
