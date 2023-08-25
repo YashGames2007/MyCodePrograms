@@ -161,12 +161,14 @@ class Token:
                     while 0 <= _x <= 7 and 0 <= _y <= 7:
                         if token_board[_x][_y] is None:
                             legal_moves.append((_x, _y))
-                            continue
-                        if not cls.check_color(
-                            token_board, (token_x, token_y), (_x, _y)
-                        ):
-                            legal_moves.append((_x, _y))
+                        else:
+                            if not cls.check_color(
+                                token_board, (token_x, token_y), (_x, _y)
+                            ):
+                                legal_moves.append((_x, _y))
                             break
+                        _x += move[0]
+                        _y += move[1]
         return legal_moves
 
     @classmethod

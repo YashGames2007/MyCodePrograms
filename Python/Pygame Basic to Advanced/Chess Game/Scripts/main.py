@@ -66,7 +66,7 @@ class ChessGame:
         obj.Token()
         game_board = obj.Board()
         game_board.reset_board()
-        game_board.move_token((3, 0), (3, 3))
+        game_board.move_token((0, 0), (3, 3))
         box_pos = (-1, -1)
 
         while not game_over:
@@ -87,7 +87,7 @@ class ChessGame:
                 if (
                     event.type == pygame.QUIT
                 ):  # Checking If The Close Button Is Pressed.
-                    pygame.quit()  # Quiting The Game...
+                    pygame.quit()  # Quitting The Game...
                     sys.exit()  # Exiting All Functions...
 
                 # Checking If Any Mouse Button Is Pressed.
