@@ -6,6 +6,31 @@ $secondary-color: globals.$brand_color_2;
 $right_margin: 56%;
 $left_margin: 100%;
 
+.timeline {
+  padding: 10px 0px 10px 15px;
+	display: inline-block;
+	min-width: 32%;
+	width: max-content;
+	flex: auto;
+
+  a {
+    text-decoration: none;
+    font-weight: 500;
+    padding: 0px 0px 0px 10px;
+    font-size: 115%;
+    color: white;
+
+    :hover {
+      text-decoration: none;
+      color: rgb(0, 238, 255);
+    }
+  }
+
+  &-logo {
+    width: 60px;
+  }
+}
+
 .swiper-container-wrapper {
   &--timeline {
     .swiper-slide {
@@ -50,7 +75,7 @@ $left_margin: 100%;
       &:before {
         position: absolute;
         top: 2px;
-        left: -{$left_margin};
+        left: -($left_margin);
         width: $left_margin;
         height: 3px;
         background-color: $primary-color;

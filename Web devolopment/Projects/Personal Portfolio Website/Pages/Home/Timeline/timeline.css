@@ -1,3 +1,26 @@
+.timeline {
+  padding: 10px 0px 10px 15px;
+  display: inline-block;
+  min-width: 32%;
+  width: -moz-max-content;
+  width: max-content;
+  flex: auto;
+}
+.timeline a {
+  text-decoration: none;
+  font-weight: 500;
+  padding: 0px 0px 0px 10px;
+  font-size: 115%;
+  color: white;
+}
+.timeline a :hover {
+  text-decoration: none;
+  color: rgb(0, 238, 255);
+}
+.timeline-logo {
+  width: 60px;
+}
+
 .swiper-container-wrapper--timeline .swiper-slide {
   display: flex;
   background: rgb(0, 238, 255);

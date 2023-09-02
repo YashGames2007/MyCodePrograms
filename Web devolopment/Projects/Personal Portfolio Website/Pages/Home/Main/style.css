@@ -11,10 +11,15 @@ body {
 
 nav {
   display: flex;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  z-index: 2;
   justify-content: space-around;
   align-items: center;
   height: 40px;
-  background-color: rgba(0, 90, 255, 0.69);
+  width: 100%;
+  background-color: rgba(4, 67, 190, 0.75);
 }
 nav ul {
   display: flex;

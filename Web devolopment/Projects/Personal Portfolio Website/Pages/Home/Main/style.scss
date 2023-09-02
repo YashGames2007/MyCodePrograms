@@ -8,7 +8,7 @@ $color_1: rgb(238, 238, 238);
 $color_2: globals.$brand_color_3;
 $font-family_1: "Rubik", sans-serif;
 $background-color_1: rgb(14, 17, 49);
-$background-color_2: rgb(0 90 255 / 69%);
+$background-color_2: rgb(4, 67, 190, 75%);
 $background-color_3: rgb(157, 255, 255);
 $border-color_1: aqua;
 
@@ -23,9 +23,14 @@ body {
 }
 nav {
     display: flex;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    z-index: 2;
     justify-content: space-around;
     align-items: center;
     height: 40px;
+    width: 100%;
     background-color: $background-color_2;
     ul {
         display: flex;
