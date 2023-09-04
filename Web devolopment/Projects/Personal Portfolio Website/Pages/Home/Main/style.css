@@ -9,46 +9,6 @@ body {
   padding: 0;
 }
 
-nav {
-  display: flex;
-  overflow: hidden;
-  position: fixed;
-  top: 0;
-  z-index: 2;
-  justify-content: space-around;
-  align-items: center;
-  height: 40px;
-  width: 100%;
-  background-color: rgba(4, 67, 190, 0.75);
-}
-nav ul {
-  display: flex;
-  justify-content: center;
-}
-nav ul li {
-  list-style: none;
-  margin: 0 20px;
-}
-nav ul li a {
-  -webkit-text-decoration: double;
-          text-decoration: double;
-  font-weight: 500;
-  color: rgb(238, 238, 238);
-}
-nav ul li a:hover {
-  font-size: 1.02rem;
-  color: rgb(255, 154, 60);
-}
-
-.left {
-  font-size: 1.5rem;
-  font-weight: 500;
-}
-
-.right {
-  padding-top: 1%;
-}
-
 .switch-title {
   color: rgb(255, 255, 255);
 }
@@ -76,8 +36,22 @@ main {
 main hr {
   border: 0;
   background: rgb(159, 146, 231);
-  height: 1.2px;
-  margin: 40px 50px;
+  width: 96%;
+  margin: 4% 4%;
+}
+main .short-form {
+  display: none;
+}
+@media (max-width: 800px) {
+  main .short-form {
+    display: inline-block;
+  }
+  main .long-form {
+    display: none;
+  }
+}
+main .subline {
+  font-size: 2vmin;
 }
 
 .firstSection {
@@ -91,8 +65,8 @@ main hr {
 }
 
 .secondSection {
-  max-width: 80vw;
-  margin: 35px 75px;
+  max-width: 100%;
+  margin: 0% 3%;
 }
 .secondSection h1 {
   font-size: 1.6rem;
@@ -139,14 +113,30 @@ div .swipebox {
   border-color: aqua;
 }
 
-@media screen and (max-width: 500px) {
+.menu-icon {
+  color: white;
+  cursor: pointer;
+  display: none;
+}
+
+button {
+  font-size: 1rem;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 0.9rem;
+}
+
+@media screen and (max-width: 800px) {
   .firstSection {
     flex-direction: column-reverse;
   }
   .firstSection div {
     width: 70%;
   }
-  .leftSection {
-    font-size: 5.5vw;
+  .firstSection .leftSection {
+    font-size: 7.1vmin;
+  }
+  main .subline {
+    font-size: 3.5vmin;
   }
 }/*# sourceMappingURL=style.css.map */

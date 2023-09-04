@@ -13,136 +13,133 @@ $background-color_3: rgb(157, 255, 255);
 $border-color_1: aqua;
 
 body {
-    background-color: $background-color_1;
-    color: $normal_color;
-    font-family: $font-family_1;
+	background-color: $background-color_1;
+	color: $normal_color;
+	font-family: $font-family_1;
 }
 * {
-    margin: 0;
-    padding: 0;
-}
-nav {
-    display: flex;
-    overflow: hidden;
-    position: fixed;
-    top: 0;
-    z-index: 2;
-    justify-content: space-around;
-    align-items: center;
-    height: 40px;
-    width: 100%;
-    background-color: $background-color_2;
-    ul {
-        display: flex;
-        justify-content: center;
-        li {
-            list-style: none;
-            margin: 0 20px;
-            a {
-                text-decoration: double;
-                font-weight: 500;
-                color: $color_1;
-                &:hover {
-                    font-size: 1.02rem;
-                    color: $primary-color;
-                }
-            }
-        }
-    }
-}
-.left {
-    font-size: 1.5rem;
-    font-weight: 500;
-}
-.right {
-    padding-top: 1%;
+	margin: 0;
+	padding: 0;
 }
 .switch-title {
-    color: $normal_color;
+	color: $normal_color;
 }
 .form-control::placeholder {
-    color: $color_2;
+	color: $color_2;
 }
 .form-control::-ms-input-placeholder {
-    color: $color_2;
+	color: $color_2;
 }
 input.mail#mail_me {
-    border-color: $color_2;
-    background-color: globals.$brand_color_4;
+	border-color: $color_2;
+	background-color: globals.$brand_color_4;
 }
 main {
-    margin-bottom: 200px;
-    hr {
-        border: 0;
-        background: $color_2;
-        height: 1.2px;
-        margin: 40px 50px;
-    }
+	margin-bottom: 200px;
+	hr {
+		border: 0;
+		background: $color_2;
+		width: 96%;
+		margin: 4% 4%;
+	}
+	// Hide short text by default (resolution > 1200px)
+	.short-form {
+		display: none;
+	}
+
+	// When resolution <= 1200px, hide full text and show short text
+	@media (max-width: 800px) {
+		.short-form {
+			display: inline-block;
+		}
+		.long-form {
+			display: none;
+		}
+	}
+	.subline {
+		font-size: 2vmin;
+	}
 }
 .firstSection {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    margin: 110px 0;
-    > div {
-        width: 35%;
-    }
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	margin: 110px 0;
+	> div {
+		width: 35%;
+	}
 }
 .secondSection {
-    h1 {
-        font-size: 1.6rem;
-        color: $color_2;
-    }
-    max-width: 80vw;
-    margin: 35px 75px;
-    .box {
-        background: rgb(157, 255, 255);
-        width: 85vw;
-        height: 1.5px;
-        margin: 95px 0;
-        display: flex;
-    }
-    .vertical {
-        height: 75px;
-        width: 1px;
-        background-color: $background-color_3;
-        margin: 0 100px;
-    }
+	max-width: 100%;
+	margin: 0% 3%;
+	h1 {
+		font-size: 1.6rem;
+		color: $color_2;
+	}
+	.box {
+		background: rgb(157, 255, 255);
+		width: 85vw;
+		height: 1.5px;
+		margin: 95px 0;
+		display: flex;
+	}
+	.vertical {
+		height: 75px;
+		width: 1px;
+		background-color: $background-color_3;
+		margin: 0 100px;
+	}
 }
 .leftSection {
-    font-size: 3.3vw;
-    font-weight: 400;
+	font-size: 3.3vw;
+	font-weight: 400;
 }
 .rightSection {
-    img {
-        width: 110%;
-        margin: 35px 0;
-    }
+	img {
+		width: 110%;
+		margin: 35px 0;
+	}
 }
 .myName {
-    color: $secondary-color;
+	color: $secondary-color;
 }
 #element {
-    color: $primary-color;
+	color: $primary-color;
 }
 .grey {
-    color: $secondary-color;
+	color: $secondary-color;
 }
 div {
-    .swipebox {
-        border-width: 2px;
-        border-color: $border-color_1;
-    }
+	.swipebox {
+		border-width: 2px;
+		border-color: $border-color_1;
+	}
 }
 
-@media screen and (max-width: 500px) {
-    .firstSection {
-        flex-direction: column-reverse;
-    }
-    .firstSection div {
-        width: 70%;
-    }
-    .leftSection {
-        font-size: 5.5vw;
+.menu-icon {
+	color: white;
+	cursor: pointer;
+	display: none;
+}
+
+button {
+	font-size: 1rem;
+	border: 1px solid black;
+	border-radius: 5px;
+	padding: 0.9rem;
+}
+
+@media screen and (max-width: 800px) {
+	.firstSection {
+		flex-direction: column-reverse;
+		div {
+			width: 70%;
+		}
+		.leftSection {
+			font-size: 7.1vmin;
+		}
+	}
+    main .subline {
+        font-size: 3.5vmin;
     }
 }

@@ -3,8 +3,8 @@
 $primary-color: globals.$brand_color_1;
 $secondary-color: globals.$brand_color_2;
 
-$right_margin: 56%;
-$left_margin: 100%;
+$right_margin: 45%;
+$left_margin: 45%;
 
 .timeline {
   padding: 10px 0px 10px 15px;
@@ -36,7 +36,7 @@ $left_margin: 100%;
     .swiper-slide {
       display: flex;
       background: $secondary-color;
-      min-height: 300px;
+      min-height: 30vh;
       align-items: center;
       justify-content: center;
       border-radius: 10px;
@@ -52,7 +52,7 @@ $left_margin: 100%;
         border-radius: 10px;
         padding: 20px 20px;
         width: 99.5%;
-        height: 99.5%;
+        height: 99%;
       }
       &-active{
         .title{
@@ -84,7 +84,7 @@ $left_margin: 100%;
       &:after {
         position: absolute;
         top: 3px;
-        right: -#{$right_margin};
+        right: -($right_margin);
         width: $right_margin;
         height: 1px;
         background-color: $secondary-color;
@@ -122,7 +122,7 @@ $left_margin: 100%;
             position: absolute;
             top: calc(100% + 19px);
             right: 50%;
-            transform: translateX(50%) translateY(-50%);
+            transform: translateX(80%) translateY(-50%);
             width: 12px;
             height: 12px;
             background: $primary-color;
@@ -156,5 +156,26 @@ $left_margin: 100%;
         }
       }
     }
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .title {
+    a {
+      font-size: 4.5vw;
+    }
+  }
+  .timeline {
+    min-width: 0%;
+    padding: 1vw 2%;
+    margin: 0;
+    &-logo {
+      width: auto;
+      height: 10vw;
+    }
+  }
+
+  .swiper-container-wrapper--timeline .swiper-pagination-custom {
+    width: 75%
   }
 }

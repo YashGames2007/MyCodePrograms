@@ -24,7 +24,7 @@
 .swiper-container-wrapper--timeline .swiper-slide {
   display: flex;
   background: rgb(0, 238, 255);
-  min-height: 300px;
+  min-height: 30vh;
   align-items: center;
   justify-content: center;
   border-radius: 10px;
@@ -41,7 +41,7 @@
   border-radius: 10px;
   padding: 20px 20px;
   width: 99.5%;
-  height: 99.5%;
+  height: 99%;
 }
 .swiper-container-wrapper--timeline .swiper-slide-active .title {
   opacity: 1;
@@ -62,8 +62,8 @@
 .swiper-container-wrapper--timeline .swiper-pagination-progressbar:before {
   position: absolute;
   top: 2px;
-  left: -100%;
-  width: 100%;
+  left: -45%;
+  width: 45%;
   height: 3px;
   background-color: rgb(255, 154, 60);
   content: "";
@@ -71,8 +71,8 @@
 .swiper-container-wrapper--timeline .swiper-pagination-progressbar:after {
   position: absolute;
   top: 3px;
-  right: -56%;
-  width: 56%;
+  right: -45%;
+  width: 45%;
   height: 1px;
   background-color: rgb(0, 238, 255);
   content: "";
@@ -111,7 +111,7 @@
   position: absolute;
   top: calc(100% + 19px);
   right: 50%;
-  transform: translateX(50%) translateY(-50%);
+  transform: translateX(80%) translateY(-50%);
   width: 12px;
   height: 12px;
   background: rgb(255, 154, 60);
@@ -137,4 +137,22 @@
 }
 .swiper-container-wrapper--timeline .swiper-pagination-custom .swiper-pagination-switch.active ~ .swiper-pagination-switch .switch-title:after {
   background: rgb(0, 238, 255);
+}
+
+@media screen and (max-width: 500px) {
+  .title a {
+    font-size: 4.5vw;
+  }
+  .timeline {
+    min-width: 0%;
+    padding: 1vw 2%;
+    margin: 0;
+  }
+  .timeline-logo {
+    width: auto;
+    height: 10vw;
+  }
+  .swiper-container-wrapper--timeline .swiper-pagination-custom {
+    width: 75%;
+  }
 }/*# sourceMappingURL=timeline.css.map */

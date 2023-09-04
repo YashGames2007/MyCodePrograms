@@ -14,21 +14,21 @@
   padding-bottom: 50px;
 }
 
+div.row div {
+  margin-bottom: 20px;
+}
+
 .new_footer_top {
   padding: 50px 0px 270px;
   position: relative;
   overflow-x: hidden;
 }
-.new_footer_top .company_widget p {
+.new_footer_top p {
   font-size: 16px;
   font-weight: 300;
   line-height: 28px;
-  color: rgb(0, 238, 255);
+  color: #9f92c4;
   margin-bottom: 20px;
-}
-.new_footer_top .company_widget .f_subscribe_two .btn_get {
-  border-width: 1px;
-  margin-top: 20px;
 }
 .new_footer_top .f_widget.about-widget .f_list li {
   margin-bottom: 11px;
@@ -43,18 +43,22 @@
 .new_footer_top .f_social_icon a {
   width: 44px;
   height: 44px;
+  -webkit-text-decoration: double;
+          text-decoration: double;
   line-height: 43px;
   background: transparent;
-  border: 1px solid rgb(0, 238, 255);
+  color: rgb(109, 77, 139);
+  border: 1px solid rgb(109, 77, 139);
   font-size: 24px;
 }
 .new_footer_top .f_social_icon a:hover {
-  background: rgb(255, 154, 60);
-  border-color: #5e2ced;
-  color: white;
+  background: rgb(86, 44, 185);
+  color: #ff7c01;
+  border-color: rgb(86, 44, 185);
+  forced-color-adjust: auto;
 }
 .new_footer_top .f_social_icon a + a {
-  margin-left: 4px;
+  margin-bottom: 8px;
 }
 .new_footer_top .f-title {
   margin-bottom: 30px;
@@ -68,7 +72,7 @@
   height: 266px;
 }
 .new_footer_top .footer_bg .footer_bg_one {
-  background: url("https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEia0PYPxwT5ifToyP3SNZeQWfJEWrUENYA5IXM6sN5vLwAKvaJS1pQVu8mOFFUa_ET4JuHNTFAxKURFerJYHDUWXLXl1vDofYXuij45JZelYOjEFoCOn7E6Vxu0fwV7ACPzArcno1rYuVxGB7JY6G7__e4_KZW4lTYIaHSLVaVLzklZBLZnQw047oq5-Q/s16000/volks.gif") no-repeat center center;
+  background: url("../../Graphics/car-unscreen.gif") no-repeat center center;
   width: 330px;
   height: 105px;
   background-size: 100%;
@@ -77,15 +81,38 @@
   left: 30%;
   animation: myfirst 22s linear infinite;
 }
+@media screen and (max-width: 800px) {
+  .new_footer_top .footer_bg .footer_bg_one {
+    background: url("../../Graphics/volks.gif") no-repeat center center;
+    width: 100px;
+    height: 90px;
+    background-size: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 30%;
+    animation: myfirst 12s linear infinite;
+  }
+}
 .new_footer_top .footer_bg .footer_bg_two {
   background: url("https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhyLGwEUVwPK6Vi8xXMymsc-ZXVwLWyXhogZxbcXQYSY55REw_0D4VTQnsVzCrL7nsyjd0P7RVOI5NKJbQ75koZIalD8mqbMquP20fL3DxsWngKkOLOzoOf9sMuxlbyfkIBTsDw5WFUj-YJiI50yzgVjF8cZPHhEjkOP_PRTQXDHEq8AyWpBiJdN9SfQA/s16000/cyclist.gif") no-repeat center center;
   width: 88px;
-  height: 100px;
+  height: 120px;
   background-size: 100%;
   bottom: 0;
   left: 38%;
   position: absolute;
   animation: myfirst 30s linear infinite;
+}
+@media screen and (max-width: 800px) {
+  .new_footer_top .footer_bg .footer_bg_two {
+    width: 60px;
+    height: 90px;
+    background-size: 100%;
+    bottom: 0;
+    left: 38%;
+    position: absolute;
+    animation: myfirst 15s linear infinite;
+  }
 }
 
 .footer_bottom {
@@ -99,7 +126,7 @@
 .btn_get_two {
   box-shadow: none;
   background: #5e2ced;
-  border-color: #5e2ced;
+  border-color: rgb(86, 44, 185);
   color: #fff;
 }
 .btn_get_two:hover {
@@ -112,7 +139,7 @@
 .btn_get:hover {
   color: #fff;
   background: #6754e2;
-  border-color: #6754e2;
+  border-color: rgb(109, 77, 139);
   box-shadow: none;
 }
 
@@ -212,4 +239,10 @@ h5 {
 
 h6 {
   color: #4b505e;
+}
+
+@media screen and (max-width: 1100px) {
+  .new_footer_area {
+    width: 100%;
+  }
 }/*# sourceMappingURL=footer.css.map */

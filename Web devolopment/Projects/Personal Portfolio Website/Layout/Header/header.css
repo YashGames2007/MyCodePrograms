@@ -1,0 +1,125 @@
+header {
+  display: flex;
+}
+
+nav {
+  display: flex;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  z-index: 100;
+  justify-content: space-around;
+  align-items: center;
+  height: 40px;
+  width: 100%;
+  background-color: rgba(4, 67, 190, 0.75);
+}
+nav ul {
+  display: flex;
+  justify-content: center;
+}
+nav ul li {
+  list-style: none;
+  margin: 0 20px;
+}
+nav ul li a {
+  -webkit-text-decoration: double;
+          text-decoration: double;
+  font-weight: 500;
+  color: rgb(238, 238, 238);
+}
+nav ul li a:hover {
+  font-size: 102%;
+  color: rgb(255, 154, 60);
+}
+nav .left {
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+nav .left .profile {
+  width: 2rem;
+  margin: 0 5px;
+}
+nav .left a {
+  -webkit-text-decoration: double;
+          text-decoration: double;
+  color: rgb(238, 238, 238);
+}
+nav .left a:hover {
+  font-size: 102%;
+  color: rgb(255, 154, 60);
+}
+nav .right {
+  padding-top: 1.2rem;
+}
+
+@media screen and (max-width: 800px) {
+  nav .left {
+    font-size: 115%;
+  }
+  nav ul {
+    padding-left: 0;
+  }
+  nav ul li {
+    font-size: 86%;
+    margin: 0 1vmin;
+  }
+}
+@media screen and (max-width: 550px) {
+  nav {
+    overflow: hidden;
+    display: block;
+    height: -moz-fit-content;
+    height: fit-content;
+  }
+  nav .right {
+    float: none;
+  }
+  nav .left {
+    font-size: 5.5vmin;
+    float: none;
+    position: relative;
+    margin: 5% 0% -3% 0%;
+    text-align: center;
+  }
+  nav ul li {
+    font-size: 95%;
+    position: relative;
+  }
+}
+@media screen and (max-width: 350px) {
+  header {
+    display: flex;
+  }
+  nav {
+    display: flex;
+  }
+  .nav-bar {
+    position: absolute;
+    top: 3.7rem;
+    left: 0;
+    width: 100%;
+    background-color: rgba(4, 67, 190, 0.75);
+    text-align: center;
+    height: -moz-fit-content;
+    height: fit-content;
+  }
+  .nav-bar.responsive {
+    display: flow;
+    position: fixed;
+    margin-top: -21px;
+  }
+  nav ul {
+    display: block;
+  }
+  .menu-icon {
+    display: block;
+    z-index: 100;
+  }
+  button {
+    padding: 0.4rem;
+  }
+  .logo {
+    font-size: 1.4rem;
+  }
+}/*# sourceMappingURL=header.css.map */

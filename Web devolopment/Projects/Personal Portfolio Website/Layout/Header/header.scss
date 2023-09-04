@@ -1,0 +1,140 @@
+@use "../../Graphics/globals";
+
+$primary-color: globals.$brand_color_1;
+$secondary-color: globals.$brand_color_2;
+$normal_color: rgb(255, 255, 255);
+
+$color_1: rgb(238, 238, 238);
+$color_2: globals.$brand_color_3;
+$font-family_1: "Rubik", sans-serif;
+$background-color_1: rgb(14, 17, 49);
+$background-color_2: rgb(4, 67, 190, 75%);
+
+header {
+	display: flex;
+}
+nav {
+	display: flex;
+	overflow: hidden;
+	position: fixed;
+	top: 0;
+	z-index: 100;
+	justify-content: space-around;
+	align-items: center;
+	height: 40px;
+	width: 100%;
+	background-color: $background-color_2;
+	ul {
+		display: flex;
+		justify-content: center;
+		li {
+			list-style: none;
+			margin: 0 20px;
+			a {
+				text-decoration: double;
+				font-weight: 500;
+				color: $color_1;
+				&:hover {
+					font-size: 102%;
+					color: $primary-color;
+				}
+			}
+		}
+	}
+    .left {
+        font-size: 1.5rem;
+        font-weight: 500;
+        .profile {
+            width: 2rem;
+            margin: 0 5px;
+        }
+        a {
+            text-decoration: double;
+            color: $color_1;
+            &:hover {
+                font-size: 102%;
+                color: $primary-color;
+            }
+        }
+    }
+    .right {
+        padding-top: 1.2rem;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    nav {
+		.left {
+			font-size: 115%;
+		}
+		ul {
+			padding-left: 0;
+			li {
+				font-size: 86%;
+				margin: 0 1vmin;
+			}
+		}
+	}
+}
+@media screen and (max-width: 550px) {
+	nav {
+		overflow: hidden;
+		display: block;
+		height: fit-content;
+		.right {
+			float: none;
+		}
+		.left {
+			font-size: 5.5vmin;
+			float: none;
+			position: relative;
+			margin: 5% 0% -3% 0%;
+			text-align: center;
+		}
+		ul {
+			li {
+				font-size: 95%;
+				position: relative;
+			}
+		}
+	}
+}
+@media screen and (max-width: 350px) {
+	header {
+		display: flex;
+	}
+	nav {
+		display: flex;
+	}
+	.nav-bar {
+		position: absolute;
+		top: 3.7rem;
+		left: 0;
+		width: 100%;
+		background-color: $background-color_2;
+		text-align: center;
+		height: fit-content;
+	}
+
+	.nav-bar.responsive {
+		display: flow;
+		position: fixed;
+		margin-top: -21px;
+	}
+
+	nav ul {
+		display: block;
+	}
+
+	.menu-icon {
+		display: block;
+		z-index: 100;
+	}
+
+	button {
+		padding: 0.4rem;
+	}
+	.logo {
+		font-size: 1.4rem;
+	}
+}
