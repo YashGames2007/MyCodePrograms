@@ -3,7 +3,7 @@
 import os
 import pygame
 
-ROOT_DIR = "Python/Pygame Basic to Advanced/Chess Game/"
+ROOT_DIR = "D:Programming Files/Code/Python/Pygame Basic to Advanced/Chess Game/"
 
 OBJECT_SIZE_RATIO = 6.52174  # Constant term to change the objects size
 colors = ["white", "black"]
@@ -17,6 +17,7 @@ object_locations = {
     "position box red": os.path.join(ROOT_DIR, "Assets/box_red.png"),
     "position dot": os.path.join(ROOT_DIR, "Assets/dot.png"),
     "position dot red": os.path.join(ROOT_DIR, "Assets/dot_red.png"),
+    "check text": os.path.join(ROOT_DIR, "Assets/check.png"),
 }
 # Coping Token Locations in the object_locations dict
 for color in colors:
@@ -37,6 +38,7 @@ object_sizes = {
     "position box red": (13, 13),
     "position dot": (2.5, 2.5),
     "position dot red": (2.5, 2.5),
+    "check text": (23.76, 10),
 }
 
 tokens_offset = {
@@ -46,6 +48,7 @@ tokens_offset = {
     "bishop": (10, -77),
     "queen": (10, -60),
     "king": (10, -56),
+    "check text": (-object_sizes["check text"][0]/2, -object_sizes["check text"][1]/2),
 }
 
 tokens_moves = {
@@ -63,16 +66,12 @@ block_locations = [67.5, 151, 235.5, 317, 401.5, 484, 567.5, 651, 734.5]
 board_positions = [[(x, y) for y in block_locations] for x in block_locations]
 
 # Creating Game Constant Variables...
-SCREEN_WIDTH = 800
-SCREEN_HEIGHT = 800
+SCREEN_WIDTH = 122.6666503111133
+SCREEN_HEIGHT = 122.6666503111133
 FPS_VALUE = 10
 
-BOX_SIZE = 80
-BOX_WIDTH = 3
-BOX_OFFSET = 0
 
-DOT_RADIUS = 7
-DOT_WIDTH = 0
+BOX_OFFSET = 0
 DOT_OFFSET = 32.5
 
 
@@ -91,7 +90,7 @@ pos_marker = (75, 155, 15)
 pygame.display.init()
 
 clock = pygame.time.Clock()
-game_Window = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+game_Window = pygame.display.set_mode((SCREEN_WIDTH*OBJECT_SIZE_RATIO, SCREEN_HEIGHT*OBJECT_SIZE_RATIO))
 pygame.display.set_caption("Chess - YashGames2007")
 
 

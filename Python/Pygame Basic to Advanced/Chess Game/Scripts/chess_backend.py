@@ -17,12 +17,14 @@ class ChessGame:
         self.available_moves = []
         self.is_selected = False
         self.current_turn = "white"
+        self.check = False
 
     def shift_turn(self) -> None:
         """
         The function `shift_turn` changes the current turn from "white" to "black" or vice versa.
         """
         self.current_turn = "black" if self.current_turn == "white" else "white"
+    
 
     def play(self, cursor_pos) -> tuple[tuple[int], bool]:
         """
@@ -36,6 +38,9 @@ class ChessGame:
         selected_pos = self.game_board.get_position(cursor_pos)
         self.game_board.show_board()
         self.game_board.render_tokens()
+        
+        if self.check:
+            self.game_board.show_check()
 
         if (
             self.is_selected
@@ -47,6 +52,7 @@ class ChessGame:
             cursor_pos = (-1, -1)
             self.is_selected = False
             self.shift_turn()
+            self.check = self.game_board.is_checked(self.current_turn)
 
         elif selected_pos != (-1, -1):
             token = self.game_board.token_board[selected_pos[0]][selected_pos[1]]

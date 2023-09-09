@@ -115,7 +115,7 @@ class Token:
         for token, moves in (
             (token, moves)
             for token, moves in const.tokens_moves.items()
-            if token in token_board[token_x][token_y]
+            if token_board[token_x][token_y] is not None and token in token_board[token_x][token_y]
         ):
             # Checking for Knights or Kings
             if token in ["knight", "king"]:

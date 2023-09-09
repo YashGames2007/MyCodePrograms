@@ -11,6 +11,7 @@ class Board:
 
     board_padding = 50  # Making the board 50 pixel smaller than const.game_Window
     board = const.object_loader("chess board")
+    check_text = const.object_loader("check text")
 
     def __init__(self) -> None:
         Token.init()
@@ -76,11 +77,11 @@ class Board:
 
     def draw_box(self, pos: tuple[int], color: str = "green") -> None:
         """
-        The `draw_box` function is used to draw a colored box on a game window at a specified 
+        The `draw_box` function is used to draw a colored box on a game window at a specified
         position.
 
-        :param pos: The `pos` parameter is a tuple of two integers representing the position of the 
-        box on the game board. The first integer represents the row index and the second integer 
+        :param pos: The `pos` parameter is a tuple of two integers representing the position of the
+        box on the game board. The first integer represents the row index and the second integer
         represents the column index
         :type pos: tuple[int]
         :param color: The "color" parameter is a string that represents the color of the box to be
@@ -95,13 +96,29 @@ class Board:
             ),
         )
 
+    def show_check(self) -> None:
+        """
+        The `show_check` function is used to show check text on a game window.
+        """
+        print(const.SCREEN_WIDTH / 2 + const.tokens_offset["check text"][0])
+        print(const.tokens_offset["check text"][0])
+        const.game_Window.blit(
+            self.check_text,
+            (
+                (const.SCREEN_WIDTH / 2 + const.tokens_offset["check text"][0])
+                * const.OBJECT_SIZE_RATIO,
+                (const.SCREEN_HEIGHT / 2 + const.tokens_offset["check text"][1])
+                * const.OBJECT_SIZE_RATIO,
+            ),
+        )
+
     def draw_dot(self, pos: tuple[int], color: str = "green") -> None:
         """
-        The function `draw_dot` is used to draw a dot on a game window at a specified position with 
+        The function `draw_dot` is used to draw a dot on a game window at a specified position with
         an optional color.
-        
-        :param pos: The `pos` parameter is a tuple of two integers representing the position of the 
-        dot on the game board. The first integer represents the row index and the second integer 
+
+        :param pos: The `pos` parameter is a tuple of two integers representing the position of the
+        dot on the game board. The first integer represents the row index and the second integer
         represents the column index
         :type pos: tuple[int]
         :param color: The "color" parameter is a string that represents the color of the dot to be
@@ -145,13 +162,38 @@ class Board:
             (self.board_padding / 2, self.board_padding / 2),
         )
 
+    def get_kings(self) -> dict[tuple[int]]:
+        kings = {"white": None, "black": None}
+        for i in range(8):
+            for j in range(8):
+                if (
+                    self.token_board[i][j] is not None
+                    and "king" in self.token_board[i][j]
+                ):
+                    if "white" in self.token_board[i][j]:
+                        kings["white"] = (i, j)
+                    elif "black" in self.token_board[i][j]:
+                        kings["black"] = (i, j)
+
+        return kings
+
+    def is_checked(self, color: str) -> bool:
+        kings = self.get_kings()
+        for i in range(8):
+            for j in range(8):
+                if kings[color] in Token.get_moves(self.token_board, i, j):
+                    print(f"Check for {color} king")
+                    return True
+
+        return False
+
     def show_moves(self, token_pos: tuple[int]) -> list[tuple[int]]:
         """
-        The `show_moves` function takes a token position as input and returns a list of possible 
+        The `show_moves` function takes a token position as input and returns a list of possible
         moves for that token, while also visually rendering the moves on a board.
-        
-        :param token_pos: The `token_pos` parameter is a tuple of two integers representing the 
-        position of a token on the token board. The first integer represents the x-coordinate and 
+
+        :param token_pos: The `token_pos` parameter is a tuple of two integers representing the
+        position of a token on the token board. The first integer represents the x-coordinate and
         the second integer represents the y-coordinate of the token
         :type token_pos: tuple[int]
         :return: The function `show_moves` returns a list of tuples, where each tuple represents a
