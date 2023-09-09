@@ -1,3 +1,7 @@
+function getPosition(string, substring, index) {
+    return string.split(substring, index).join(substring).length;
+}
+
 typed_Elements = {};
 page_elements = {};
 pages = {
@@ -12,9 +16,18 @@ pages = {
 let url = window.location.pathname;
 let filename = url.substring(url.lastIndexOf('/')+1);
 
+if (url.includes(".html")) {
+    url = url.slice(0, url.lastIndexOf("/")) + "/";
+}
+if (url.includes("Pages/")) {
+    url = url.slice(0, url.lastIndexOf("Pages/"));
+}
+
+
+
 let addHeader = (name, id) => {
-	typed_Elements[name] = new Typed(id, {
-		strings: [],
+    typed_Elements[name] = new Typed(id, {
+        strings: [],
 		typeSpeed: 40,
 		backSpeed: 10,
 		fadeOut: true,
@@ -22,7 +35,11 @@ let addHeader = (name, id) => {
         showCursor: (name==pages[filename])
 	});
 	page_elements[name] = document.querySelector(id);
-
+    href = document.querySelector(id).parentElement.href;
+    document.querySelector(id).parentElement.href = url + href.slice(getPosition(href, "/", 3)+1);
+    
+    
+    
 	page_elements[name].addEventListener("mouseenter", function () {
         typed_Elements[name].start();
 	});
@@ -37,7 +54,13 @@ setTimeout(() => {
     addHeader("Resources", "#nav_resources");
     addHeader("Downloads", "#nav_downloads");
     addHeader("About", "#nav_about");
+    logo = document.getElementById("on-page-logo");
+    if (logo != null) {
+        src =logo.src;
+        logo.src = url + src.slice(getPosition(src, "/", 3)+1);
+    }
 }, 500);
+
 
 function onMenuClick() {
     var navbar = document.getElementById("navigation-bar");
