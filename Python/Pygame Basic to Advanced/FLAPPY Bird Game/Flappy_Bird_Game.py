@@ -2,10 +2,10 @@ import pygame, random, sys, os
 from pygame.locals import *
 
 def path(relative_path):
+    import pathlib
     """ Get absolute path to resource, works for dev and for PyInstaller """
     try:
-        # PyInstaller creates a temp folder and stores path in _MEIPASS
-        base_path = sys._MEIPASS
+        base_path = pathlib.Path(__file__).parent.resolve()
     except Exception:
         base_path = os.path.abspath(".")
 
@@ -18,18 +18,24 @@ def display_Text(text_String, text_Color, text_Position_X, text_Position_Y):
 
 def is_Collide(player_X, player_Y, upper_Pipes, lower_Pipes):
     if player_Y > (ground_Y - (game_Sprites['player'].get_height() * 1.2)) or player_Y < 0:
-        game_Sounds['hit'].play()
+        if audio_present:
+            if audio_present:
+                game_Sounds['hit'].play()
         return True
     for pipe in upper_Pipes:
         pipe_Height = game_Sprites['pipe'][0].get_height()
 
         if player_Y < (pipe_Height + pipe['Y']) and (abs(player_X - pipe['X'])) < (game_Sprites['pipe'][0].get_width() / 2):
-            game_Sounds['hit'].play()
+            if audio_present:
+                if audio_present:
+                    game_Sounds['hit'].play()
             return True
 
     for pipe in lower_Pipes:
         if (player_Y + game_Sprites['player'].get_height()) > pipe['Y'] and (abs(player_X - pipe['X'])) < (game_Sprites['pipe'][0].get_width() / 2):
-            game_Sounds['hit'].play()
+            if audio_present:
+                if audio_present:
+                    game_Sounds['hit'].play()
             return True
     
     return False
@@ -63,7 +69,8 @@ def welcome_Screen(score = 0):
                 sys.exit()
 
             elif event.type == KEYDOWN and (event.key == K_SPACE or event.key == K_UP):
-                backGround_Music.play(-1)
+                if audio_present:
+                    backGround_Music.play(-1)
                 return
 
             
@@ -116,12 +123,15 @@ def main_Game():
                 if player_Y > 0:
                     player_Velocity_Y = player_Flapping_Velocity
                     player_Flapped = True
-                    game_Sounds['wing'].play()
+                    if audio_present:
+                        if audio_present:
+                            game_Sounds['wing'].play()
 
         crashTest = is_Collide(player_X, player_Y, upper_Pipes, lower_Pipes)
 
         if crashTest:
-            backGround_Music.stop()
+            if audio_present:
+                backGround_Music.stop()
             return score
         
         player_Mid_Position = player_X + (game_Sprites['player'].get_width() / 2)
@@ -137,7 +147,9 @@ def main_Game():
             if (pipe_Mid_Position - mode) <= abs(player_Mid_Position) < (pipe_Mid_Position + mode):
                 score += 1
                 print(f'Score: {score}')
-                game_Sounds['point'].play()
+                if audio_present:
+                    if audio_present:
+                        game_Sounds['point'].play()
             
         if player_Velocity_Y < player_MAX_Velocity_Y and not player_Flapped:
             player_Velocity_Y += player_Acceleration_Velocity_Y
@@ -157,19 +169,25 @@ def main_Game():
             positive_Limit = 10
 
         elif (score == 75):
-            game_Sounds['upgrade'].play()
+            if audio_present:
+                if audio_present:
+                    game_Sounds['upgrade'].play()
             pipe_Velocity_X = -15
             negetive_Limit = -10
             positive_Limit = 10
 
         elif (score == 50):
-            game_Sounds['upgrade'].play()
+            if audio_present:
+                if audio_present:
+                    game_Sounds['upgrade'].play()
             pipe_Velocity_X = -10
             negetive_Limit = -10
             positive_Limit = 10
 
         elif (score == 25):
-            game_Sounds['upgrade'].play()
+            if audio_present:
+                if audio_present:
+                    game_Sounds['upgrade'].play()
             pipe_Velocity_X = -8
             negetive_Limit = 0
             positive_Limit = 10
@@ -222,11 +240,11 @@ ground_Y = screen_Height * 0.8
 game_Sprites = {}
 game_Sounds = {}
 
-player_Bird = path('Python\\Pygame Basic to Advanced\\FLAPPY Bird Game\\Game_Sprites\\bird.png')
-backGround = path('Python\\Pygame Basic to Advanced\\FLAPPY Bird Game\\Game_Sprites\\background.png')
-pipe = path('Python\\Pygame Basic to Advanced\\FLAPPY Bird Game\\Game_Sprites\\pipe.png')
-logo = path('Python\\Pygame Basic to Advanced\\FLAPPY Bird Game\\Game_Sprites\\logo.png')
-base = path('Python\\Pygame Basic to Advanced\\FLAPPY Bird Game\\Game_Sprites\\base.png')
+player_Bird = path('Game_Sprites\\bird.png')
+backGround = path('Game_Sprites\\background.png')
+pipe = path('Game_Sprites\\pipe.png')
+logo = path('Game_Sprites\\logo.png')
+base = path('Game_Sprites\\base.png')
 
 if __name__ == '__main__':
     # main function
@@ -235,17 +253,23 @@ if __name__ == '__main__':
     # pygame.time.Clock.tick(FPS)
     pygame.display.set_caption('Flappy Bird Game - YashGames2007.')
 
+    try:
+        pygame.mixer.init()
+        audio_present = True
+    except Exception:
+        audio_present = False
+
     game_Sprites['numbers'] = (
-        pygame.image.load(path('Python\\Pygame Basic to Advanced\\FLAPPY Bird Game\\Game_Sprites\\0.png')).convert_alpha(),
-        pygame.image.load(path('Python\\Pygame Basic to Advanced\\FLAPPY Bird Game\\Game_Sprites\\1.png')).convert_alpha(),
-        pygame.image.load(path('Python\\Pygame Basic to Advanced\\FLAPPY Bird Game\\Game_Sprites\\2.png')).convert_alpha(),
-        pygame.image.load(path('Python\\Pygame Basic to Advanced\\FLAPPY Bird Game\\Game_Sprites\\3.png')).convert_alpha(),
-        pygame.image.load(path('Python\\Pygame Basic to Advanced\\FLAPPY Bird Game\\Game_Sprites\\4.png')).convert_alpha(),
-        pygame.image.load(path('Python\\Pygame Basic to Advanced\\FLAPPY Bird Game\\Game_Sprites\\5.png')).convert_alpha(),
-        pygame.image.load(path('Python\\Pygame Basic to Advanced\\FLAPPY Bird Game\\Game_Sprites\\6.png')).convert_alpha(),
-        pygame.image.load(path('Python\\Pygame Basic to Advanced\\FLAPPY Bird Game\\Game_Sprites\\7.png')).convert_alpha(),
-        pygame.image.load(path('Python\\Pygame Basic to Advanced\\FLAPPY Bird Game\\Game_Sprites\\8.png')).convert_alpha(),
-        pygame.image.load(path('Python\\Pygame Basic to Advanced\\FLAPPY Bird Game\\Game_Sprites\\9.png')).convert_alpha()
+        pygame.image.load(path('Game_Sprites\\0.png')).convert_alpha(),
+        pygame.image.load(path('Game_Sprites\\1.png')).convert_alpha(),
+        pygame.image.load(path('Game_Sprites\\2.png')).convert_alpha(),
+        pygame.image.load(path('Game_Sprites\\3.png')).convert_alpha(),
+        pygame.image.load(path('Game_Sprites\\4.png')).convert_alpha(),
+        pygame.image.load(path('Game_Sprites\\5.png')).convert_alpha(),
+        pygame.image.load(path('Game_Sprites\\6.png')).convert_alpha(),
+        pygame.image.load(path('Game_Sprites\\7.png')).convert_alpha(),
+        pygame.image.load(path('Game_Sprites\\8.png')).convert_alpha(),
+        pygame.image.load(path('Game_Sprites\\9.png')).convert_alpha()
     )
 
     game_Sprites['logo'] = pygame.transform.scale((pygame.image.load(logo).convert_alpha()), (400, 500))
@@ -257,14 +281,15 @@ if __name__ == '__main__':
         pygame.transform.scale(pygame.image.load(pipe).convert_alpha(),                               (70, 500))
     )
 
-    game_Sounds['die'] = pygame.mixer.Sound(path('Python\\Pygame Basic to Advanced\\FLAPPY Bird Game\\Game_Audio\\die.wav'))
-    game_Sounds['hit'] = pygame.mixer.Sound(path('Python\\Pygame Basic to Advanced\\FLAPPY Bird Game\\Game_Audio\\hit.wav'))
-    game_Sounds['wing'] = pygame.mixer.Sound(path('Python\\Pygame Basic to Advanced\\FLAPPY Bird Game\\Game_Audio\\wing.wav'))
-    game_Sounds['point'] = pygame.mixer.Sound(path('Python\\Pygame Basic to Advanced\\FLAPPY Bird Game\\Game_Audio\\point.mp3'))
-    game_Sounds['swoosh'] = pygame.mixer.Sound(path('Python\\Pygame Basic to Advanced\\FLAPPY Bird Game\\Game_Audio\\swoosh.wav'))
-    game_Sounds['upgrade'] = pygame.mixer.Sound(path('Python\\Pygame Basic to Advanced\\FLAPPY Bird Game\\Game_Audio\\levelup.mp3'))
+    if audio_present:
+        game_Sounds['die'] = pygame.mixer.Sound(path('Game_Audio\\die.wav'))
+        game_Sounds['hit'] = pygame.mixer.Sound(path('Game_Audio\\hit.wav'))
+        game_Sounds['wing'] = pygame.mixer.Sound(path('Game_Audio\\wing.wav'))
+        game_Sounds['point'] = pygame.mixer.Sound(path('Game_Audio\\point.mp3'))
+        game_Sounds['swoosh'] = pygame.mixer.Sound(path('Game_Audio\\swoosh.wav'))
+        game_Sounds['upgrade'] = pygame.mixer.Sound(path('Game_Audio\\levelup.mp3'))
 
-    backGround_Music = pygame.mixer.Sound(path('Python\\Pygame Basic to Advanced\\FLAPPY Bird Game\\Game_Audio\\background.mp3'))
+        backGround_Music = pygame.mixer.Sound(path('Game_Audio\\background.mp3'))
 
     score = 0
     while True:
