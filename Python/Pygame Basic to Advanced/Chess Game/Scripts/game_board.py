@@ -26,7 +26,9 @@ class Board:
             "red": const.object_loader("position dot red"),
         }
 
-    def move_token(self, pos_from: tuple, pos_to: tuple) -> None:
+    def move_token(
+        self, board: list[list[str]], pos_from: tuple, pos_to: tuple
+    ) -> None:
         """
         The function moves a token from one position on a token board to another position.
 
@@ -39,9 +41,9 @@ class Board:
         position
         :type pos_to: tuple
         """
-        token_name = self.token_board[pos_from[0]][pos_from[1]]
-        self.token_board[pos_from[0]][pos_from[1]] = None
-        self.token_board[pos_to[0]][pos_to[1]] = token_name
+        token_name = board[pos_from[0]][pos_from[1]]
+        board[pos_from[0]][pos_from[1]] = None
+        board[pos_to[0]][pos_to[1]] = token_name
 
     def render_tokens(self):
         """
@@ -100,8 +102,6 @@ class Board:
         """
         The `show_check` function is used to show check text on a game window.
         """
-        print(const.SCREEN_WIDTH / 2 + const.tokens_offset["check text"][0])
-        print(const.tokens_offset["check text"][0])
         const.game_Window.blit(
             self.check_text,
             (
@@ -162,30 +162,52 @@ class Board:
             (self.board_padding / 2, self.board_padding / 2),
         )
 
-    def get_kings(self) -> dict[tuple[int]]:
+    def get_kings(self, board: list[list[str]]) -> dict[tuple[int]]:
         kings = {"white": None, "black": None}
         for i in range(8):
             for j in range(8):
-                if (
-                    self.token_board[i][j] is not None
-                    and "king" in self.token_board[i][j]
-                ):
-                    if "white" in self.token_board[i][j]:
+                if board[i][j] is not None and "king" in board[i][j]:
+                    if "white" in board[i][j]:
                         kings["white"] = (i, j)
-                    elif "black" in self.token_board[i][j]:
+                    elif "black" in board[i][j]:
                         kings["black"] = (i, j)
 
         return kings
 
-    def is_checked(self, color: str) -> bool:
-        kings = self.get_kings()
+    def is_checked(self, color: str, board: list[list[str]]) -> bool:
+        kings = self.get_kings(board)
         for i in range(8):
             for j in range(8):
-                if kings[color] in Token.get_moves(self.token_board, i, j):
-                    print(f"Check for {color} king")
+                if kings[color] in Token.get_moves(board, i, j):
                     return True
 
         return False
+
+    def duplicate_board(self, board:list[list[str]]) -> list[list[str]]:
+        duplicated_board = [[None for i in range(8)] for j in range(8)]
+
+        for i in range(8):
+            for j in range(8):
+                if board[i][j]:
+                    duplicated_board[i][j] = board[i][j][:]
+        
+        return duplicated_board
+
+    def filter_safe_moves(
+        self,
+        moves: list[tuple[int]],
+        board: list[list[str]],
+        token_pos: tuple[int],
+        king: str,
+    ) -> list[tuple[int]]:
+        filtered_moves = []
+        for move in moves:
+            current_board = self.duplicate_board(board)
+            self.move_token(current_board, token_pos, move)
+            if not self.is_checked(king, current_board):
+                filtered_moves.append(move)
+
+        return filtered_moves
 
     def show_moves(self, token_pos: tuple[int]) -> list[tuple[int]]:
         """
@@ -203,7 +225,9 @@ class Board:
         if self.token_board[token_x][token_y] is None:
             return []
 
+        king = self.token_board[token_x][token_y].split(" ")[0]
         moves = Token.get_moves(self.token_board, token_x, token_y)
+        moves = self.filter_safe_moves(moves, self.token_board, token_pos, king)
 
         if not moves:
             self.draw_box(token_pos, "red")

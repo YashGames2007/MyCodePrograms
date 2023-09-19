@@ -39,20 +39,18 @@ class ChessGame:
         self.game_board.show_board()
         self.game_board.render_tokens()
         
-        if self.check:
-            self.game_board.show_check()
 
         if (
             self.is_selected
             and selected_pos != self.token_pos
             and selected_pos in self.available_moves
         ):
-            self.game_board.move_token(self.token_pos, selected_pos)
+            self.game_board.move_token(self.game_board.token_board, self.token_pos, selected_pos)
             selected_pos = (-1, -1)
             cursor_pos = (-1, -1)
             self.is_selected = False
             self.shift_turn()
-            self.check = self.game_board.is_checked(self.current_turn)
+            self.check = self.game_board.is_checked(self.current_turn, self.game_board.token_board)
 
         elif selected_pos != (-1, -1):
             token = self.game_board.token_board[selected_pos[0]][selected_pos[1]]
@@ -60,5 +58,16 @@ class ChessGame:
                 self.available_moves = self.game_board.show_moves(selected_pos)
                 self.token_pos = selected_pos
                 self.is_selected = bool(self.available_moves)
+
+        if (
+            self.is_selected
+            and selected_pos != self.token_pos
+            and selected_pos not in self.available_moves
+        ):
+            selected_pos = (-1, -1)
+            self.is_selected = False
+
+        if self.check:
+            self.game_board.show_check()
 
         return cursor_pos, False
