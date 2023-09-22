@@ -166,13 +166,22 @@ class Board:
         kings = {"white": None, "black": None}
         for i in range(8):
             for j in range(8):
-                if board[i][j] is not None and "king" in board[i][j]:
+                if board[i][j] and "king" in board[i][j]:
                     if "white" in board[i][j]:
                         kings["white"] = (i, j)
                     elif "black" in board[i][j]:
                         kings["black"] = (i, j)
 
         return kings
+
+    def get_all_tokens(self, board:list[list[str]], color:str) -> list[tuple[int]]:
+        tokens_pos = []
+        for i in range(8):
+            for j in range(8):
+                if board[i][j] and color in board[i][j]:
+                    tokens_pos.append((i, j))
+        
+        return tokens_pos
 
     def is_checked(self, color: str, board: list[list[str]]) -> bool:
         kings = self.get_kings(board)
@@ -183,6 +192,17 @@ class Board:
 
         return False
 
+
+    def is_mate(self, color: str, board: list[list[str]]) -> bool:
+        tokens = self.get_all_tokens(board, color)
+        for token_pos in tokens:
+            moves = Token.get_moves(board, *token_pos)
+            moves = self.filter_safe_moves(moves, board, token_pos, color)
+            if moves:
+                return False
+        return True
+
+
     def duplicate_board(self, board:list[list[str]]) -> list[list[str]]:
         duplicated_board = [[None for i in range(8)] for j in range(8)]
 
@@ -190,21 +210,22 @@ class Board:
             for j in range(8):
                 if board[i][j]:
                     duplicated_board[i][j] = board[i][j][:]
-        
+
         return duplicated_board
+
 
     def filter_safe_moves(
         self,
         moves: list[tuple[int]],
         board: list[list[str]],
         token_pos: tuple[int],
-        king: str,
+        king_color: str,
     ) -> list[tuple[int]]:
         filtered_moves = []
         for move in moves:
             current_board = self.duplicate_board(board)
             self.move_token(current_board, token_pos, move)
-            if not self.is_checked(king, current_board):
+            if not self.is_checked(king_color, current_board):
                 filtered_moves.append(move)
 
         return filtered_moves

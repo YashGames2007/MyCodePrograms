@@ -51,6 +51,11 @@ class ChessGame:
             self.is_selected = False
             self.shift_turn()
             self.check = self.game_board.is_checked(self.current_turn, self.game_board.token_board)
+            if self.game_board.is_mate(self.current_turn, self.game_board.token_board):
+                if self.check:
+                    print("Checkmate !!!")
+                else:
+                    print("Stalemate !!!")
 
         elif selected_pos != (-1, -1):
             token = self.game_board.token_board[selected_pos[0]][selected_pos[1]]
