@@ -7,7 +7,7 @@ ROOT_DIR = "d:/Programming files/Code/Python/Pygame Basic to Advanced/Chess Game
 
 OBJECT_SIZE_RATIO = 6.52174  # Constant term to change the objects size
 colors = ["white", "black"]
-tokens = ["pawn", "rock", "knight", "bishop", "queen", "king"]
+tokens = ["pawn", "rook", "knight", "bishop", "queen", "king"]
 layers = {"white": [7, 6], "black": [0, 1]}
 
 
@@ -28,7 +28,7 @@ for color in colors:
 
 object_sizes = {
     "pawn": (9, 24.9),
-    "rock": (9.1, 23.1),
+    "rook": (9.1, 23.1),
     "knight": (9.7, 24.8),
     "bishop": (9.7, 22),
     "queen": (9.9, 19.4),
@@ -43,7 +43,7 @@ object_sizes = {
 
 tokens_offset = {
     "pawn": (12, -95),
-    "rock": (9, -85),
+    "rook": (9, -85),
     "knight": (10, -95),
     "bishop": (10, -77),
     "queen": (10, -60),
@@ -52,7 +52,7 @@ tokens_offset = {
 }
 
 tokens_moves = {
-    "rock": [(+1, 0), (-1, 0), (0, +1), (0, -1)],
+    "rook": [(+1, 0), (-1, 0), (0, +1), (0, -1)],
     "knight": [ (+2, +1), (+2, -1), (-2, +1), (-2, -1), 
                (+1, +2), (+1, -2), (-1, +2), (-1, -2)],
     "bishop": [(+1, +1), (+1, -1), (-1, +1), (-1, -1)],

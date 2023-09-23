@@ -24,7 +24,7 @@ class ChessGame:
         The function `shift_turn` changes the current turn from "white" to "black" or vice versa.
         """
         self.current_turn = "black" if self.current_turn == "white" else "white"
-    
+
 
     def play(self, cursor_pos) -> tuple[tuple[int], bool]:
         """

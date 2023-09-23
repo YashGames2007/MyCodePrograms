@@ -59,7 +59,7 @@ class Board:
 
     def reset_board(self):
         """
-        The function `reset_board` sets up the initial positions of the pawns, rocks, knights,
+        The function `reset_board` sets up the initial positions of the pawns, rooks, knights,
         bishops, queens, and kings on a chessboard.
         """
         for color in const.colors:
@@ -68,8 +68,8 @@ class Board:
             for _x in range(8):
                 self.token_board[_x][layer[1]] = f"{color} pawn"
 
-            # Setting Rocks, Knights, & Bishops positions...
-            for _x, token in enumerate(["rock", "knight", "bishop"]):
+            # Setting Rooks, Knights, & Bishops positions...
+            for _x, token in enumerate(["rook", "knight", "bishop"]):
                 self.token_board[_x][layer[0]] = f"{color} {token}"
                 self.token_board[7 - _x][layer[0]] = f"{color} {token}"
 
