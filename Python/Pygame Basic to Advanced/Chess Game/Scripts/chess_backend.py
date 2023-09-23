@@ -19,6 +19,7 @@ class ChessGame:
         self.current_turn = "white"
         self.check = False
 
+
     def shift_turn(self) -> None:
         """
         The function `shift_turn` changes the current turn from "white" to "black" or vice versa.

@@ -25,6 +25,8 @@ class Board:
             "green": const.object_loader("position dot"),
             "red": const.object_loader("position dot red"),
         }
+        self.right_castling = { "white": True, "black": True}
+        self.left_castling = { "white": True, "black": True}
 
     def move_token(
         self, board: list[list[str]], pos_from: tuple, pos_to: tuple
@@ -41,9 +43,45 @@ class Board:
         position
         :type pos_to: tuple
         """
-        token_name = board[pos_from[0]][pos_from[1]]
-        board[pos_from[0]][pos_from[1]] = None
-        board[pos_to[0]][pos_to[1]] = token_name
+        _x1, _y1 = pos_from
+        _x2, _y2 = pos_to
+
+        if self.is_castling(board, pos_from, pos_to):
+            if _x1 > _x2: # Left Castling
+                king = board[_x1][_y1]
+                rook = board[0][_y1]
+                board[_x2][_y1] = king
+                board[_x2+1][_y1] = rook
+                board[_x1][_y1] = None
+                board[0][_y1] = None
+
+            elif _x1 < _x2: # Right Castling
+                king = board[_x1][_y1]
+                rook = board[7][_y1]
+                board[_x2][_y1] = king
+                board[_x2-1][_y1] = rook
+                board[_x1][_y1] = None
+                board[7][_y1] = None
+
+        elif self.is_en_passant(board, pos_from, pos_to):
+            pass
+        elif self.is_pawn_promotion(board, pos_from, pos_to):
+            pass
+        else:
+            token_name = board[_x1][_y1]
+            board[_x1][_y1] = None
+            board[_x2][_y2] = token_name
+
+    def check_castling_conditions(self) -> None:
+
+        for color in const.colors:
+            if self.token_board[4][0] != f"{color} king":
+                self.left_castling[color] = False
+                self.right_castling[color] = False
+            elif self.token_board[0][0] != f"{color} rook":
+                self.left_castling[color] = False
+            elif self.token_board[7][0] != f"{color} rook":
+                self.right_castling[color] = False
 
     def render_tokens(self):
         """
@@ -192,7 +230,6 @@ class Board:
 
         return False
 
-
     def is_mate(self, color: str, board: list[list[str]]) -> bool:
         tokens = self.get_all_tokens(board, color)
         for token_pos in tokens:
@@ -201,7 +238,6 @@ class Board:
             if moves:
                 return False
         return True
-
 
     def duplicate_board(self, board:list[list[str]]) -> list[list[str]]:
         duplicated_board = [[None for i in range(8)] for j in range(8)]
@@ -212,7 +248,6 @@ class Board:
                     duplicated_board[i][j] = board[i][j][:]
 
         return duplicated_board
-
 
     def filter_safe_moves(
         self,
@@ -229,6 +264,31 @@ class Board:
                 filtered_moves.append(move)
 
         return filtered_moves
+
+    def get_special_moves(self, token_pos: tuple[int]) -> list[tuple[int]]:
+
+        board = self.token_board
+        special_moves = []
+        _x, _y = token_pos
+
+        # Getting Castling...
+        for color in const.colors:
+            if board[_x][_y] == f"{color} king" and not self.is_checked(color, board):
+                if self.left_castling[color]:
+                    if board[_x-1][_y] == board[_x-2][_y] == board[_x-3][_y] == None:
+                        special_moves.append((_x-2, _y))
+                        special_moves.append((_x-3, _y))
+                if self.right_castling[color]:
+                    if board[_x+1][_y] == board[_x+2][_y] == None:
+                        special_moves.append((_x+2, _y))
+
+        # Getting En-passant...
+        if board[_x][_y] == "white pawn":
+            pass
+        elif board[_x][_y] == "black pawn":
+            pass
+
+        return special_moves
 
     def show_moves(self, token_pos: tuple[int]) -> list[tuple[int]]:
         """
@@ -249,6 +309,7 @@ class Board:
         king = self.token_board[token_x][token_y].split(" ")[0]
         moves = Token.get_moves(self.token_board, token_x, token_y)
         moves = self.filter_safe_moves(moves, self.token_board, token_pos, king)
+        moves.extend(self.get_special_moves(token_pos))
 
         if not moves:
             self.draw_box(token_pos, "red")
@@ -265,3 +326,17 @@ class Board:
                     self.draw_dot(move)
 
         return moves
+
+    def is_castling(self, board: list[list[str]], pos_from: tuple[int], pos_to: tuple[int]) -> bool:
+        _x1, _y1 = pos_from
+        _x2 = pos_to[0]
+
+        if "king" in board[_x1][_y1] and (_x2 > (_x1+1) or _x2 < (_x1-1)):
+            return True
+        return False
+
+    def is_en_passant(self, board: list[list[str]], pos_from: tuple[int], pos_to: tuple[int]) -> bool:
+        pass
+
+    def is_pawn_promotion(self, board: list[list[str]], pos_from: tuple[int], pos_to: tuple[int]) -> bool:
+        pass
