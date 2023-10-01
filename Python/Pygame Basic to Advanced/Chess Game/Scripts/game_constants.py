@@ -1,6 +1,7 @@
 """ All constants related to game is present in ths file. """
 
 import os
+import sys
 import pygame
 
 ROOT_DIR = "d:/Programming files/Code/Python/Pygame Basic to Advanced/Chess Game/"
@@ -18,6 +19,7 @@ object_locations = {
     "position dot": os.path.join(ROOT_DIR, "Assets/dot.png"),
     "position dot red": os.path.join(ROOT_DIR, "Assets/dot_red.png"),
     "check text": os.path.join(ROOT_DIR, "Assets/check.png"),
+    "pawn promotion window": os.path.join(ROOT_DIR, "Assets/pawn_promotion_window.png"),
 }
 # Coping Token Locations in the object_locations dict
 for color in colors:
@@ -39,9 +41,10 @@ object_sizes = {
     "position dot": (2.5, 2.5),
     "position dot red": (2.5, 2.5),
     "check text": (23.76, 10),
+    "pawn promotion window": (59.5, 37.9),
 }
 
-tokens_offset = {
+object_offset = {
     "pawn": (12, -95),
     "rook": (9, -85),
     "knight": (10, -95),
@@ -49,6 +52,7 @@ tokens_offset = {
     "queen": (10, -60),
     "king": (10, -56),
     "check text": (-object_sizes["check text"][0]/2, -object_sizes["check text"][1]/2),
+    "pawn promotion window": (-object_sizes["pawn promotion window"][0]/2, -object_sizes["pawn promotion window"][1]/2),
 }
 
 tokens_moves = {
@@ -70,10 +74,17 @@ SCREEN_WIDTH = 122.6666503111133
 SCREEN_HEIGHT = 122.6666503111133
 FPS_VALUE = 10
 
-
 BOX_OFFSET = 0
 DOT_OFFSET = 32.5
 
+promotion_window_box_x_locations = {
+    "rook": (217, 295),
+    "knight": (313, 393),
+    "bishop": (409, 486),
+    "queen": (502, 580),
+}
+
+promotion_window_box_y_locations = (435, 510)
 
 # Adding Some Colors...
 white = (255, 255, 255)
@@ -117,7 +128,7 @@ def image(path: str, size: tuple, scale: float) -> pygame.Surface:
         pygame.image.load(path).convert_alpha(), (size[0] * scale, size[1] * scale)
     )
 
-def object_loader(name: str):
+def object_loader(name: str) -> pygame.Surface:
     """
     The function `object_loader` loads an image of an object based on its name and size.
 
@@ -130,3 +141,20 @@ def object_loader(name: str):
         object_sizes[name.replace("white ", "").replace("black ", "")],
         OBJECT_SIZE_RATIO,
     )
+
+def get_cursor():
+    for event in pygame.event.get():
+        if (
+            event.type == pygame.QUIT
+        ):  # Checking If The Close Button Is Pressed.
+            pygame.quit()  # Quitting The Game...
+            sys.exit()  # Exiting All Functions...
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            # Checking If The Left Mouse Button Is Pressed.
+            if event.button == pygame.BUTTON_LEFT:
+                return pygame.mouse.get_pos()
+
+def within_limits(val:int, limits:tuple[int]) -> bool:
+    if limits[0] <= val <= limits[1]:
+        return True
+    return False

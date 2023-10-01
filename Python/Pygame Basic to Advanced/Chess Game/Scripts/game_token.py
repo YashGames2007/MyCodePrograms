@@ -42,12 +42,39 @@ class Token:
         :type pos_y: int
         """
         position = const.board_positions[pos_x][pos_y]
-        offset = const.tokens_offset[
+        offset = const.object_offset[
             token_name.replace("white ", "").replace("black ", "")
         ]
         const.game_Window.blit(
             Token.game_tokens[token_name],
             (position[0] + offset[0], position[1] + offset[1]),
+        )
+    # Used to render one token of the board
+    @classmethod
+    def render_coordinates(cls, token_name: str, pos_x: int, pos_y: int) -> None:
+        """
+        The function `render` takes in a token name, x and y positions, and renders the token on the
+        game window at the specified position with an offset.
+
+        :param cls: The parameter `cls` is a reference to the class that the method `render` belongs
+        to. It is commonly used as a convention to refer to the class itself within a class method.
+        However, in the given code snippet, the parameter `cls` is not used, so it can be safely
+        :param token_name: The `token_name` parameter is a string that represents the name of the
+        token to be rendered
+        :type token_name: str
+        :param pos_x: The `pos_x` parameter represents the x-coordinate of the position where the
+        token will be rendered on the game board
+        :type pos_x: int
+        :param pos_y: The parameter `pos_y` represents the y-coordinate of the position where the
+        token will be rendered on the game window
+        :type pos_y: int
+        """
+        offset = const.object_offset[
+            token_name.replace("white ", "").replace("black ", "")
+        ]
+        const.game_Window.blit(
+            Token.game_tokens[token_name],
+            (pos_x + offset[0], pos_y + offset[1]),
         )
 
     @classmethod

@@ -31,7 +31,7 @@ class Board:
 
     def move_token(
         self, board: list[list[str]], pos_from: tuple, pos_to: tuple
-    ) -> None:
+    ) -> str:
         """
         The function moves a token from one position on a token board to another position.
 
@@ -46,6 +46,7 @@ class Board:
         """
         _x1, _y1 = pos_from
         _x2, _y2 = pos_to
+        return_value = "None"
 
         if self.is_castling(board, pos_from, pos_to):
             if _x1 > _x2:  # Left Castling
@@ -64,14 +65,18 @@ class Board:
                 board[_x1][_y1] = None
                 board[7][_y1] = None
 
+        elif self.is_pawn_promotion(board, pos_from, pos_to):
+            return_value = "Promote"
+            token_name = board[_x1][_y1]
+            board[_x1][_y1] = None
+            board[_x2][_y2] = token_name
+
         elif self.is_en_passant(board, pos_from, pos_to):
             pawn = board[_x1][_y1]
             board[_x1][_y1] = None
             board[_x2][_y2+(1*(_y1-_y2))] = None
             board[_x2][_y2] = pawn
 
-        elif self.is_pawn_promotion(board, pos_from, pos_to):
-            pass
         else:
             token_name = board[_x1][_y1]
             board[_x1][_y1] = None
@@ -80,6 +85,8 @@ class Board:
         if self.token_board == board:
             self.previous_move["from"] = (_x1, _y1)
             self.previous_move["to"] = (_x2, _y2)
+        
+        return return_value
 
     def check_castling_conditions(self) -> None:
         for color in const.colors:
@@ -151,9 +158,9 @@ class Board:
         const.game_Window.blit(
             self.check_text,
             (
-                (const.SCREEN_WIDTH / 2 + const.tokens_offset["check text"][0])
+                (const.SCREEN_WIDTH / 2 + const.object_offset["check text"][0])
                 * const.OBJECT_SIZE_RATIO,
-                (const.SCREEN_HEIGHT / 2 + const.tokens_offset["check text"][1])
+                (const.SCREEN_HEIGHT / 2 + const.object_offset["check text"][1])
                 * const.OBJECT_SIZE_RATIO,
             ),
         )
@@ -367,4 +374,11 @@ class Board:
     def is_pawn_promotion(
         self, board: list[list[str]], pos_from: tuple[int], pos_to: tuple[int]
     ) -> bool:
-        pass
+
+        _x1, _y1 = pos_from
+        _x2, _y2 = pos_to
+
+        if "pawn" in board[_x1][_y1]:
+            if _y2 == 7 or _y2 == 0:
+                return True
+        return False
