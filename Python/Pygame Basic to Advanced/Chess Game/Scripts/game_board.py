@@ -83,6 +83,7 @@ class Board:
             board[_x2][_y2] = token_name
 
         if self.token_board == board:
+            self.check_castling_conditions()
             self.previous_move["from"] = (_x1, _y1)
             self.previous_move["to"] = (_x2, _y2)
         
