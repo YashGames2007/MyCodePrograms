@@ -10,7 +10,6 @@ class Board:
     """The Board class represents a game board."""
 
     board_padding = 50  # Making the board 50 pixel smaller than const.game_Window
-    board = const.object_loader("chess board")
     check_text = const.object_loader("check text")
 
     def __init__(self) -> None:
@@ -24,6 +23,13 @@ class Board:
         self.dot = {
             "green": const.object_loader("position dot"),
             "red": const.object_loader("position dot red"),
+        }
+        self.displays = {
+            "chess board": const.object_loader("chess board"),
+            "tie screen": const.object_loader("tie window"),
+            "white win screen": const.object_loader("white_win window"),
+            "black win screen": const.object_loader("black_win window"),
+            "welcome screen": const.object_loader("welcome window"),
         }
         self.right_castling = {"white": True, "black": True}
         self.left_castling = {"white": True, "black": True}
@@ -205,14 +211,14 @@ class Board:
                         return (i, j)
         return (-1, -1)
 
-    def show_board(self):
+    def display_window(self, display:str = "chess board"):
         """
         The function "show_board" fills the display with color and blits the board onto the display.
         """
         # clock.tick(const.FPS_VALUE)  # Setting The FPS Value For The Game.
         const.game_Window.fill(const.background)  # Filling The Display With Color.
         const.game_Window.blit(
-            self.board,
+            self.displays[display],
             (self.board_padding / 2, self.board_padding / 2),
         )
 

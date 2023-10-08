@@ -1,6 +1,7 @@
 """ Main User Interface Script for Chess Game in Python """
 import sys
 import pygame
+import time
 
 import chess_backend as chess
 import game_constants as const
@@ -8,6 +9,9 @@ import game_constants as const
 
 class GameUI:
     """Main Handler Class for Chess Game."""
+
+    
+    chess_board = chess.ChessGame()
 
     @classmethod
     def welcome_screen(cls):
@@ -21,7 +25,8 @@ class GameUI:
         while True:
             pygame.display.update()
             const.clock.tick(const.FPS_VALUE)
-            const.game_Window.fill(const.blue)
+            const.game_Window.fill(const.background)
+            cls.chess_board.show("welcome screen")
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     pygame.quit()
@@ -29,9 +34,13 @@ class GameUI:
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_RETURN:
                         cls.game_loop()
+                if event.type == pygame.MOUSEBUTTONDOWN:
+                    # Checking If The Left Mouse Button Is Pressed.
+                    if event.button == pygame.BUTTON_LEFT:
+                        cls.game_loop()
 
     @classmethod
-    def end_screen(cls):
+    def end_screen(cls, condition:str):
         """
         The function `end_screen` displays a blue screen and waits for the user to press the Enter
         key to start the game loop or close to end it.
@@ -39,16 +48,30 @@ class GameUI:
         :param cls: The parameter "cls" in the function "end_screen" is typically used as a
         convention to refer to the class itself.
         """
+        if condition == "tie":
+            screen = "tie screen"
+        else:
+            screen = f"{condition} win screen"
+        pygame.display.update()
+        const.clock.tick(const.FPS_VALUE)
+        pygame.display.flip()
+        time.sleep(3)
         while True:
             pygame.display.update()
             const.clock.tick(const.FPS_VALUE)
-            const.game_Window.fill(const.blue)
+            const.game_Window.fill(const.background)
+            cls.chess_board.show(screen)
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     pygame.quit()
                     sys.exit()
                 if event.type == pygame.KEYDOWN:
+                    # Checking If The Enter key Is Pressed.
                     if event.key == pygame.K_RETURN:
+                        cls.game_loop()
+                if event.type == pygame.MOUSEBUTTONDOWN:
+                    # Checking If The Left Mouse Button Is Pressed.
+                    if event.button == pygame.BUTTON_LEFT:
                         cls.game_loop()
 
     @classmethod
@@ -64,18 +87,12 @@ class GameUI:
 
         game_over = False
         selected_pos = (-1, -1)
-        chess_board = chess.ChessGame()
+        cls.chess_board.__init__()
 
         while not game_over:
             const.clock.tick(const.FPS_VALUE)
             pygame.display.flip()
-            selected_pos, game_over = chess_board.play(selected_pos)
-            # pygame.display.update()  # Updating Display.
-
-                # box_pos = (-1, -1)
-
-
-            # game_board.draw_dot((5, 5))
+            selected_pos, game_over = cls.chess_board.play(selected_pos)
 
             for event in pygame.event.get():  # Getting The Event In Pygame.
                 if (
@@ -97,8 +114,8 @@ class GameUI:
                         pass
 
         if game_over:  # Checking If The Game Is Over.
-            cls.end_screen()  # Calling Ending Screen...
+            cls.end_screen(game_over)  # Calling Ending Screen...
 
 
 if __name__ == "__main__":
-    GameUI.game_loop()  # Calling Welcome Screen...
+    GameUI.welcome_screen()  # Calling Welcome Screen...

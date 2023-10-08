@@ -22,6 +22,8 @@ class ChessGame:
         self.moved_pos = None
         self.promote_window = const.object_loader("pawn promotion window")
 
+    def show(self, screen:str) -> None:
+        self.game_board.display_window(screen)
 
     def shift_turn(self) -> None:
         """
@@ -40,8 +42,9 @@ class ChessGame:
         :return: a tuple containing the updated `cursor_pos` and a boolean value `False`.
         """
         selected_pos = self.game_board.get_position(cursor_pos)
-        self.game_board.show_board()
+        self.game_board.display_window()
         self.game_board.render_tokens()
+        self.game_over = self.is_win()
         
 
         if (
@@ -80,15 +83,18 @@ class ChessGame:
             self.game_board.show_check()
                 
 
-        return cursor_pos, False
+        return cursor_pos, self.game_over
     
-    def is_win(self):
+    def is_win(self) -> str | None:
         self.check = self.game_board.is_checked(self.current_turn, self.game_board.token_board)
         if self.game_board.is_mate(self.current_turn, self.game_board.token_board):
             if self.check:
-                print("Checkmate !!!")
-            else:
-                print("Stalemate !!!")
+                self.shift_turn()
+                winner = self.current_turn
+                self.shift_turn()
+                return winner
+            return "tie"
+        return False
 
     def pawn_promotion(self):
         self.current_turn = self.game_board.token_board[self.moved_pos[0]][self.moved_pos[1]].split()[0]

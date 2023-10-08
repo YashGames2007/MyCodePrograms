@@ -19,7 +19,11 @@ object_locations = {
     "position dot": os.path.join(ROOT_DIR, "Assets/dot.png"),
     "position dot red": os.path.join(ROOT_DIR, "Assets/dot_red.png"),
     "check text": os.path.join(ROOT_DIR, "Assets/check.png"),
-    "pawn promotion window": os.path.join(ROOT_DIR, "Assets/pawn_promotion_window.png"),
+    "pawn promotion window": os.path.join(ROOT_DIR, "Assets/display/pawn_promotion_window.png"),
+    "black_win window": os.path.join(ROOT_DIR, "Assets/display/black_win.jpg"),
+    "white_win window": os.path.join(ROOT_DIR, "Assets/display/white_win.jpg"),
+    "tie window": os.path.join(ROOT_DIR, "Assets/display/tie.jpg"),
+    "welcome window": os.path.join(ROOT_DIR, "Assets/display/welcome.jpg"),
 }
 # Coping Token Locations in the object_locations dict
 for color in colors:
@@ -42,6 +46,10 @@ object_sizes = {
     "position dot red": (2.5, 2.5),
     "check text": (23.76, 10),
     "pawn promotion window": (59.5, 37.9),
+    "black_win window": (115, 115),
+    "white_win window": (115, 115),
+    "tie window": (115, 115),
+    "welcome window": (115, 115),
 }
 
 object_offset = {
@@ -93,7 +101,6 @@ red = (255, 0, 0)
 green = (0, 255, 0)
 blue = (0, 0, 255)
 background = (255, 191, 141)
-pos_marker = (75, 155, 15)
 
 
 # Initializing Pygame Functions and Attributes...
