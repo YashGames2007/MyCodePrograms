@@ -3,7 +3,7 @@
 $primary_color: globals.$brand_color_1;
 $secondary_color: globals.$brand_color_2;
 
-$bg_color: rgb(20 14 70);
+$bg_color: globals.$bg_color_current_2;
 $color_1: #7f88a6;
 $color_3: $primary_color;
 $color_4: #fff;

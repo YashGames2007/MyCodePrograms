@@ -7,7 +7,7 @@ $normal_color: rgb(255, 255, 255);
 $color_1: rgb(238, 238, 238);
 $color_2: globals.$brand_color_3;
 $font-family_1: "Rubik", sans-serif;
-$background-color_1: rgb(14, 17, 49);
+$background-color_1: globals.$bg_color_current_1;
 $background-color_2: rgb(4, 67, 190, 75%);
 
 header {
@@ -25,6 +25,7 @@ nav {
 	width: 100%;
 	background-color: $background-color_2;
 	ul {
+		margin: 4px 25px 0 0;
 		display: flex;
 		justify-content: center;
 		li {
@@ -64,7 +65,7 @@ nav {
 }
 
 body {
-	background-color: #1e314f;
+	background-color: $background-color_1;
 	font-family: "Rubik", "Helvetica Rounded", "Arial Rounded MT Bold", "Montserrat", sans-serif;
 	color: #fff;
 }
@@ -83,6 +84,7 @@ body {
 }
 
 .toggle {
+	top: 2px;
 	cursor: pointer;
 	display: inline-block;
 	position: relative;
@@ -133,24 +135,24 @@ body {
 	}
 
 	.crater--1 {
-		top: 18px;
-		left: 10px;
+		top: 13px;
+		left: 6px;
+		width: 3px;
+		height: 3px;
+	}
+
+	.crater--2 {
+		top: 11px;
+		left: 13px;
 		width: 4px;
 		height: 4px;
 	}
 
-	.crater--2 {
-		top: 28px;
-		left: 22px;
-		width: 6px;
-		height: 6px;
-	}
-
 	.crater--3 {
-		top: 10px;
-		left: 25px;
-		width: 8px;
-		height: 8px;
+		top: 3px;
+		left: 10px;
+		width: 5px;
+		height: 5px;
 	}
 }
 
@@ -178,8 +180,8 @@ body {
 }
 
 .star--3 {
-	top: 27px;
-	left: 40px;
+	top: 3px;
+	left: 28px;
 	z-index: 0;
 	width: 30px;
 	height: 3px;
@@ -202,8 +204,8 @@ body {
 }
 
 .star--5 {
-	top: 32px;
-	left: 17px;
+	top: 8px;
+	left: 10px;
 	z-index: 0;
 	width: 3px;
 	height: 3px;
@@ -211,8 +213,8 @@ body {
 }
 
 .star--6 {
-	top: 36px;
-	left: 28px;
+	top: 13px;
+	left: 21px;
 	z-index: 0;
 	width: 2px;
 	height: 2px;
@@ -246,12 +248,14 @@ input:checked {
 		}
 
 		.star--2 {
+			left: 31px;
 			width: 4px;
 			height: 4px;
 			transform: translate3d(-5px, 0, 0);
 		}
 
 		.star--3 {
+			left: 33px;
 			width: 2px;
 			height: 2px;
 			transform: translate3d(-7px, 0, 0);

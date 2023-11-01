@@ -15,6 +15,7 @@ nav {
   background-color: rgba(4, 67, 190, 0.75);
 }
 nav ul {
+  margin: 4px 25px 0 0;
   display: flex;
   justify-content: center;
 }
@@ -55,7 +56,7 @@ nav .right {
 }
 
 body {
-  background-color: #1e314f;
+  background-color: rgb(184, 185, 197);
   font-family: "Rubik", "Helvetica Rounded", "Arial Rounded MT Bold", "Montserrat", sans-serif;
   color: #fff;
 }
@@ -73,6 +74,7 @@ body {
 }
 
 .toggle {
+  top: 2px;
   cursor: pointer;
   display: inline-block;
   position: relative;
@@ -120,22 +122,22 @@ body {
   border-radius: 100%;
 }
 .toggle__handler .crater--1 {
-  top: 18px;
-  left: 10px;
+  top: 13px;
+  left: 6px;
+  width: 3px;
+  height: 3px;
+}
+.toggle__handler .crater--2 {
+  top: 11px;
+  left: 13px;
   width: 4px;
   height: 4px;
 }
-.toggle__handler .crater--2 {
-  top: 28px;
-  left: 22px;
-  width: 6px;
-  height: 6px;
-}
 .toggle__handler .crater--3 {
-  top: 10px;
-  left: 25px;
-  width: 8px;
-  height: 8px;
+  top: 3px;
+  left: 10px;
+  width: 5px;
+  height: 5px;
 }
 
 .star {
@@ -162,8 +164,8 @@ body {
 }
 
 .star--3 {
-  top: 27px;
-  left: 40px;
+  top: 3px;
+  left: 28px;
   z-index: 0;
   width: 30px;
   height: 3px;
@@ -186,8 +188,8 @@ body {
 }
 
 .star--5 {
-  top: 32px;
-  left: 17px;
+  top: 8px;
+  left: 10px;
   z-index: 0;
   width: 3px;
   height: 3px;
@@ -195,8 +197,8 @@ body {
 }
 
 .star--6 {
-  top: 36px;
-  left: 28px;
+  top: 13px;
+  left: 21px;
   z-index: 0;
   width: 2px;
   height: 2px;
@@ -224,11 +226,13 @@ input:checked + .toggle .star--1 {
   height: 2px;
 }
 input:checked + .toggle .star--2 {
+  left: 31px;
   width: 4px;
   height: 4px;
   transform: translate3d(-5px, 0, 0);
 }
 input:checked + .toggle .star--3 {
+  left: 33px;
   width: 2px;
   height: 2px;
   transform: translate3d(-7px, 0, 0);
