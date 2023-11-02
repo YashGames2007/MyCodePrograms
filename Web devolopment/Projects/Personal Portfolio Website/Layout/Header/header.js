@@ -69,6 +69,16 @@ function onMenuClick() {
     navbar.classList.toggle(responsive_class_name);
 }
 
+function switchTheme() {
+    document.body.classList.toggle("dark");
+    if (document.getElementById("dn").checked) {
+        document.getElementById("home-logo").src = "./Graphics/home_page.png"
+    }
+    else {
+        document.getElementById("home-logo").src = "./Graphics/home_page_light.png"
+    }
+}
+
 /**
  * Home - Index Page
  * Tutorials/Resources - Written articles

@@ -2,8 +2,9 @@
 
 $primary_color: globals.$brand_color_1;
 $secondary_color: globals.$brand_color_2;
+$secondary_color-2: globals.$brand_color_2-2;
 
-$bg_color: globals.$bg_color_current_2;
+$bg_color: globals.$bg_color_light_2;
 $color_1: #7f88a6;
 $color_3: $primary_color;
 $color_4: #fff;
@@ -42,7 +43,11 @@ $border-color_2: rgb(86 44 185);
 		left: 100%;
 	}
 }
-
+.dark {
+	.new_footer_area {
+		background: globals.$bg_color_dark_2;
+	}
+}
 .new_footer_area {
 	background: $bg_color;
 
@@ -53,23 +58,33 @@ $border-color_2: rgb(86 44 185);
 }
 
 div.row {
-    div {
-        margin-bottom: 20px;
-    }
+	div {
+		margin-bottom: 20px;
+	}
 }
-
+.dark .new_footer_top {
+	.f_widget.about-widget {
+		.f_list {
+			li {
+				a {
+					color: $secondary_color;
+				}
+			}
+		}
+	}
+}
 .new_footer_top {
 	padding: 50px 0px 270px;
 	position: relative;
 	overflow-x: hidden;
 
-    p {
-        font-size: 16px;
-        font-weight: 300;
-        line-height: 28px;
-        color: #9f92c4;
-        margin-bottom: 20px;
-    }
+	p {
+		font-size: 16px;
+		font-weight: 300;
+		line-height: 28px;
+		color: #9f92c4;
+		margin-bottom: 20px;
+	}
 
 	.f_widget.about-widget {
 		.f_list {
@@ -79,7 +94,7 @@ div.row {
 						color: $color_3;
 					}
 
-					color: $secondary_color;
+					color: $secondary_color-2;
 					text-decoration: none;
 				}
 
@@ -92,23 +107,23 @@ div.row {
 		a {
 			width: 44px;
 			height: 44px;
-            text-decoration: double;
+			text-decoration: double;
 			line-height: 43px;
 			background: transparent;
-            color: $border-color_1;
+			color: $border-color_1;
 			border: 1px solid $border-color_1;
 			font-size: 24px;
 
 			&:hover {
 				background: $border_color_2;
-                color: #ff7c01;
-                border-color: $border_color_2;
-                forced-color-adjust: auto;
+				color: #ff7c01;
+				border-color: $border_color_2;
+				forced-color-adjust: auto;
 			}
 
 			+ {
 				a {
-                    margin-bottom: 8px;
+					margin-bottom: 8px;
 				}
 			}
 		}
@@ -128,51 +143,49 @@ div.row {
 		height: 266px;
 
 		.footer_bg_one {
-            background: url("../../Graphics/car-unscreen.gif")
-            no-repeat center center;
-            width: 330px;
-            height: 105px;
-            background-size: 100%;
-            position: absolute;
-            bottom: 0;
-            left: 30%;
-            -webkit-animation: myfirst 12s linear infinite;
-            animation: myfirst 22s linear infinite;
+			background: url("../../Graphics/car-unscreen.gif") no-repeat center center;
+			width: 330px;
+			height: 105px;
+			background-size: 100%;
+			position: absolute;
+			bottom: 0;
+			left: 30%;
+			-webkit-animation: myfirst 12s linear infinite;
+			animation: myfirst 22s linear infinite;
 			@media screen and (max-width: 800px) {
-                background: url("../../Graphics/volks.gif")
-                no-repeat center center;
-                width: 100px;
-                height: 90px;
-                background-size: 100%;
-                position: absolute;
-                bottom: 0;
-                left: 30%;
-                -webkit-animation: myfirst 12s linear infinite;
-                animation: myfirst 12s linear infinite;
-            }
+				background: url("../../Graphics/volks.gif") no-repeat center center;
+				width: 100px;
+				height: 90px;
+				background-size: 100%;
+				position: absolute;
+				bottom: 0;
+				left: 30%;
+				-webkit-animation: myfirst 12s linear infinite;
+				animation: myfirst 12s linear infinite;
+			}
 		}
-        
+
 		.footer_bg_two {
-            background: url("https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhyLGwEUVwPK6Vi8xXMymsc-ZXVwLWyXhogZxbcXQYSY55REw_0D4VTQnsVzCrL7nsyjd0P7RVOI5NKJbQ75koZIalD8mqbMquP20fL3DxsWngKkOLOzoOf9sMuxlbyfkIBTsDw5WFUj-YJiI50yzgVjF8cZPHhEjkOP_PRTQXDHEq8AyWpBiJdN9SfQA/s16000/cyclist.gif")
-            no-repeat center center;
-            width: 88px;
-            height: 120px;
-            background-size: 100%;
-            bottom: 0;
-            left: 38%;
-            position: absolute;
-            -webkit-animation: myfirst 33s linear infinite;
-            animation: myfirst 30s linear infinite;
-            @media screen and (max-width: 800px) {
-                width: 60px;
-                height: 90px;
-                background-size: 100%;
-                bottom: 0;
-                left: 38%;
-                position: absolute;
-                -webkit-animation: myfirst 15s linear infinite;
-                animation: myfirst 15s linear infinite;
-            }
+			background: url("https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhyLGwEUVwPK6Vi8xXMymsc-ZXVwLWyXhogZxbcXQYSY55REw_0D4VTQnsVzCrL7nsyjd0P7RVOI5NKJbQ75koZIalD8mqbMquP20fL3DxsWngKkOLOzoOf9sMuxlbyfkIBTsDw5WFUj-YJiI50yzgVjF8cZPHhEjkOP_PRTQXDHEq8AyWpBiJdN9SfQA/s16000/cyclist.gif")
+				no-repeat center center;
+			width: 88px;
+			height: 120px;
+			background-size: 100%;
+			bottom: 0;
+			left: 38%;
+			position: absolute;
+			-webkit-animation: myfirst 33s linear infinite;
+			animation: myfirst 30s linear infinite;
+			@media screen and (max-width: 800px) {
+				width: 60px;
+				height: 90px;
+				background-size: 100%;
+				bottom: 0;
+				left: 38%;
+				position: absolute;
+				-webkit-animation: myfirst 15s linear infinite;
+				animation: myfirst 15s linear infinite;
+			}
 		}
 	}
 }

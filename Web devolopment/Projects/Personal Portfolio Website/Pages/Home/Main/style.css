@@ -1,7 +1,12 @@
 body {
-  background-color: rgb(184, 185, 197);
-  color: rgb(255, 255, 255);
+  background-color: rgb(255, 255, 255);
+  color: rgb(14, 17, 49);
   font-family: "Rubik", sans-serif;
+}
+
+body.dark {
+  background-color: rgb(14, 17, 49);
+  color: rgb(255, 255, 255);
 }
 
 * {
@@ -10,6 +15,10 @@ body {
 }
 
 .switch-title {
+  color: black;
+}
+
+.dark .switch-title {
   color: rgb(255, 255, 255);
 }
 
@@ -68,9 +77,12 @@ main .subline {
   max-width: 100%;
   margin: 0% 3%;
 }
+.secondSection .dark h1 {
+  color: rgb(159, 146, 231);
+}
 .secondSection h1 {
   font-size: 1.6rem;
-  color: rgb(159, 146, 231);
+  color: rgb(255, 154, 60);
 }
 .secondSection .box {
   background: rgb(157, 255, 255);
@@ -96,16 +108,24 @@ main .subline {
   margin: 35px 0;
 }
 
-.myName {
+.dark .myName {
   color: rgb(0, 238, 255);
+}
+
+.myName {
+  color: rgb(136, 0, 255);
 }
 
 #element {
   color: rgb(255, 154, 60);
 }
 
-.grey {
+.dark .grey {
   color: rgb(0, 238, 255);
+}
+
+.grey {
+  color: rgb(136, 0, 255);
 }
 
 div .swipebox {

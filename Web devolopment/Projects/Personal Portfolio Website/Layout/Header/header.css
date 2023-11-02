@@ -2,6 +2,10 @@ header {
   display: flex;
 }
 
+.dark nav {
+  background-color: rgba(4, 67, 190, 0.75);
+}
+
 nav {
   display: flex;
   overflow: hidden;
@@ -12,7 +16,7 @@ nav {
   align-items: center;
   height: 40px;
   width: 100%;
-  background-color: rgba(4, 67, 190, 0.75);
+  background-color: rgba(100, 4, 190, 0.749);
 }
 nav ul {
   margin: 4px 25px 0 0;
@@ -56,9 +60,8 @@ nav .right {
 }
 
 body {
-  background-color: rgb(184, 185, 197);
+  background-color: rgb(255, 255, 255);
   font-family: "Rubik", "Helvetica Rounded", "Arial Rounded MT Bold", "Montserrat", sans-serif;
-  color: #fff;
 }
 
 .toggleWrapper {
@@ -86,6 +89,7 @@ body {
 }
 .toggle:before {
   content: "AM";
+  color: white;
   position: absolute;
   left: -25px;
   top: 2px;
@@ -258,6 +262,7 @@ input:checked + .toggle .star--6 {
     font-size: 115%;
   }
   nav ul {
+    margin: 0 45px 0 0;
     padding-left: 0;
   }
   nav ul li {
@@ -265,7 +270,7 @@ input:checked + .toggle .star--6 {
     margin: 0 1vmin;
   }
 }
-@media screen and (max-width: 550px) {
+@media screen and (max-width: 650px) {
   nav {
     overflow: hidden;
     display: block;
@@ -287,19 +292,32 @@ input:checked + .toggle .star--6 {
     position: relative;
   }
 }
-@media screen and (max-width: 350px) {
+@media screen and (max-width: 450px) {
   header {
     display: flex;
   }
+  .toggleWrapper {
+    display: inline-flex;
+    top: 5px;
+  }
+  .toggle__handler {
+    left: -20px;
+  }
   nav {
     display: flex;
+  }
+  nav .left {
+    top: -16px;
+  }
+  .dark .nav-bar {
+    background-color: rgba(4, 67, 190, 0.75);
   }
   .nav-bar {
     position: absolute;
     top: 3.7rem;
     left: 0;
     width: 100%;
-    background-color: rgba(4, 67, 190, 0.75);
+    background-color: rgba(100, 4, 190, 0.749);
     text-align: center;
     height: -moz-fit-content;
     height: fit-content;

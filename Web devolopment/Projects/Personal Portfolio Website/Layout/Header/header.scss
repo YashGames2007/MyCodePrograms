@@ -9,9 +9,15 @@ $color_2: globals.$brand_color_3;
 $font-family_1: "Rubik", sans-serif;
 $background-color_1: globals.$bg_color_current_1;
 $background-color_2: rgb(4, 67, 190, 75%);
+$background-color_3: rgba(100, 4, 190, 0.749);
 
 header {
 	display: flex;
+}
+.dark {
+	nav {
+		background-color: $background-color_2;
+	}
 }
 nav {
 	display: flex;
@@ -23,7 +29,7 @@ nav {
 	align-items: center;
 	height: 40px;
 	width: 100%;
-	background-color: $background-color_2;
+	background-color: $background-color_3;
 	ul {
 		margin: 4px 25px 0 0;
 		display: flex;
@@ -67,14 +73,14 @@ nav {
 body {
 	background-color: $background-color_1;
 	font-family: "Rubik", "Helvetica Rounded", "Arial Rounded MT Bold", "Montserrat", sans-serif;
-	color: #fff;
+	// color: #fff;
 }
 
 .toggleWrapper {
 	display: flex;
-    position: relative;
-    padding-top: 4%;
-    right: -3vw;
+	position: relative;
+	padding-top: 4%;
+	right: -3vw;
 	transform: translate3d(-50%, -50%, 0);
 
 	input {
@@ -91,11 +97,12 @@ body {
 	width: 66px;
 	height: 25px;
 	background-color: #83d8ff;
-	border-radius: 90px - 6; 
+	border-radius: 90px - 6;
 	transition: background-color 200ms cubic-bezier(0.445, 0.05, 0.55, 0.95);
 
 	&:before {
 		content: "AM";
+		color: white;
 		position: absolute;
 		left: -25px;
 		top: 2px;
@@ -285,6 +292,7 @@ input:checked {
 			font-size: 115%;
 		}
 		ul {
+			margin: 0 45px 0 0;
 			padding-left: 0;
 			li {
 				font-size: 86%;
@@ -293,7 +301,7 @@ input:checked {
 		}
 	}
 }
-@media screen and (max-width: 550px) {
+@media screen and (max-width: 650px) {
 	nav {
 		overflow: hidden;
 		display: block;
@@ -316,19 +324,33 @@ input:checked {
 		}
 	}
 }
-@media screen and (max-width: 350px) {
+@media screen and (max-width: 450px) {
 	header {
 		display: flex;
 	}
+
+	.toggleWrapper {
+		display: inline-flex;
+		top: 5px;
+	}
+	.toggle__handler {
+		left: -20px;
+	}
 	nav {
 		display: flex;
+		.left {
+			top: -16px;
+		}
+	}
+	.dark .nav-bar {
+		background-color: $background-color_2;
 	}
 	.nav-bar {
 		position: absolute;
 		top: 3.7rem;
 		left: 0;
 		width: 100%;
-		background-color: $background-color_2;
+		background-color: $background-color_3;
 		text-align: center;
 		height: fit-content;
 	}
@@ -346,6 +368,7 @@ input:checked {
 	.menu-icon {
 		display: block;
 		z-index: 100;
+		
 	}
 
 	button {

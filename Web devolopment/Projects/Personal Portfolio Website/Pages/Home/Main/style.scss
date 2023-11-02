@@ -2,6 +2,7 @@
 
 $primary-color: globals.$brand_color_1;
 $secondary-color: globals.$brand_color_2;
+$secondary-color-2: globals.$brand_color_2-2;
 $normal_color: rgb(255, 255, 255);
 
 $color_1: rgb(238, 238, 238);
@@ -12,17 +13,32 @@ $background-color_2: rgb(4, 67, 190, 75%);
 $background-color_3: rgb(157, 255, 255);
 $border-color_1: aqua;
 
+// .dark {
+// 	+body {
+
+// 	}
+// }
+
 body {
 	background-color: $background-color_1;
-	color: $normal_color;
+	color: globals.$bg_color_dark_1;
 	font-family: $font-family_1;
+}
+body.dark {
+	background-color: globals.$bg_color_dark_1;
+	color: globals.$bg_color_light_1;
 }
 * {
 	margin: 0;
 	padding: 0;
 }
 .switch-title {
-	color: $normal_color;
+	color: black;
+}
+.dark {
+	.switch-title {
+		color: $normal_color;
+	}
 }
 .form-control::placeholder {
 	color: $color_2;
@@ -72,9 +88,12 @@ main {
 .secondSection {
 	max-width: 100%;
 	margin: 0% 3%;
+	.dark h1 {
+		color: $color_2;
+	}
 	h1 {
 		font-size: 1.6rem;
-		color: $color_2;
+		color: $primary-color;
 	}
 	.box {
 		background: rgb(157, 255, 255);
@@ -100,14 +119,20 @@ main {
 		margin: 35px 0;
 	}
 }
-.myName {
+.dark .myName {
 	color: $secondary-color;
+}
+.myName {
+	color: $secondary-color-2;
 }
 #element {
 	color: $primary-color;
 }
-.grey {
+.dark .grey {
 	color: $secondary-color;
+}
+.grey {
+	color: $secondary-color-2;
 }
 div {
 	.swipebox {
