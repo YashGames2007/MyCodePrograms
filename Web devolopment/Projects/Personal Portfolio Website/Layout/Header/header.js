@@ -23,7 +23,7 @@ if (url.includes("Pages/")) {
     url = url.slice(0, url.lastIndexOf("Pages/"));
 }
 
-
+console.log(url)
 
 let addHeader = (name, id) => {
     typed_Elements[name] = new Typed(id, {
@@ -36,6 +36,7 @@ let addHeader = (name, id) => {
 	});
 	page_elements[name] = document.querySelector(id);
     href = document.querySelector(id).parentElement.href;
+    console.log(href)
     document.querySelector(id).parentElement.href = url + href.slice(getPosition(href, "/", 3)+1);
     
     
