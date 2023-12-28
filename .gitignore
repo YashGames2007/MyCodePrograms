@@ -8,8 +8,9 @@ C#/**/*.exe
 
 # Ignoring Some Less Important Folders...
 Python/Prime Numbers EXE/
+=======
 
 # Ignoring Some Files...
 Colorized_Comments.txt
 *.log
-*.class
+*.jar

@@ -1,1 +1,0 @@
-packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"Basic_Code.Mini_Projects.Libraries"}];updateSearchResults();
