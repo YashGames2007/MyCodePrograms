@@ -4,8 +4,9 @@ C/
 Python/
 Web development/
 C#/
+Java/
 
 # Ignoring Some Files...
 Colorized_Comments.txt
 *.log
-*.class
+*.jar
