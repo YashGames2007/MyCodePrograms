@@ -58,9 +58,11 @@ nav .right {
   display: flex;
   padding-top: 1.2rem;
 }
+nav .menu-icon {
+  display: none;
+}
 
 body {
-  background-color: rgb(255, 255, 255);
   font-family: "Rubik", "Helvetica Rounded", "Arial Rounded MT Bold", "Montserrat", sans-serif;
 }
 
@@ -330,7 +332,7 @@ input:checked + .toggle .star--6 {
   nav ul {
     display: block;
   }
-  .menu-icon {
+  nav .menu-icon {
     display: block;
     z-index: 100;
   }

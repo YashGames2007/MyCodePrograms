@@ -8,7 +8,7 @@ $color_1: rgb(238, 238, 238);
 $color_2: globals.$brand_color_3;
 $font-family_1: "Rubik", sans-serif;
 $background-color_1: globals.$bg_color_current_1;
-$background-color_2: rgb(4, 67, 190, 75%);
+$background-color_2: globals.$bg_color_2-3;
 $background-color_3: rgba(100, 4, 190, 0.749);
 
 header {
@@ -68,14 +68,16 @@ nav {
 		display: flex;
 		padding-top: 1.2rem;
 	}
+	.menu-icon {
+		display: none;
+	}
 }
 
 body {
-	background-color: $background-color_1;
+	// background-color: $background-color_1;
 	font-family: "Rubik", "Helvetica Rounded", "Arial Rounded MT Bold", "Montserrat", sans-serif;
 	// color: #fff;
 }
-
 .toggleWrapper {
 	display: flex;
 	position: relative;
@@ -361,14 +363,16 @@ input:checked {
 		margin-top: -21px;
 	}
 
-	nav ul {
-		display: block;
-	}
-
-	.menu-icon {
-		display: block;
-		z-index: 100;
-		
+	nav {
+		ul {
+			display: block;
+		}
+	
+		.menu-icon {
+			display: block;
+			z-index: 100;
+			
+		}
 	}
 
 	button {

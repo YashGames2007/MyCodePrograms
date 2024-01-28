@@ -7,11 +7,11 @@
   }
 }
 .dark .new_footer_area {
-  background: rgb(20, 14, 70);
+  background: rgba(20, 14, 70, 0.35);
 }
 
 .new_footer_area {
-  background: rgba(238, 237, 242, 0.22);
+  background: rgba(238, 237, 242, 0.75);
 }
 .new_footer_area .footer_bottom {
   padding-top: 5px;

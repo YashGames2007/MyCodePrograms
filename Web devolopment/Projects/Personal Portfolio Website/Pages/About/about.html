@@ -13,10 +13,11 @@
         href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100;0,200;0,400;0,600;0,700;1,100;1,200;1,400;1,600;1,700&display=swap"
         rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
-    <link rel="stylesheet" href="../Home/Main/style.css">
+    <link rel="stylesheet" href="./about.css">
     <link rel="stylesheet" href="../../Layout/Footer/footer.css">
     <link rel="stylesheet" href="../../Layout/Header/header.css">
 </head>
@@ -34,18 +35,71 @@
 
     <!-- Main -->
     <main>
-        <div class="top-section">
-            <div class="right-section">
-                <img src="../../Graphics/home_page.png" alt="My Image">
-            </div>
-            <div class="left-section">
-                <div class="personal-info">
-                    <h2>Personal Information</h2>
-                    <div><span class="title">Name: </span><span class="description">Yash Manojrao Bhavsar</span></div>
-                    <div><span class="title">Address: </span><span class="description">Aurangabad, Maharashtra, India</span></div>
-                    <div><span class="title">Hobbies: </span><span class="description">Reading, Coding</span></div>
+        <!-- <div class="context"> -->
+        <div class="hero context container-about">
+            <div class="flex transform-3d card" id="hero-card">
+                <div class="section">
+                    <hr>
+                    <h2 id="personal-details-">Personal Details:</h2>
+                    <hr>
+                    <p><strong>Name:</strong> Yash Manojrao Bhavsar</p>
+
+                    <p><strong>Address:</strong> Ch. Sambhajinagar, Maharashtra, India</p>
+
+                    <p><strong>Hobbies:</strong> Reading <em>Self-help Books</em>, Watching <em>Productivity
+                            Videos/Courses</em>, Coding, Development, etc.</p>
+                    <hr>
+                    <h2 id="professional-info-">Professional Info:</h2>
+                    <hr>
+                    <h3 id="experience">Experience</h3>
+
+                    <p><strong>Android Development:</strong> <em>Beginner Level</em>
+                        <br>
+                        <strong>Web Development:</strong> <em>Beginner Level</em>
+                        <br>
+                        <strong>Game Development:</strong> <em>Newbie</em>
+                    </p>
+
+                    <h3 id="education">Education</h3>
+
+                    <p><strong>10th SSC:</strong> 92.8%<br>
+                        <strong>Diploma in AIML:</strong> <em>Currently Pursuing</em>
+                    </p>
+
+                    <h3 id="resume">Resume</h3>
+                    <p><a href="https://drive.google.com/file/d/1YXAU3d5AghnW1lflJci5q4cNsfMXj0ZE/view?usp=drive_link" title="My Resume"><em><strong>Download Resume</strong></em></a></p>
+                    <h3 id="certificates">Certificates</h3>
+                    <p><a href="https://drive.google.com/drive/folders/1-7-ZZBPbIxsIbQxTr_hZcCLPYJKc_fxw?usp=drive_link" title="My Certificates"><em><strong>View Certificates</strong></em></a></p>
+                    <hr>
                 </div>
             </div>
+            <div class="bg-container">
+                <div class="box" data-variant="1"></div>
+                <div class="box" data-variant="2"></div>
+            </div>
+        </div>
+        <!-- </div> -->
+        <div class="area">
+            <ul class="circles">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+            <ul class="cubes">
+                <li class="cube"></li>
+                <li class="cube"></li>
+                <li class="cube"></li>
+                <li class="cube"></li>
+                <li class="cube"></li>
+                <li class="cube"></li>
+            </ul>
         </div>
     </main>
 
@@ -58,6 +112,7 @@
         $("#footer").load("../../Layout/Footer/footer.html");
     </script>
     <script src="../../Layout/Header/header.js"></script>
+    <script src="about.js"></script>
 </body>
 
 </html>
