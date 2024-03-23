@@ -35,9 +35,9 @@ let addHeader = (name, id) => {
         showCursor: (name==pages[filename])
 	});
 	page_elements[name] = document.querySelector(id);
-    href = document.querySelector(id).parentElement.href;
-    console.log(href)
-    document.querySelector(id).parentElement.href = url + href.slice(getPosition(href, "/", 3)+1);
+    // href = document.querySelector(id).parentElement.href;
+    // console.log(href)
+    // document.querySelector(id).parentElement.href = url + href.slice(getPosition(href, "/", 3)+1);
     
     
     
