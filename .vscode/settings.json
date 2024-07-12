@@ -3,6 +3,30 @@
         "ignore"
     ],
     "cSpell.words": [
-        "perticular"
-    ]
+        "perticular",
+        "clickup",
+        "gdrive",
+        "msedge",
+        "MSPC",
+        "onedrive",
+        "padx",
+        "pady",
+        "POWERPNT",
+        "pygame",
+        "startfile",
+        "SYSTEMDRIVE",
+        "taskmgr",
+        "unclosables",
+        "WINWORD",
+        "wordpad"
+    ],
+    "python.formatting.provider": "none",
+    "python.analysis.extraPaths": [
+        "./Python/Advanced Python Programming/AI Projects/Jarvis Desktop Assistant/Openers"
+    ],
+    "[python]": {
+        "editor.defaultFormatter": "ms-python.black-formatter"
+    },
+    "docwriter.progress.trackMethods": false,
+    "vscode_custom_css.imports": [],
 }

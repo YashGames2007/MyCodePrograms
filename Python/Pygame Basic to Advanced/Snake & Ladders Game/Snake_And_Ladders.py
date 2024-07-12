@@ -14,13 +14,9 @@ def path(relative_path):
     return os.path.join(base_path, relative_path)
 
 
-class Game:
-    def __init__(self):
-        pass
-
 # Initializing Pygame Functions and Attributes...
 pygame.display.init()
-pygame.mixer.init()
+# pygame.mixer.init()
 
 # Creating Global Constant Variables...
 screen_Width = 650
