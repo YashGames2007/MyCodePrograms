@@ -9,3 +9,4 @@ Web Development/
 
 # Ignoring Some Files...
 Colorized_Comments.txt
+*.pyc

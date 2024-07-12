@@ -3,7 +3,9 @@
 import game_constants as const
 import game_board as Game_Board
 import game_token as Game_Token
-
+from stockfish_engine import StockFishEngine
+import pygame
+import time
 
 class ChessGame:
     """The ChessGame class represents a game of chess."""
@@ -20,7 +22,9 @@ class ChessGame:
         self.check = False
         self.returned = "None"
         self.moved_pos = None
+        self.engine = StockFishEngine()
         self.promote_window = const.object_loader("pawn promotion window")
+        self.move_count = 1
 
     def show(self, screen:str) -> None:
         self.game_board.display_window(screen)
@@ -30,7 +34,6 @@ class ChessGame:
         The function `shift_turn` changes the current turn from "white" to "black" or vice versa.
         """
         self.current_turn = "black" if self.current_turn == "white" else "white"
-
 
     def play(self, cursor_pos) -> tuple[tuple[int], bool]:
         """
@@ -52,6 +55,7 @@ class ChessGame:
             and selected_pos != self.token_pos
             and selected_pos in self.available_moves
         ):
+            # Actual Move is Made
             self.returned = self.game_board.move_token(self.game_board.token_board, self.token_pos, selected_pos)
             self.moved_pos = selected_pos
     
@@ -60,6 +64,19 @@ class ChessGame:
             self.is_selected = False
             self.shift_turn()
             self.is_win()
+
+            # pygame.display.flip()
+            # const.clock.tick(const.FPS_VALUE)
+            self.game_board.display_window() 
+            self.game_board.render_tokens()
+            pygame.display.flip()
+            time.sleep(1)
+            copy_board = self.game_board.token_board.copy()
+            x, y = self.engine.get_best_move(copy_board, turn="b", full_moves=self.move_count)
+            print(x, y)
+            self.game_board.move_token(self.game_board.token_board, (x[1], x[0]), (y[1], y[0]))
+            self.move_count += 1
+            self.shift_turn()
 
         elif selected_pos != (-1, -1):
             token = self.game_board.token_board[selected_pos[0]][selected_pos[1]]
@@ -82,7 +99,6 @@ class ChessGame:
         if self.check:
             self.game_board.show_check()
                 
-
         return cursor_pos, self.game_over
     
     def is_win(self) -> str | None:

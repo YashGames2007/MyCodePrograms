@@ -4,7 +4,7 @@ import os
 import sys
 import pygame
 
-ROOT_DIR = "d:/Programming files/Code/Python/Pygame Basic to Advanced/Chess Game/"
+ROOT_DIR = "D:\\Programming files\\Code\\Python\\Pygame Basic to Advanced\\Chess Game"
 
 OBJECT_SIZE_RATIO = 6.52174  # Constant term to change the objects size
 colors = ["white", "black"]
