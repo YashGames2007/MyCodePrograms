@@ -20,7 +20,10 @@
         {
             "name": ".NET Core Attach",
             "type": "coreclr",
-            "request": "attach"
+            "request": "attach",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "justMyCode": false
         }
     ]
 }

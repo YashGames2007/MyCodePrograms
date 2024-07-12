@@ -77,7 +77,7 @@
    |                                |                                 |
    +--------------------------------+---------------------------------+
    | TIP: To Add New ShortCut Keys Without Command Open .gitconfig    |
-   |      In VS Code From Local Path : C:\Users\manoj                 |
+   |      In VS Code From Local Path : C:\Users\<username>            |
    +--------------------------------+---------------------------------+
 
 

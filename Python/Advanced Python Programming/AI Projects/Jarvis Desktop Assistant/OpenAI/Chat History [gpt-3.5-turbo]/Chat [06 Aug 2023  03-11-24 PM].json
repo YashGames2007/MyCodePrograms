@@ -1,0 +1,10 @@
+[
+    {
+        "role": "user",
+        "content": "what is today's date by air"
+    },
+    {
+        "role": "assistant",
+        "content": "I'm sorry, but I am an AI language model and I do not have real-time information."
+    }
+]

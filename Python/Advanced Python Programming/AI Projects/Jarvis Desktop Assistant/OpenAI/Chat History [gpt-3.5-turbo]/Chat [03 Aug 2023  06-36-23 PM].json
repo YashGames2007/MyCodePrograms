@@ -1,0 +1,10 @@
+[
+    {
+        "role": "user",
+        "content": "who are you by ai"
+    },
+    {
+        "role": "assistant",
+        "content": "I am an AI model developed by OpenAI called GPT-3. I am designed to simulate human-like conversations and provide information or assistance based on the input I receive."
+    }
+]

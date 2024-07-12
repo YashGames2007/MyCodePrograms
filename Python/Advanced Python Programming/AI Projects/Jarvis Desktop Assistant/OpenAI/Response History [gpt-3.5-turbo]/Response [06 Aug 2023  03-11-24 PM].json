@@ -1,0 +1,21 @@
+{
+    "id": "chatcmpl-7kUYGCh4cnpSMMPJcF9rIqKUrEvmS",
+    "object": "chat.completion",
+    "created": 1691314884,
+    "model": "gpt-3.5-turbo-0613",
+    "choices": [
+        {
+            "index": 0,
+            "message": {
+                "role": "assistant",
+                "content": "I'm sorry, but I am an AI language model and I do not have real-time information."
+            },
+            "finish_reason": "stop"
+        }
+    ],
+    "usage": {
+        "prompt_tokens": 14,
+        "completion_tokens": 20,
+        "total_tokens": 34
+    }
+}
