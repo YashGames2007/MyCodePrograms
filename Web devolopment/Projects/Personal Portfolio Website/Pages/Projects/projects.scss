@@ -1,0 +1,211 @@
+$color_1: #25283B;
+$color_2: transparent;
+$color_3: #fff;
+$font-family_1: 'ICA Rubrik';
+$font-family_2: Poppins;
+
+@import "https://fonts.cdnfonts.com/css/ica-rubrik-black";
+@import "https://fonts.cdnfonts.com/css/poppins";
+@keyframes autoRun {
+	from {
+		transform: perspective(1000px) rotateX(-16deg) rotateY(0deg);
+	}
+	to {
+		transform: perspective(1000px) rotateX(-16deg) rotateY(360deg);
+	}
+}
+/* Existing slider rotation */
+/* Stop rotation when paused */
+/* .slider .item.extended {
+    padding-top: calc(3.5 / 2.25* 100%);
+} */
+main {
+	margin-bottom: 0;
+}
+
+.banner {
+	width: 100%;
+	height: 125vh;
+	top: -5vh;
+	text-align: center;
+	overflow: hidden;
+	position: relative;
+	.slider {
+		position: absolute;
+		width: 200px;
+		height: 250px;
+		top: 10%;
+		left: calc(50% - 100px);
+		transform-style: preserve-3d;
+		transform: perspective(1000px);
+		animation: autoRun 20s linear infinite;
+		z-index: 2;
+		.item {
+			position: absolute;
+			width: 100%;
+			padding-top: calc(3.5 / 2.25* 100%);
+			inset: 0 0 0 0;
+			transform: rotateY(calc( (var(--position) - 1) * (360 / var(--quantity)) * 1deg)) translateZ(550px);
+			img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+			}
+		}
+	}
+	.content {
+		position: absolute;
+		bottom: 0;
+		left: 50%;
+		transform: translateX(-50%);
+		width: min(1400px, 100vw);
+		height: max-content;
+		padding-bottom: 100px;
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		align-items: center;
+		z-index: 1;
+		h1 {
+			font-family: $font-family_1;
+			font-size: 16em;
+			line-height: 1em;
+			color: $color_1;
+			position: relative;
+			&::after {
+				position: absolute;
+				inset: 0 0 0 0;
+				content: attr(data-content);
+				z-index: 2;
+				-webkit-text-stroke: 2px #d2d2d2;
+				color: $color_2;
+			}
+		}
+		.author {
+			font-family: $font-family_2;
+			text-align: right;
+			max-width: 200px;
+		}
+		h2 {
+			font-size: 3em;
+		}
+		.model {
+			background-image: url(images/model.png);
+			width: 100%;
+			height: 75vh;
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			background-size: auto 130%;
+			background-repeat: no-repeat;
+			background-position: top center;
+			z-index: 1;
+		}
+	}
+}
+.slider {
+	position: absolute;
+	width: 200px;
+	height: 250px;
+	top: 10%;
+	left: calc(50% - 100px);
+	transform-style: preserve-3d;
+	transform: perspective(1000px);
+	animation: autoRun 20s linear infinite;
+	z-index: 2;
+	.item {
+		position: absolute;
+		inset: 0;
+		transform-style: preserve-3d;
+		transition: transform 1s;
+		transform: rotateY(calc( (var(--position) - 1) * (360 / var(--quantity)) * 1deg));
+		.front {
+			position: absolute;
+			inset: 0;
+			width: 100%;
+			height: 100%;
+			backface-visibility: hidden;
+			transform: rotateY(0deg);
+		}
+		.back {
+			position: absolute;
+			inset: 0;
+			width: 100%;
+			height: 100%;
+			backface-visibility: hidden;
+			transform: rotateY(180deg);
+		}
+	}
+}
+.slider.paused {
+	animation-play-state: paused;
+}
+.icon1 {
+	position: absolute;
+	width: 13%;
+	top: 85%;
+	right: 80%;
+}
+.icon2 {
+	position: absolute;
+	width: 13%;
+	top: 85%;
+	right: 60%;
+}
+.icon3 {
+	position: absolute;
+	width: 13%;
+	top: 85%;
+	right: 40%;
+}
+@media screen and (max-width: 1023px) {
+	.banner {
+		height: 83vh;
+		top: 5vh;
+		.slider {
+			width: 160px;
+			height: 200px;
+			left: calc(50% - 80px);
+			.item {
+				transform: rotateY(calc( (var(--position) - 1) * (360 / var(--quantity)) * 1deg)) translateZ(300px);
+			}
+		}
+		.content {
+			h1 {
+				text-align: center;
+				width: 100%;
+				text-shadow: 0 10px 20px #000;
+				font-size: 7em;
+			}
+			.author {
+				color: $color_3;
+				padding: 20px;
+				text-shadow: 0 10px 20px #000;
+				z-index: 2;
+				max-width: unset;
+				width: 100%;
+				text-align: center;
+				padding: 0 30px;
+			}
+		}
+	}
+}
+@media screen and (max-width: 767px) {
+	.banner {
+		height: 50vh;
+		top: 7vh;
+		.slider {
+			width: 100px;
+			height: 150px;
+			left: calc(50% - 50px);
+			.item {
+				transform: rotateY(calc( (var(--position) - 1) * (360 / var(--quantity)) * 1deg)) translateZ(180px);
+			}
+		}
+		.content {
+			h1 {
+				font-size: 5em;
+			}
+		}
+	}
+}

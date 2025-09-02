@@ -1,0 +1,79 @@
+@-webkit-keyframes rotate-right {
+	from {
+		-webkit-transform: rotate(0deg);
+	}
+	to {
+		-webkit-transform: rotate(360deg);
+	}
+}
+
+@-webkit-keyframes rotate-left {
+	from {
+		-webkit-transform: rotate(0deg);
+	}
+	to {
+		-webkit-transform: rotate(-360deg);
+	}
+}
+
+@-webkit-keyframes hover {
+	0% {
+		-webkit-transform: translateY(0%);
+	}
+	50% {
+		-webkit-transform: translateY(5%);
+	}
+	100% {
+		-webkit-transform: translateY(0%);
+	}
+}
+
+@-webkit-keyframes pull {
+	0% {
+		-webkit-transform: scaleY(1);
+	}
+	40% {
+		-webkit-transform: scaleY(1.01);
+	}
+	60% {
+		-webkit-transform: scaleY(0.99);
+	}
+	80% {
+		-webkit-transform: scaleY(1.01);
+	}
+	100% {
+		-webkit-transform: scaleY(0.99);
+	}
+	80% {
+		-webkit-transform: scaleY(1.01);
+	}
+	100% {
+		-webkit-transform: scaleY(1);
+	}
+}
+
+@function getSpeed($speed, $type: turtle) {
+	$secs: 360;
+	$divider: 1;
+	@if ($type == turtle) {
+		$divider: 1;
+	} @else if($type == rabbit) {
+		$divider: 10;
+	} @else {
+		$divider: 60;
+	}
+	@if $speed == fastest {
+		$secs: 60 / $divider;
+	} @else if $speed == really-fast {
+		$secs: 120 / $divider;
+	} @else if $speed == fast {
+		$secs: 180 / $divider;
+	} @else if $speed == slow {
+		$secs: 240 / $divider;
+	} @else if $speed == really-slow {
+		$secs: 300 / $divider;
+	} @else if $speed == slowest {
+		$secs: 360 / $divider;
+	}
+	@return #{$secs}s;
+}

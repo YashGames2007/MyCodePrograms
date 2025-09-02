@@ -1,0 +1,177 @@
+@use "../../../Graphics/globals";
+
+$primary-color: globals.$brand_color_1;
+$secondary-color: globals.$brand_color_2;
+$secondary-color-2: globals.$brand_color_2-2;
+$normal_color: rgb(255, 255, 255);
+
+$color_1: rgb(238, 238, 238);
+$color_2: globals.$brand_color_3;
+$font-family_1: "Rubik", sans-serif;
+$background-color_1: globals.$bg_color_current_1;
+$background-color_2: rgb(4, 67, 190, 75%);
+$background-color_3: rgb(157, 255, 255);
+$border-color_1: aqua;
+
+// .dark {
+// 	+body {
+
+// 	}
+// }
+
+body {
+	background-color: $background-color_1;
+	color: globals.$bg_color_dark_1;
+	font-family: $font-family_1;
+}
+body.dark {
+	background-color: globals.$bg_color_dark_1;
+	color: globals.$bg_color_light_1;
+}
+* {
+	margin: 0;
+	padding: 0;
+}
+.switch-title {
+	color: black;
+}
+.dark {
+	.switch-title {
+		color: $normal_color;
+	}
+}
+.form-control::placeholder {
+	color: $color_2;
+}
+.form-control::-ms-input-placeholder {
+	color: $color_2;
+}
+input.mail#mail_me {
+	border-color: $color_2;
+	background-color: globals.$brand_color_4;
+}
+main {
+	margin-bottom: 200px;
+	hr {
+		border: 0;
+		background: $color_2;
+		width: 96%;
+		margin: 4% 4%;
+	}
+	// Hide short text by default (resolution > 1200px)
+	.short-form {
+		display: none;
+	}
+
+	// When resolution <= 1200px, hide full text and show short text
+	@media (max-width: 800px) {
+		.short-form {
+			display: inline-block;
+		}
+		.long-form {
+			display: none;
+		}
+	}
+	.subline {
+		font-size: 2vmin;
+	}
+	div#sub-text {
+		display: flex;
+		position: relative;
+		top: 50px;
+		font-style: italic;
+		color: orange;
+	}
+}
+.firstSection {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	margin: 110px 0;
+	> div {
+		width: 35%;
+	}
+}
+.secondSection {
+	max-width: 100%;
+	margin: 0% 3%;
+	.dark h1 {
+		color: $color_2;
+	}
+	h1 {
+		font-size: 1.6rem;
+		color: $primary-color;
+	}
+	.box {
+		background: rgb(157, 255, 255);
+		width: 85vw;
+		height: 1.5px;
+		margin: 95px 0;
+		display: flex;
+	}
+	.vertical {
+		height: 75px;
+		width: 1px;
+		background-color: $background-color_3;
+		margin: 0 100px;
+	}
+}
+.leftSection {
+	font-size: 3.3vw;
+	font-weight: 400;
+}
+.rightSection {
+	img {
+		width: 110%;
+		margin: 35px 0;
+	}
+}
+.dark .myName {
+	color: $secondary-color;
+}
+.myName {
+	color: $secondary-color-2;
+}
+#element {
+	color: $primary-color;
+}
+.dark .grey {
+	color: $secondary-color;
+}
+.grey {
+	color: $secondary-color-2;
+}
+div {
+	.swipebox {
+		border-width: 2px;
+		border-color: $border-color_1;
+	}
+}
+
+.menu-icon {
+	color: white;
+	cursor: pointer;
+	display: none;
+}
+
+button {
+	font-size: 1rem;
+	border: 1px solid black;
+	border-radius: 5px;
+	padding: 0.9rem;
+}
+
+@media screen and (max-width: 800px) {
+	.firstSection {
+		flex-direction: column-reverse;
+		div {
+			width: 70%;
+		}
+		.leftSection {
+			font-size: 7.1vmin;
+		}
+	}
+    main .subline {
+        font-size: 3.5vmin;
+    }
+}
