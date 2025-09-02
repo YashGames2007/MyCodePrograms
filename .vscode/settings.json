@@ -30,3 +30,10 @@
     "docwriter.progress.trackMethods": false,
     "vscode_custom_css.imports": [],
 }
+    "files.exclude": {
+        "**/*.exe": true
+    },
+    "files.associations": {
+        "ostream": "cpp"
+    }
+}

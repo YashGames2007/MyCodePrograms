@@ -1,0 +1,169 @@
+body {
+  background-color: rgb(255, 255, 255);
+  color: rgb(14, 17, 49);
+  font-family: "Rubik", sans-serif;
+}
+
+body.dark {
+  background-color: rgb(14, 17, 49);
+  color: rgb(255, 255, 255);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.switch-title {
+  color: black;
+}
+
+.dark .switch-title {
+  color: rgb(255, 255, 255);
+}
+
+.form-control::-moz-placeholder {
+  color: rgb(159, 146, 231);
+}
+
+.form-control::placeholder {
+  color: rgb(159, 146, 231);
+}
+
+.form-control::-ms-input-placeholder {
+  color: rgb(159, 146, 231);
+}
+
+input.mail#mail_me {
+  border-color: rgb(159, 146, 231);
+  background-color: rgb(38, 29, 112);
+}
+
+main {
+  margin-bottom: 200px;
+}
+main hr {
+  border: 0;
+  background: rgb(159, 146, 231);
+  width: 96%;
+  margin: 4% 4%;
+}
+main .short-form {
+  display: none;
+}
+@media (max-width: 800px) {
+  main .short-form {
+    display: inline-block;
+  }
+  main .long-form {
+    display: none;
+  }
+}
+main .subline {
+  font-size: 2vmin;
+}
+main div#sub-text {
+  display: flex;
+  position: relative;
+  top: 50px;
+  font-style: italic;
+  color: orange;
+}
+
+.firstSection {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 110px 0;
+}
+.firstSection > div {
+  width: 35%;
+}
+
+.secondSection {
+  max-width: 100%;
+  margin: 0% 3%;
+}
+.secondSection .dark h1 {
+  color: rgb(159, 146, 231);
+}
+.secondSection h1 {
+  font-size: 1.6rem;
+  color: rgb(255, 154, 60);
+}
+.secondSection .box {
+  background: rgb(157, 255, 255);
+  width: 85vw;
+  height: 1.5px;
+  margin: 95px 0;
+  display: flex;
+}
+.secondSection .vertical {
+  height: 75px;
+  width: 1px;
+  background-color: rgb(157, 255, 255);
+  margin: 0 100px;
+}
+
+.leftSection {
+  font-size: 3.3vw;
+  font-weight: 400;
+}
+
+.rightSection img {
+  width: 110%;
+  margin: 35px 0;
+}
+
+.dark .myName {
+  color: rgb(0, 238, 255);
+}
+
+.myName {
+  color: rgb(136, 0, 255);
+}
+
+#element {
+  color: rgb(255, 154, 60);
+}
+
+.dark .grey {
+  color: rgb(0, 238, 255);
+}
+
+.grey {
+  color: rgb(136, 0, 255);
+}
+
+div .swipebox {
+  border-width: 2px;
+  border-color: aqua;
+}
+
+.menu-icon {
+  color: white;
+  cursor: pointer;
+  display: none;
+}
+
+button {
+  font-size: 1rem;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 0.9rem;
+}
+
+@media screen and (max-width: 800px) {
+  .firstSection {
+    flex-direction: column-reverse;
+  }
+  .firstSection div {
+    width: 70%;
+  }
+  .firstSection .leftSection {
+    font-size: 7.1vmin;
+  }
+  main .subline {
+    font-size: 3.5vmin;
+  }
+}/*# sourceMappingURL=style.css.map */

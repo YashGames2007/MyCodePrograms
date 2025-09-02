@@ -1,0 +1,384 @@
+@use "../../Graphics/globals";
+
+$primary-color: globals.$brand_color_1;
+$secondary-color: globals.$brand_color_2;
+$normal_color: rgb(255, 255, 255);
+
+$color_1: rgb(238, 238, 238);
+$color_2: globals.$brand_color_3;
+$font-family_1: "Rubik", sans-serif;
+$background-color_1: globals.$bg_color_current_1;
+$background-color_2: globals.$bg_color_2-3;
+$background-color_3: rgba(100, 4, 190, 0.749);
+
+header {
+	display: flex;
+}
+.dark {
+	nav {
+		background-color: $background-color_2;
+	}
+}
+nav {
+	display: flex;
+	overflow: hidden;
+	position: fixed;
+	top: 0;
+	z-index: 100;
+	justify-content: space-around;
+	align-items: center;
+	height: 40px;
+	width: 100%;
+	background-color: $background-color_3;
+	ul {
+		margin: 4px 25px 0 0;
+		display: flex;
+		justify-content: center;
+		li {
+			list-style: none;
+			margin: 0 20px;
+			a {
+				text-decoration: double;
+				font-weight: 500;
+				color: $color_1;
+				&:hover {
+					font-size: 102%;
+					color: $primary-color;
+				}
+			}
+		}
+	}
+	.left {
+		font-size: 1.5rem;
+		font-weight: 500;
+		.profile {
+			width: 2rem;
+			margin: 0 5px;
+		}
+		a {
+			text-decoration: double;
+			color: $color_1;
+			&:hover {
+				font-size: 102%;
+				color: $primary-color;
+			}
+		}
+	}
+	.right {
+		display: flex;
+		padding-top: 1.2rem;
+	}
+	.menu-icon {
+		display: none;
+	}
+}
+
+body {
+	// background-color: $background-color_1;
+	font-family: "Rubik", "Helvetica Rounded", "Arial Rounded MT Bold", "Montserrat", sans-serif;
+	// color: #fff;
+}
+.toggleWrapper {
+	display: flex;
+	position: relative;
+	padding-top: 4%;
+	right: -3vw;
+	transform: translate3d(-50%, -50%, 0);
+
+	input {
+		position: absolute;
+		left: -99em;
+	}
+}
+
+.toggle {
+	top: 2px;
+	cursor: pointer;
+	display: inline-block;
+	position: relative;
+	width: 66px;
+	height: 25px;
+	background-color: #83d8ff;
+	border-radius: 90px - 6;
+	transition: background-color 200ms cubic-bezier(0.445, 0.05, 0.55, 0.95);
+
+	&:before {
+		content: "AM";
+		color: white;
+		position: absolute;
+		left: -25px;
+		top: 2px;
+		font-size: 15px;
+	}
+
+	&:after {
+		content: "PM";
+		position: absolute;
+		right: -25px;
+		top: 2px;
+		font-size: 15px;
+		color: #749ed7;
+	}
+}
+
+.toggle__handler {
+	display: inline-block;
+	position: relative;
+	z-index: 1;
+	top: 2px;
+	left: 3px;
+	width: 50px - 30;
+	height: 50px - 30;
+	background-color: #ffcf96;
+	border-radius: 50px;
+	box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+	transition: all 400ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+	transform: rotate(-45deg);
+
+	.crater {
+		position: absolute;
+		background-color: #e8cda5;
+		opacity: 0;
+		transition: opacity 200ms ease-in-out;
+		border-radius: 100%;
+	}
+
+	.crater--1 {
+		top: 13px;
+		left: 6px;
+		width: 3px;
+		height: 3px;
+	}
+
+	.crater--2 {
+		top: 11px;
+		left: 13px;
+		width: 4px;
+		height: 4px;
+	}
+
+	.crater--3 {
+		top: 3px;
+		left: 10px;
+		width: 5px;
+		height: 5px;
+	}
+}
+
+.star {
+	position: absolute;
+	background-color: #ffffff;
+	transition: all 300ms cubic-bezier(0.445, 0.05, 0.55, 0.95);
+	border-radius: 50%;
+}
+
+.star--1 {
+	top: 10px;
+	left: 35px;
+	z-index: 0;
+	width: 30px;
+	height: 3px;
+}
+
+.star--2 {
+	top: 18px;
+	left: 28px;
+	z-index: 1;
+	width: 30px;
+	height: 3px;
+}
+
+.star--3 {
+	top: 3px;
+	left: 28px;
+	z-index: 0;
+	width: 30px;
+	height: 3px;
+}
+
+.star--4,
+.star--5,
+.star--6 {
+	opacity: 0;
+	transition: all 300ms 0 cubic-bezier(0.445, 0.05, 0.55, 0.95);
+}
+
+.star--4 {
+	top: 16px;
+	left: 11px;
+	z-index: 0;
+	width: 2px;
+	height: 2px;
+	transform: translate3d(3px, 0, 0);
+}
+
+.star--5 {
+	top: 8px;
+	left: 10px;
+	z-index: 0;
+	width: 3px;
+	height: 3px;
+	transform: translate3d(3px, 0, 0);
+}
+
+.star--6 {
+	top: 13px;
+	left: 21px;
+	z-index: 0;
+	width: 2px;
+	height: 2px;
+	transform: translate3d(3px, 0, 0);
+}
+
+input:checked {
+	+ .toggle {
+		background-color: #749dd6;
+
+		&:before {
+			color: #749ed7;
+		}
+
+		&:after {
+			color: #ffffff;
+		}
+
+		.toggle__handler {
+			background-color: #ffe5b5;
+			transform: translate3d(40px, 0, 0) rotate(0);
+
+			.crater {
+				opacity: 1;
+			}
+		}
+
+		.star--1 {
+			width: 2px;
+			height: 2px;
+		}
+
+		.star--2 {
+			left: 31px;
+			width: 4px;
+			height: 4px;
+			transform: translate3d(-5px, 0, 0);
+		}
+
+		.star--3 {
+			left: 33px;
+			width: 2px;
+			height: 2px;
+			transform: translate3d(-7px, 0, 0);
+		}
+
+		.star--4,
+		.star--5,
+		.star--6 {
+			opacity: 1;
+			transform: translate3d(0, 0, 0);
+		}
+		.star--4 {
+			transition: all 300ms 200ms cubic-bezier(0.445, 0.05, 0.55, 0.95);
+		}
+		.star--5 {
+			transition: all 300ms 300ms cubic-bezier(0.445, 0.05, 0.55, 0.95);
+		}
+		.star--6 {
+			transition: all 300ms 400ms cubic-bezier(0.445, 0.05, 0.55, 0.95);
+		}
+	}
+}
+
+@media screen and (max-width: 800px) {
+	nav {
+		.left {
+			font-size: 115%;
+		}
+		ul {
+			margin: 0 45px 0 0;
+			padding-left: 0;
+			li {
+				font-size: 86%;
+				margin: 0 1vmin;
+			}
+		}
+	}
+}
+@media screen and (max-width: 650px) {
+	nav {
+		overflow: hidden;
+		display: block;
+		height: fit-content;
+		.right {
+			float: none;
+		}
+		.left {
+			font-size: 5.5vmin;
+			float: none;
+			position: relative;
+			margin: 5% 0% -3% 0%;
+			text-align: center;
+		}
+		ul {
+			li {
+				font-size: 95%;
+				position: relative;
+			}
+		}
+	}
+}
+@media screen and (max-width: 450px) {
+	header {
+		display: flex;
+	}
+
+	.toggleWrapper {
+		display: inline-flex;
+		top: 5px;
+	}
+	.toggle__handler {
+		left: -20px;
+	}
+	nav {
+		display: flex;
+		.left {
+			top: -16px;
+		}
+	}
+	.dark .nav-bar {
+		background-color: $background-color_2;
+	}
+	.nav-bar {
+		position: absolute;
+		top: 3.7rem;
+		left: 0;
+		width: 100%;
+		background-color: $background-color_3;
+		text-align: center;
+		height: fit-content;
+	}
+
+	.nav-bar.responsive {
+		display: flow;
+		position: fixed;
+		margin-top: -21px;
+	}
+
+	nav {
+		ul {
+			display: block;
+		}
+	
+		.menu-icon {
+			display: block;
+			z-index: 100;
+			
+		}
+	}
+
+	button {
+		padding: 0.4rem;
+	}
+	.logo {
+		font-size: 1.4rem;
+	}
+}
