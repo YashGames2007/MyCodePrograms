@@ -3,6 +3,7 @@
         "**/*.exe": true
     },
     "files.associations": {
-        "ostream": "cpp"
+        "ostream": "cpp",
+        "vector": "cpp"
     }
 }
